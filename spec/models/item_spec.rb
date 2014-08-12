@@ -34,4 +34,11 @@ RSpec.describe Item, :type => :model do
     expect(item).not_to be_valid
   end
 
+  it 'is invalid if title is not unique' do 
+    2.times { Item.create(title: 'Baltimore Bomb', description: 'Delicious pie.', price_slice: 6.50, price_pie: 30.00) }
+    
+    result = Item.where(title: "Baltimore Bomb")
+    assert_equal 1, result.count
+  end
+
 end
