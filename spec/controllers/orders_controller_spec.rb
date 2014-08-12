@@ -8,6 +8,8 @@ RSpec.describe OrdersController, :type => :controller do
       order_status: "paid"}
   }
 
+  let(:valid_session) { {} }
+
   describe "GET index" do
     it "assigns all orders as @orders" do
       order = Order.create! valid_attributes
