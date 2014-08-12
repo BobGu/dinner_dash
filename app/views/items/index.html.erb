@@ -1,3 +1,11 @@
+<h1>Our Dangerously Delicious Pies</h1>
 <% @items.each do |item| %>
-<li><%= item.title %></li>
+	<div class='pie'>
+		<h2 class='pie_title'><strong><%= item.title %></strong><br></h2>
+		<p class='pie_description'><%= item.description %><br></p>
+	<p class='pie_price'>
+			<%= item.price_slice %>0 /
+			<%= item.price_pie %>0
+	  </p>
+	</div>
 <% end %>
