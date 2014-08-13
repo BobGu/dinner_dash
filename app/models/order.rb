@@ -1,7 +1,8 @@
 class Order < ActiveRecord::Base
-  #has_many :items
-
-  #belongs_to :user
+  # has_many :items, through: :order_items
+  # has_many :order_items
+  #
+  # belongs_to :user
 
   validates :user_id,          presence: true
   validates :order_total,      presence: true
