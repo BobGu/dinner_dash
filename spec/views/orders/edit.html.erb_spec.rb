@@ -6,7 +6,7 @@ RSpec.describe "orders/edit", :type => :view do
       :user_id         => 1
       :order_total     => 100.00
       :order_type      => "Pickup"
-      :deliver_address => "1510 Blake Street"
+      :delivery_address => "1510 Blake Street"
       :order_status    => "Paid"
     ))
   end
@@ -22,7 +22,7 @@ RSpec.describe "orders/edit", :type => :view do
 
       assert_select "input#order_order_type[order_type=?]", "order[order_type]"
 
-      assert_select "input#order_deliver_address[deliver_address=?]", "order[deliver_address]"
+      assert_select "input#order_delivery_address[deliver_address=?]", "order[deliver_address]"
 
       assert_select "input#order_order_status[order_status]", "order[order_status]"
     end

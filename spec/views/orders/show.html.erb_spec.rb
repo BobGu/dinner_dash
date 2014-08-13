@@ -6,7 +6,7 @@ RSpec.describe "orders/show", :type => :view do
       :user_id         => 1
       :order_total     => 100.00
       :order_type      => "Pickup"
-      :deliver_address => "1510 Blake Street"
+      :delivery_address => "1510 Blake Street"
       :order_status    => "Paid"
     ))
   end

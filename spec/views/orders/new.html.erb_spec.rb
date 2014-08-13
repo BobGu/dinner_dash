@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "orders/new", :type => :view do
   before(:each) do
-    assign(:person, Person.new(
+    assign(:order, Order.new(
       :user_id         => 1
       :order_total     => 100.00
       :order_type      => "Pickup"
