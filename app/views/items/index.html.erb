@@ -1,3 +1,17 @@
+<h1>Our Dangerously Delicious Pies</h1>
 <% @items.each do |item| %>
-<li><%= item.title %></li>
+	<div class='pie'>
+		<h2 class='pie_title'><strong><%= item.title %></strong><br></h2>
+		<p class='pie_description'><%= item.description %><br></p>
+		<p class='pie_price'>
+			<%= item.price_slice %>0 /
+			<%= item.price_pie %>0
+	  </p>
+	  <!-- We want someone to click this link, and it add the Key Lime Pie to their cart-->
+	  <!-- Key Lime is the name of the link items_path directs us back to this same page-->
+	  <!-- How do we add this pie to our cart? -->
+	  <!-- We need a cart model of some sort-->
+	  
+	  <%= link_to 'Key Lime', items_path %>
+	</div>
 <% end %>
