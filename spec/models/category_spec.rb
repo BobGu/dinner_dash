@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Category, :type => :model do
   let(:category) do
-  	Category.new(name: "Savory")
+  	Category.create(id: 1 ,name: "Savory")
   end
 
   it 'is valid' do 
@@ -13,5 +13,21 @@ RSpec.describe Category, :type => :model do
   	category.name = nil
 
   	expect(category).not_to be_valid
-  end 
+  end
+
+  # let(:item1) do
+  # 	Item.new(id: 140, title: 'Key Lime', description: 'Yum', price_slice: 4.00, price_pie: 28.00)
+  # end 
+
+  # let(:item2) do
+  # 	Item.new(id: 125, title: 'Apple', description: 'Yum', price_slice: 4.00, price_pie: 28.00)
+  # end 
+
+  it 'knows its items' do
+    category.items.create(id: 140, title: 'Key Lime', description: 'Yum', price_slice: 4.00, price_pie: 28.00)
+    category.items.create(id: 125, title: 'Apple', description: 'Yum', price_slice: 4.00, price_pie: 28.00)	
+    
+    results = category.items
+    expect(results.count).to eq(2)
+  end
 end
