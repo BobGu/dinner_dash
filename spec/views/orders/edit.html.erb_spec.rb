@@ -3,18 +3,19 @@ require 'rails_helper'
 RSpec.describe "orders/edit", :type => :view do
   before(:each) do
     @order = assign(:order, Order.create!(
-      :user_id         => 1
-      :order_total     => 100.00
-      :order_type      => "Pickup"
-      :delivery_address => "1510 Blake Street"
+      :user_id         => 1,
+      :order_total     => 100.00,
+      :order_type      => "Pickup",
+      :delivery_address => "1510 Blake Street",
       :order_status    => "Paid"
     ))
   end
 
   it "renders the edit order form" do
-    render
+    render 
 
-      assert_select "form[action=?][method=?]", order_path(@order), "post" do
+
+    assert_select "form[action=?][method=?]", order_path(@order), "post" do
 
       assert_select "input#order_user_id[user_id=?]", "order[user_id]"
 

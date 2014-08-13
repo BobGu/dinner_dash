@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "orders/new", :type => :view do
   before(:each) do
     assign(:order, Order.new(
-      :user_id         => 1
-      :order_total     => 100.00
-      :order_type      => "Pickup"
-      :deliver_address => "1510 Blake Street"
+      :user_id         => 1,
+      :order_total     => 100.00,
+      :order_type      => "Pickup",
+      :deliver_address => "1510 Blake Street",
       :order_status    => "Paid"
     ))
   end
