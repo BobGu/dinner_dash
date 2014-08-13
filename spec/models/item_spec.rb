@@ -3,7 +3,13 @@ require 'rails_helper'
 RSpec.describe Item, :type => :model do
   
   let(:item) do
-    Item.new(title: 'Baltimore Bomb', description: 'Delicious pie.', price_slice: 6.50, price_pie: 30.00)
+    Item.create(
+      id:           167,
+      title:       'Baltimore Bomb', 
+      description: 'Delicious pie.', 
+      price_slice:  6.50, 
+      price_pie:    30.00
+      )
   end
 
   it 'is valid' do
@@ -35,10 +41,33 @@ RSpec.describe Item, :type => :model do
   end
 
   it 'is invalid if title is not unique' do 
-    2.times { Item.create(title: 'Baltimore Bomb', description: 'Delicious pie.', price_slice: 6.50, price_pie: 30.00) }
+    2.times { 
+      Item.create(
+      title: 'Baltimore Bomb', 
+      description: 'Delicious pie.', 
+      price_slice: 6.50, 
+      price_pie: 30.00
+      ) 
+    }
     
     result = Item.where(title: "Baltimore Bomb")
     assert_equal 1, result.count
+  end
+
+  it 'knows its categories' do 
+    item.categories.create(
+      id: 10,
+      name: "Savory"
+      )
+    item.categories.create(
+      id: 12,
+      name: "Gluten-free" 
+      )
+
+    results = item.categories
+
+    expect(results.count).to eq(2)
+
   end
 
 end
