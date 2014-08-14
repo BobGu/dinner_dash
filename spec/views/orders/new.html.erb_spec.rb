@@ -6,7 +6,7 @@ RSpec.describe "orders/new", :type => :view do
       :user_id         => 1,
       :order_total     => 100.00,
       :order_type      => "Pickup",
-      :deliver_address => "1510 Blake Street",
+      :delivery_address => "1510 Blake Street",
       :order_status    => "Paid"
     ))
   end
@@ -14,7 +14,7 @@ RSpec.describe "orders/new", :type => :view do
   it "renders new order form" do
     render
 
-      assert_select "form[action=?][method=?]", order_path(@order), "post" do
+      assert_select "form[action=?][method=?]", new_order_path(@order), "post" do
 
       assert_select "input#order_user_id[user_id=?]", "order[user_id]"
 

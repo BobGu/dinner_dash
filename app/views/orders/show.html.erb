@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order Total:</strong>
+  <%= @order.order_total %>
+</p>
+
+<p>
+  <strong>Order Type:</strong>
+  <%= @order.order_type %>
+</p>
+
+<p>
+<ul>
+  <div class="field">
+    <%= f.label :order_type %><br>
+    <%= f.text_field :order_type %><br>
+  </div>
+  <div>
+    <%= link_to('edit', edit_order_path(order)) %>
+    <%= link_to('delete', order, method: :delete, data: {confirm: 'Are you sure?' }) %>
+  </div>
+</ul>
+</p>
