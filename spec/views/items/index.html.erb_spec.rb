@@ -20,7 +20,8 @@ RSpec.describe 'items/index', :type => :view do
 
   it "renders a list of items" do
     render
-    assert_select "li", :text => "Baltimore Bomb".to_s
+    assert_select ".pie_title", :text => "Baltimore Bomb"
+    assert_select ".pie_title", :text => "Key Lime"
   end
 
 end

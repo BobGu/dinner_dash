@@ -1,14 +1,15 @@
 source 'https://rubygems.org'
 
-group :development, :test do 
+group :development, :test do
 	gem 'rspec-rails'
 	gem 'capybara'
 	gem 'sqlite3'
 	gem 'spring'
 	gem 'pry'
+  gem 'launchy'
 end
 
-	
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use SCSS for stylesheets
