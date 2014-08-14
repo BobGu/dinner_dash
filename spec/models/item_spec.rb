@@ -68,6 +68,11 @@ RSpec.describe Item, :type => :model do
 
     expect(results.count).to eq(2)
 
+  it 'has many orders' do
+    item.orders.create(user_id: 1, order_total: 4, order_type: 'delivery', delivery_address: '1510 blanke st', order_status: 'paid')
+    item.orders.create(user_id: 3, order_total: 100, order_type: 'pickup', delivery_address: '1510 blanke st', order_status: 'paid')
+    result = item.orders
+    expect(result.count).to eq(2)
   end
 
 end
