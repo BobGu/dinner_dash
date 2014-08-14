@@ -2,4 +2,16 @@
   <div>
     <%= cart_item.item.title %>
   </div>
+  <% item_id = cart_item.item_id %>
+  <div id='line_item_total'>
+    <%= @cart.cart_items.select { |cart_item| cart_item.item_id == item_id}.count * cart_item.item.price_pie %>
+  </div>
+
 <% end %>
+<%= @cart.cart_items.count %>
+<% # how can we caculate the total price of pies
+
+   # we are taking a count of our items
+   # with a particular item_id
+   # then we are multiplying that item's price_pie
+   # times the count of that particular pie

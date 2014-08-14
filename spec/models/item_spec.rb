@@ -67,6 +67,7 @@ RSpec.describe Item, :type => :model do
     results = item.categories
 
     expect(results.count).to eq(2)
+  end
 
   it 'has many orders' do
     item.orders.create(user_id: 1, order_total: 4, order_type: 'delivery', delivery_address: '1510 blanke st', order_status: 'paid')
