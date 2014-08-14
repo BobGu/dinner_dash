@@ -1,3 +1,8 @@
-
 <h1 class='pie_title'><%= @item.title %></h1>
 <p class='pie_description'><%= @item.description %></p>
+
+<%= form_tag cart_items_path, method: :post do %>
+  <%= hidden_field_tag 'item_id', @item.id %>
+  <%= submit_tag "Add To Cart" %>
+<% end %>
+
