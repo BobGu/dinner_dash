@@ -8,8 +8,11 @@ describe 'a user viewing the items page', type: :feature do
 		visit items_path
 	end
 	it 'can add one item to their cart' do
+		# this should add Key Lime pie to cart
 		page.click_link('Key Lime')
-		visit('cart')
+		# Go to the cart
+		visit carts_path
+		# We expect the cart page to have Key Lime in the content
 		expect(page).to have_content('Key Lime')
 	end
 end

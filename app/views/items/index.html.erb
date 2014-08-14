@@ -7,11 +7,7 @@
 			<%= item.price_slice %>0 /
 			<%= item.price_pie %>0
 	  </p>
-	  <!-- We want someone to click this link, and it add the Key Lime Pie to their cart-->
-	  <!-- Key Lime is the name of the link items_path directs us back to this same page-->
-	  <!-- How do we add this pie to our cart? -->
-	  <!-- We need a cart model of some sort-->
+	  <%= link_to 'Add Key Lime', editg_cart_path(item_param: 'item.id') %>
 	  
-	  <%= link_to 'Key Lime', items_path %>
 	</div>
 <% end %>
