@@ -2,18 +2,22 @@ require 'rails_helper'
 
 RSpec.describe OrdersController, :type => :controller do
 
-  let(:valid_attributes) {
-    { order: "Apple Pie", user_id: 1, order_total: 23.21, 
-      order_type: "pick-up", delivery_address: "yo moms", 
-      order_status: "paid"}
-  }
+  let(:valid_attributes) do
+    {
+      user_id:          1,
+      order_total:      23.21,
+      order_type:       "pick-up",
+      delivery_address: "yo moms",
+      order_status:     "paid"
+    }
+  end
 
   let(:valid_session) { {} }
 
   describe "GET index" do
     it "assigns all orders as @orders" do
       order = Order.create! valid_attributes
-      get :index, {}, valid_session
+      get :index
       expect(assigns(:orders)).to eq([order])
     end
   end
@@ -65,8 +69,8 @@ RSpec.describe OrdersController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        { order: "Bacon Pie", user_id: 2, order_total: 12.21, 
-          order_type: "pick-up", delivery_address: "yo step-momma", 
+        { order: "Bacon Pie", user_id: 2, order_total: 12.21,
+          order_type: "pick-up", delivery_address: "yo step-momma",
           order_status: "paid"}
       }
 
