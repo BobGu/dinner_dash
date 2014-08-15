@@ -1,20 +1,20 @@
-<h1>Listing Orders</h1>
-
-
+<h1>Orders Listings:</h1>
 <table>
   <thead>
     <tr>
-      <th>Orders</th>
-      <th>Order Total</th>
-      <th>Order Type</th>
-      <th>Delivery Address</th>
-      <th>Order Status</th>
+      <th>Orders:</th>
+      <th>User ID:</th>
+      <th>Order Total:</th>
+      <th>Order Type:</th>
+      <th>Delivery Address:</th>
+      <th>Order Status:</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
     <tr>
+      <td><%= order.user_id %></td>
       <td><%= order.order_total %></td>
       <td><%= order.order_type %></td>
       <td><%= order.delivery_address %></td>
@@ -22,9 +22,7 @@
       <td><%= order.order_status %></td>
     </tr>
     <% end %>
-  </tbody>
-</thead>
-
-<br>
+  </tbody><br>
+</table>
 
 <%= link_to 'New Order', new_order_path %>

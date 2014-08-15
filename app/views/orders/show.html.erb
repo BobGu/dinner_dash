@@ -11,14 +11,11 @@
 </p>
 
 <p>
-<ul>
-  <div class="field">
-    <%= f.label :order_type %><br>
-    <%= f.text_field :order_type %><br>
-  </div>
-  <div>
+  <strong>Order Status:</strong>
+  <%= @order.order_status %>
+</p>
+
+<p>
     <%= link_to('edit', edit_order_path(order)) %>
     <%= link_to('delete', order, method: :delete, data: {confirm: 'Are you sure?' }) %>
-  </div>
-</ul>
 </p>

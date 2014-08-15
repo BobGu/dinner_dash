@@ -14,17 +14,17 @@ RSpec.describe "orders/new", :type => :view do
   it "renders new order form" do
     render
 
-      assert_select "form[action=?][method=?]", new_order_path(@order), "post" do
+      assert_select "form[action=?][method=?]", orders_path, "post" do
 
-      assert_select "input#order_user_id[user_id=?]", "order[user_id]"
+      assert_select "input#order_user_id[name=?]", "order[user_id]"
 
-      assert_select "input#order_order_total[order_total=?]", "order[order_total]"
+      assert_select "input#order_order_total[name=?]", "order[order_total]"
 
-      assert_select "input#order_order_type[order_type=?]", "order[order_type]"
+      assert_select "input#order_order_type[name=?]", "order[order_type]"
 
-      assert_select "input#order_deliver_address[deliver_address=?]", "order[deliver_address]"
+      assert_select "input#order_delivery_address[name=?]", "order[delivery_address]"
 
-      assert_select "input#order_order_status[order_status]", "order[order_status]"
+      assert_select "input#order_order_status[name=?]", "order[order_status]"
     end
   end
 end
