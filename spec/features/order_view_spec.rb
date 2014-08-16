@@ -14,17 +14,17 @@ describe 'the order view', type: :feature do
 				)
 		end
 
-	# describe 'items' do
-	# 	before(:each) do
-	# 		order.items.create(title: "Baltimore Bomb")
-	# 		order.items.create(title: "Key Lime")
-	# 		visit order_path(order)
-	# 	end
-	#
-	# 	it 'shows the items' do
-	# 		order.items.each do |item|
-	# 			expect(page).to have_content(item.title)
-	# 		end
-	# 	end
-	# end
+	describe 'items' do
+		before(:each) do
+			order.items.create(title: "Baltimore Bomb")
+			order.items.create(title: "Key Lime")
+			visit order_path(order)
+		end
+	
+		it 'shows the items' do
+			order.items.each do |item|
+				expect(page).to have_content(item.title)
+			end
+		end
+	end
 end

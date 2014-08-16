@@ -11,4 +11,6 @@ class Cart < ActiveRecord::Base
 	def add_cart_item(data)
 		Cart.cart_items.create(data.id)
 	end
+
+	
 end

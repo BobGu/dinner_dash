@@ -13,7 +13,11 @@ class ApplicationController < ActionController::Base
 
   def user_has_a_cart
     return if session[:cart_id]
+    reset_session
     cart = Cart.create!
     session[:cart_id] = cart.id
   end
+
+
+
 end

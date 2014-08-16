@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 	before_action	:set_item, only: [:show]
-	
+
 	def new
 		@item = Item.new
 	end
@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
 	def create
 		@item = Item.new(item_params)
 	end
+
 
 	private
 
