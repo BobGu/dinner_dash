@@ -12,11 +12,11 @@ RSpec.describe "items/new", :type => :view do
 
 	it "renders new item form" do
 		render
-		assert_select "form[action=?][method=?]", items_path, "post" do 
-			assert_select "input#item_title[title=?]", "item[title]"
-			assert_select "input#item_description[description=?]", "item[description]"
-			assert_select "input#item_price_slice[price_slice=?]", "item[price_slice]"
-			assert_select "input#item_price_pie[price_pie=?]", "item[price_pie]"
+		assert_select "form[action=?][method=?]", items_path, "post" do
+			assert_select "input#item_title[name=?]", "item[title]"
+			assert_select "input#item_description[name=?]", "item[description]"
+			assert_select "input#item_price_slice[name=?]", "item[price_slice]"
+			assert_select "input#item_price_pie[name=?]", "item[price_pie]"
 		end
 	end
 end

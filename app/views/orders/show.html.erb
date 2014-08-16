@@ -25,15 +25,18 @@
   <%= @order.order_status %>
 </p>
 <p>
-<ul>
-  <% @order.items.each do |item| %>
-  <li><%= item.title %>
-    <%= link_to('edit', edit_item_path(item)) %>
-    <%= link_to('delete', item, method: :delete, data: {confirm: 'Are you sure?' }) %></li>
-    <% end %>
+
+<p>
+  <strong>Items:</strong>
+  <ul>
+    <% @order.items.each do |item| %>
+    <li><%= item.title %>
+      <%= link_to('edit', edit_item_path(item)) %>
+      <%= link_to('delete', item, method: :delete, data: {confirm: 'Are you sure?' }) %></li>
+      <% end %>
   </ul>
 </p>
 
 <%= link_to 'Add item', new_item_path(:order_id => @order.id) %> |
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Edit Order', edit_order_path(@order) %> |
+<%= link_to 'Back To Orders', orders_path %>
