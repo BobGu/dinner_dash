@@ -10,7 +10,6 @@ describe 'a user viewing the items page', type: :feature do
 
   context 'Unauthenticated Customer' do
     it 'adds item' do
-      pending
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
       visit cart_path
@@ -20,7 +19,6 @@ describe 'a user viewing the items page', type: :feature do
     end
 
     it 'adds two of the same item' do
-      pending
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
       page.visit item_path(keylime)
@@ -41,7 +39,6 @@ describe 'a user viewing the items page', type: :feature do
     end
 
     it 'displays correct price for many items' do
-      pending
       #assuming items are added to cart
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
@@ -57,7 +54,7 @@ describe 'a user viewing the items page', type: :feature do
     end
 
     it 'cart is empty with new session' do
-      pending
+      skip
       # visit the key lime page
       page.visit item_path(keylime)
       # add a key lime pie
