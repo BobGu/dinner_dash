@@ -10,7 +10,6 @@ describe 'a user viewing the items page', type: :feature do
 
   context 'Unauthenticated Customer' do
     it 'adds item' do
-      pending
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
       visit cart_path
@@ -20,7 +19,6 @@ describe 'a user viewing the items page', type: :feature do
     end
 
     it 'adds two of the same item' do
-      pending
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
       page.visit item_path(keylime)
@@ -37,11 +35,10 @@ describe 'a user viewing the items page', type: :feature do
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
       page.visit cart_path
-      page.should_not have_css('.pie_title:nth-of-type(2)')
+      expect(page).to_not have_css('.pie_title:nth-of-type(2)')
     end
 
     it 'displays correct price for many items' do
-      pending
       #assuming items are added to cart
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
@@ -57,7 +54,7 @@ describe 'a user viewing the items page', type: :feature do
     end
 
     it 'cart is empty with new session' do
-      pending
+      skip
       # visit the key lime page
       page.visit item_path(keylime)
       # add a key lime pie
@@ -67,6 +64,28 @@ describe 'a user viewing the items page', type: :feature do
       page.visit cart_path
       # expect the cart to have nothing or be empty
       expect(page).not_to have_content(item_name)
+    end
+
+    it 'can delete items from their cart' do
+      #visit items page
+      page.visit item_path(keylime)
+      #add keylime to cart
+      page.click_on('Add To Cart')
+      #then go to cart page
+      page.visit cart_path
+      #delete keylime
+      page.click_on('Delete from Cart')
+      #there are no more keylimes in cart
+      expect(page).not_to have_content(item_name)
+    end
+
+    it "can click on a category and expect to see it's items." do
+      binding.pry
+      #visit items page
+      #see categories
+      #select a category
+      #see it's items
+
     end
 
 
