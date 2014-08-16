@@ -11,7 +11,7 @@ class CartItemsController < ApplicationController
     item = cart.cart_items.find_by(item_id: params[:item_id])
     cart.cart_items.destroy(item)
     respond_to do |format|
-      format.html { redirect_to cart_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to cart_path, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

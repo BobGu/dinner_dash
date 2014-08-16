@@ -79,6 +79,14 @@ describe 'a user viewing the items page', type: :feature do
       expect(page).not_to have_content(item_name)
     end
 
+    it "can click on a category and expect to see it's items." do
+      #visit items page
+      #see categories
+      #select a category
+      #see it's items
+
+    end
+
 
 
   end
