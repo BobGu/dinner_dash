@@ -80,6 +80,7 @@ describe 'a user viewing the items page', type: :feature do
     end
 
     it "can click on a category and expect to see it's items." do
+      binding.pry
       #visit items page
       #see categories
       #select a category
