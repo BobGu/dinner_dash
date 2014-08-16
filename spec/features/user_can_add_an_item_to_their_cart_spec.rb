@@ -35,7 +35,7 @@ describe 'a user viewing the items page', type: :feature do
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
       page.visit cart_path
-      page.should_not have_css('.pie_title:nth-of-type(2)')
+      expect(page).to_not have_css('.pie_title:nth-of-type(2)')
     end
 
     it 'displays correct price for many items' do
@@ -72,7 +72,7 @@ describe 'a user viewing the items page', type: :feature do
       #add keylime to cart
       page.click_on('Add To Cart')
       #then go to cart page
-      pae.visit cart_path
+      page.visit cart_path
       #delete keylime
       page.click_on('Delete from Cart')
       #there are no more keylimes in cart

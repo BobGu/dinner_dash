@@ -10,4 +10,6 @@ class CartsController < ApplicationController
   	@item = item
   	Cart.create(@item.id, @item.title, @item.description, @item.price_slice, @item.price_pie)
   end
+
+
 end

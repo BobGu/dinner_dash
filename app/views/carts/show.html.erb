@@ -5,6 +5,7 @@
       <%= cart_item.item.title %>
     </div>
     <% item_id = cart_item.item_id %>
+    <%= link_to 'Delete from Cart', cart_items_destroy_path(item_id: item_id), method: :delete %>
     <div id='line_item_total'>
       <%= @cart.cart_items.select { |cart_item| cart_item.item_id == item_id}.count * cart_item.item.price_pie %>
     </div>
@@ -13,9 +14,3 @@
   <!-- price is broken -->
   <!-- count is not appearing for each item -->
 </div>
-
-# we have two of the same type of pie in our view
-
-# we want the pie titles to be unique
-# we put everything into a block
-# we will select all of the unique item titles
