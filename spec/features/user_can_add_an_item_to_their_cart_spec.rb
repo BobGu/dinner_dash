@@ -66,6 +66,19 @@ describe 'a user viewing the items page', type: :feature do
       expect(page).not_to have_content(item_name)
     end
 
+    it 'can delete items from their cart' do
+      #visit items page
+      page.visit item_path(keylime)
+      #add keylime to cart
+      page.click_on('Add To Cart')
+      #then go to cart page
+      pae.visit cart_path
+      #delete keylime
+      page.click_on('Delete from Cart')
+      #there are no more keylimes in cart
+      expect(page).not_to have_content(item_name)
+    end
+
 
 
   end
