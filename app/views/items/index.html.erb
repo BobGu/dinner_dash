@@ -4,10 +4,10 @@
 		<h2 class='pie_title'><strong><%= item.title %></strong><br></h2>
 		<p class='pie_description'><%= item.description %><br></p>
 		<p class='pie_price'>
-			<%= item.price_slice %>0 /
-			<%= item.price_pie %>0
+			<%= item.price_slice %> /
+			<%= item.price_pie %>
 	  </p>
 	  <%= link_to 'Add Key Lime', edit_cart_path(item) %>
-	  
+
 	</div>
 <% end %>
