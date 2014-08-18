@@ -6,6 +6,7 @@ describe 'a user viewing the items page', type: :feature do
   let(:item_name) { 'Key Lime' }
   let!(:keylime)  { Item.create! title: item_name, description: "yum", price_slice: 5, price_pie: 34 }
   let!(:apple)    { Item.create! title: 'Apple', description: "delicious", price_slice: 4, price_pie: 29 }
+  let!(:category) { Category.create! name: "cool kids"}
 
 
   context 'Unauthenticated Customer' do
@@ -78,17 +79,5 @@ describe 'a user viewing the items page', type: :feature do
       #there are no more keylimes in cart
       expect(page).not_to have_content(item_name)
     end
-
-    it "can click on a category and expect to see it's items." do
-      binding.pry
-      #visit items page
-      #see categories
-      #select a category
-      #see it's items
-
-    end
-
-
-
   end
 end
