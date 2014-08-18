@@ -6,3 +6,29 @@
   <%= submit_tag "Add To Cart" %>
 <% end %>
 
+<table class="table">
+	<thead>
+		<tr>
+			<th>Pie Name:</th>
+			<th>Description:</th>
+			<th>Price/Slice:</th>
+			<th>Price/Pie:</th>
+			<th>Category:</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td class='pie_title'><%= @item.title %></td>
+			<td class='pie_description'><%= @item.description %></td>
+			<td class='pie_price'><%= @item.price_slice %></td>
+			<td class='pie_price'><%= @item.price_pie %></td>
+			<td class='pie_category'>
+				<%= @item.category_names %>
+			</td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
