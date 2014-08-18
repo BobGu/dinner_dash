@@ -1,17 +1,5 @@
 <h1>Our Dangerously Delicious Pies</h1>
 
-<% @items.each do |item| %>
-	<div class='pie'>
-		<h2 class='pie_title'><strong><%= item.title %></strong><br></h2>
-		<p class='pie_description'><%= item.description %><br></p>
-		<p class='pie_price'>
-			<%= item.price_slice %> /
-			<%= item.price_pie %>
-	  </p>
-	  <%= link_to 'Add to order', order_items_path(item_id: item.id, order_id: order.id), method: 'POST' %>
-
-	</div>
-<% end %>
 
 
 <table class="table">
