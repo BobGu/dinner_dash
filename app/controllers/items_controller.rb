@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-	before_action	:set_item, only: [:show, :edit, :update, :destroy]
+	before_action	:set_item, only: [:show, :edit, :update]
 	
 	def new
 		@item = Item.new
@@ -38,10 +38,10 @@ class ItemsController < ApplicationController
 	end
 
 	def destroy
+		@item = Item.find(params[:id])
 		@item.destroy
-		respond_to do |format|
-			format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-		end
+
+		redirect_to items_path
 	end
 
 	private

@@ -17,9 +17,7 @@
 			<td class='pie_price'><%= @item.price_slice %></td>
 			<td class='pie_price'><%= @item.price_pie %></td>
 			<td class='pie_category'>
-				<% @item.categories.each do |category| %>
-					<%= @item.categories.first.name %>
-				<% end %>
+				<%= @item.category_names %>
 			</td>
     </tr>
   </tbody>

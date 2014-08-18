@@ -6,4 +6,8 @@ class Item < ActiveRecord::Base
   validates :description, presence: true
   validates :price_slice, presence: true
   validates :price_pie,   presence: true
+
+  def category_names
+  	categories.pluck(:name).join(", ")
+  end
 end
