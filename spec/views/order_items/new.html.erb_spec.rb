@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "orders/new", :type => :view do
+RSpec.describe "order_items/new", :type => :view do
   before(:each) do
     assign(:order, Order.new(
       :user_id         => 1,

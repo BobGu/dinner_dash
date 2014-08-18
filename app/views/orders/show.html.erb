@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>User ID:</strong>
+  <%= @order.user_id %>
+</p>
+
+<p>
   <strong>Order Total:</strong>
   <%= @order.order_total %>
 </p>
@@ -11,14 +16,27 @@
 </p>
 
 <p>
-<ul>
-  <div class="field">
-    <%= f.label :order_type %><br>
-    <%= f.text_field :order_type %><br>
-  </div>
-  <div>
-    <%= link_to('edit', edit_order_path(order)) %>
-    <%= link_to('delete', order, method: :delete, data: {confirm: 'Are you sure?' }) %>
-  </div>
-</ul>
+  <strong>Delivery Address:</strong>
+  <%= @order.delivery_address %>
 </p>
+
+<p>
+  <strong>Order Status:</strong>
+  <%= @order.order_status %>
+</p>
+<p>
+
+<p>
+  <strong>Items:</strong>
+  <ul>
+    <% @order.items.each do |item| %>
+    <li><%= item.title %>
+      <%= link_to('edit', edit_item_path(item)) %>
+      <%= link_to('delete', item, method: :delete, data: {confirm: 'Are you sure?' }) %></li>
+      <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Add item', items_path(:order_id => @order.id) %> |
+<%= link_to 'Edit Order', edit_order_path(@order) %> |
+<%= link_to 'Back To Orders', orders_path %>
