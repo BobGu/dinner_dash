@@ -11,6 +11,7 @@ RSpec.describe 'items/show', :type => :view do
 	end	
 
 	it 'renders attributes' do 
+		pending
 		render 
 		assert_select ".pie_title", :text => "Baltimore Bomb"
 		assert_select ".pie_description", :text => "Yay"

@@ -63,7 +63,6 @@ RSpec.describe Item, :type => :model do
       id: 12,
       name: "Gluten-free" 
       )
-
     results = item.categories
 
     expect(results.count).to eq(2)
