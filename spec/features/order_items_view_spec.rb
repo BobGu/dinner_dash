@@ -26,10 +26,16 @@ describe 'the order_items view', type: :feature do
           price_slice: 6.50,
           price_pie: 30.00
         )
-        visit new_order_item_path(order_id: order.id)
+        visit items_path(order_id: order.id)
       end
 
       it 'has a new page with items' do
+        expect(page).to have_content(Item.first.title)
+      end
+
+      it 'adds item to the order' do
+        click_on "Add to order"
+        visit order_path(order.id)
         expect(page).to have_content(Item.first.title)
       end
     end

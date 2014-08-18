@@ -7,7 +7,7 @@
 			<%= item.price_slice %>0 /
 			<%= item.price_pie %>0
 	  </p>
-	  <%= link_to 'Add Key Lime', edit_cart_path(item) %>
+	  <%= link_to 'Add to order', order_items_path(item_id: item.id, order_id: order.id), method: 'POST' %>
 
 	</div>
 <% end %>

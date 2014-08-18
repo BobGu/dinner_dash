@@ -45,7 +45,7 @@ Order.create(user_id: 2, order_total: 88.23, order_type: "pick-up", delivery_add
 Order.create(user_id: 4, order_total: 34.12, order_type: "pick-up", delivery_address: nil, order_status: "completed")
 Order.create(user_id: 3, order_total: 12.12, order_type: "pick-up", delivery_address: nil, order_status: "completed")
 
-User.create(full_name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password", role: :user, display_name: nil)
-User.create(full_name: "Jeff", email: "demo+jeff@jumpstartlab.com", password: "password", role: :user, display_name: "j3")
-User.create(full_name: "Jorge Tellez", email: "demo+jorge@jumpstartlab.com", password: "password", role: :user, display_name: "novohispano")
-User.create(full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", password: "password", role: :admin, display_name: "josh")
+# User.create(full_name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password", role: :user, display_name: nil)
+# User.create(full_name: "Jeff", email: "demo+jeff@jumpstartlab.com", password: "password", role: :user, display_name: "j3")
+# User.create(full_name: "Jorge Tellez", email: "demo+jorge@jumpstartlab.com", password: "password", role: :user, display_name: "novohispano")
+# User.create(full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", password: "password", role: :admin, display_name: "josh")
