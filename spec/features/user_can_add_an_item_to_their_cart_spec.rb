@@ -26,8 +26,6 @@ describe 'a user viewing the items page', type: :feature do
       expect(page).to have_content(item_name) # ideally would scope this to relevant dom objects
 
       # And I see my total is the cost of 1 "Keylime"
-      require "pry"
-      binding.pry
     end
   end
 end

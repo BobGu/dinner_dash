@@ -12,10 +12,10 @@ RSpec.describe "orders/edit", :type => :view do
   end
 
   it "renders the edit order form" do
-    render 
+    render
 
 
-    assert_select "form[action=?][method=?]", order_path(@order), "post" do
+      assert_select "form[action=?][method=?]", edit_order_path(@order) , "post" do
 
       assert_select "input#order_user_id[user_id=?]", "order[user_id]"
 
