@@ -1,0 +1,19 @@
+<h1>New order item</h1>
+
+<%= form_for(@order_item) do |f| %>
+  <% if @order_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order_item.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% @order_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.select("Item", "item_id", Item.all.collect {|p| [ p.title, p.id ] }, { :include_blank => true, :selected => params[:language_id] }) %>
+<% end %>
+
+
+<%= link_to 'Back', order_path(@order) %>

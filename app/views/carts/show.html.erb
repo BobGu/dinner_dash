@@ -1,5 +1,16 @@
-<% @cart.cart_items.each do |cart_item| %>
-  <div>
-    <%= cart_item.item.title %>
-  </div>
-<% end %>
+<div id='wrapper'>
+  <% unique_cart_items = @cart.cart_items.to_a.uniq { |cart_item| cart_item.item_id } %>
+  <% unique_cart_items.each do |cart_item| %>
+    <div class='pie_title'>
+      <%= cart_item.item.title %>
+    </div>
+    <% item_id = cart_item.item_id %>
+    <%= link_to 'Delete from Cart', cart_items_destroy_path(item_id: item_id), method: :delete %>
+    <div id='line_item_total'>
+      <%= @cart.cart_items.select { |cart_item| cart_item.item_id == item_id}.count * cart_item.item.price_pie %>
+    </div>
+  <% end %>
+  <%= @cart.cart_items.count %>
+  <!-- price is broken -->
+  <!-- count is not appearing for each item -->
+</div>
