@@ -1,0 +1,33 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %>
+
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :order_total %><br>
+    <%= f.text_field :order_total %><br>
+  </div>
+  <div class="field">
+    <%= f.label :order_type %><br>
+    <%= f.text_field :order_type %><br>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_address %><br>
+    <%= f.text_field :delivery_address %><br>
+  </div>
+  <div class="field">
+    <%= f.label :order_status %><br>
+    <%= f.text_field :order_status %><br>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

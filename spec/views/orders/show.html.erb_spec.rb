@@ -13,7 +13,6 @@ RSpec.describe "orders/show", :type => :view do
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(/Orders/)
-    expect(rendered).to match(//)
+    expect(rendered).to match(/Order Total/)
   end
 end
