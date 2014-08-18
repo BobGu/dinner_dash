@@ -20,7 +20,7 @@ describe 'the order view', type: :feature do
 			order.items.create(title: "Key Lime")
 			visit order_path(order)
 		end
-	
+
 		it 'shows the items' do
 			order.items.each do |item|
 				expect(page).to have_content(item.title)
