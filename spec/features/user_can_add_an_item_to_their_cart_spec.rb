@@ -81,6 +81,40 @@ describe 'a user viewing the items page', type: :feature do
       # Expect pages css the second pie title to have the text 2
       expect(page.find(:css, '.pie_quantity:nth-of-type(2)').text).to have_content(2)
     end
-    
+
+    it 'can find the total price of an order' do
+      #assuming items are added to cart
+      page.visit item_path(keylime)
+      page.click_on('Add To Cart')
+      page.visit item_path(apple)
+      page.click_on('Add To Cart')
+      #at cart page
+      visit cart_path
+      #see a correct price for each item
+      expect(page).to have_content(63)
+    end
+
+    # i need to create the authroization and aunthentication that has a user controller
+    # and an admin controller, orrrr a default user controller and an admin controller
+
+    xit 'creates an order once the cart is checked out' do
+      # user visit an item page
+      page.visit item_path(keylime)
+      # they click add to cart
+      page.click_on('Add To Cart')
+      # They visit their cart
+      page.visit cart_path
+      # they click the checkout button
+      page.click_on('Checkout')
+      # they see a confirmation page
+      page.has_content('Thanks for your order')
+      # they can go to their orders page and see and order with one pie
+      page.visit order_page(order)
+      expect(page).to have_content(item_name)
+      # they look at their cart and see that it is empty
+      page.visit cart_path
+      expect(page).not_to have_content(item_name)
+    end
+
   end
 end

@@ -10,8 +10,19 @@
       <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count %>
     </div>
     <div class='line_item_total'>
-      <%= @cart.cart_items.select { |cart_item| cart_item.item_id == item_id}.count * cart_item.item.price_pie %>
+      <%=  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id}.count * cart_item.item.price_pie %>
     </div>
+  <% end %>
+  <div id="total_price">
+    <%= @total_price = @cart.cart_items.reduce(0) { |total, cart_item| total += cart_item.item.price_pie } %>
+  </div>
+  <%= form_tag orders_path, method: :post do %>
+    <%= hidden_field_tag 'order_total', @total_price %>
+    <%= hidden_field_tag 'user_id', 1 %>
+    <%= hidden_field_tag 'order_type', 'pickup' %>
+    <%= hidden_field_tag 'delivery_address', 'none' %>
+    <%= hidden_field_tag 'order_status', 'pending' %>
+    <%= submit_tag 'Checkout' %>
   <% end %>
   <!-- count is not appearing for each item -->
 </div>
