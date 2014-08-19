@@ -1,0 +1,24 @@
+<h1>The Categories for our Dangerously Delicious Pies</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Category:</th>
+      <th>Pies:</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td>
+          <% category.items.each do |item| %>|
+            <%= link_to item.title, item_path(item) %> |
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
