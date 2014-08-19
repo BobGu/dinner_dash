@@ -9,11 +9,13 @@
 			<tr>
 				<td><%= @category.name %></td>
 				<td>
-					<% @category.items.each do |item| %>| 
-						<%= link_to item.title, item_path(item) %> | 
+					<% @category.items.each do |item| %>|
+						<%= link_to item.title, item_path(item) %> |
 					<% end %>
 				</td>
 			</tr>
 		</tbody>
 	</thead>
 </table>
+
+<%= link_to 'All Categories', admin_categories_path %>

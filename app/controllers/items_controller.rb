@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-	before_action	:set_item, only: [:show, :edit, :update]
+	before_action	:set_item, only: [:show, :edit, :update, :destroy]
 
 	def new
 		@item = Item.new
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
 			if @item.save
 				format.html { redirect_to @item, notice: 'Item was successfully created.' }
 			else
-				format.html { render :new}
+				format.html { render :new }
 			end
 		end
 	end
@@ -38,7 +38,6 @@ class ItemsController < ApplicationController
 	end
 
 	def destroy
-		@item = Item.find(params[:id])
 		@item.destroy
 
 		redirect_to items_path

@@ -6,7 +6,7 @@
 			<ul>
 				<% @item.errors.full_messages.each do |message| %>
 					<li><%= message %></li>
-				<% end %>	
+				<% end %>
 			</ul>
 		</div>
 	<% end %>
@@ -15,17 +15,17 @@
 		<%= f.label :title %>
 		<%= f.text_field :title %>
 	</div>
-	
+
 	<div class="field">
 		<%= f.label :description %>
 		<%= f.text_field :description %>
 	</div>
-	
+
 	<div class="field">
 		<%= f.label :price_slice %>
 		<%= f.text_field :price_slice %>
 	</div>
-	
+
 	<div class="field">
 		<%= f.label :price_pie %>
 		<%= f.text_field :price_pie %>
@@ -34,9 +34,9 @@
 	<div class="field">
 		<%= f.label :category_names %>
 		<%= f.text_field :category_names %>
-	</div>					
-	
+	</div>
+
 	<div class="actions">
 		<%= f.submit value="Save Changes"%>
 	</div>
-<% end %>	
+<% end %>
