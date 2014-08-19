@@ -31,16 +31,11 @@ describe 'the order view', type: :feature do
 			order2
 		end
 
-    it "view orders by status" do
-			#seeing all the orders
+    it "view orders by paid status" do
 			visit orders_path
-			#click on "paid", status
 			click_on("Paid")
-			#see a new page
-			visit paid_path
-			#seeing all the orders with a "paid" status
 			expect(page).to have_content("paid")
-			expect(page).to not_have("ordered")
+			expect(page).not_to have_content("ordered")
 		end
 	end
 end

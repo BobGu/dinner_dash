@@ -5,7 +5,11 @@ class OrdersController < ApplicationController
   end
 
   def index
+    if params[:filter]
+    @orders = Order.where(order_status: params[:filter])
+    else
     @orders = Order.all
+    end
   end
 
   def show
