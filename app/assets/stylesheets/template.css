@@ -1,4 +1,37 @@
-.menu{
+header {
+  background-color: #0075a1;
+  font-family: 'Georgia';
+  height: 125px;
+  color:white;
+}
+
+li {
   list-style: none;
-  color: orange;
+}
+
+#title{
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  font-size: 24px;
+
+  display: inline-block;
+  }
+
+#title ul{
+  padding: 10px 0 0 0;
+  display: inline-block;
+}
+
+#menu {
+  float: right;
+  margin-top: 50px;
+  margin-right: 2%;
+}
+
+#menu li {
+  font-family: Georgia;
+  display: inline;
+  margin-left: 20px;
+  font-size: 16px;
 }
