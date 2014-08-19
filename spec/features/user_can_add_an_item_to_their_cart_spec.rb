@@ -54,19 +54,6 @@ describe 'a user viewing the items page', type: :feature do
       expect(page).to have_content(29)
     end
 
-    it 'cart is empty with new session' do
-      skip
-      # visit the key lime page
-      page.visit item_path(keylime)
-      # add a key lime pie
-      page.click_on('Add To Cart')
-      # quit the session
-      #visit the cart
-      page.visit cart_path
-      # expect the cart to have nothing or be empty
-      expect(page).not_to have_content(item_name)
-    end
-
     it 'can delete items from their cart' do
       #visit items page
       page.visit item_path(keylime)
@@ -79,5 +66,21 @@ describe 'a user viewing the items page', type: :feature do
       #there are no more keylimes in cart
       expect(page).not_to have_content(item_name)
     end
+
+    it 'has the correct count for each item' do
+      page.visit item_path(keylime)
+      page.click_on('Add To Cart')
+      page.visit item_path(apple)
+      page.click_on('Add To Cart')
+      page.visit item_path(apple)
+      page.click_on('Add To Cart')
+      # go to the cart page
+      page.visit cart_path
+      # expect pages css or first pie title to have the text 1
+      expect(page.find(:css, '.pie_quantity:nth-of-type(1)').text).to have_content(1)
+      # Expect pages css the second pie title to have the text 2
+      expect(page.find(:css, '.pie_quantity:nth-of-type(2)').text).to have_content(2)
+    end
+    
   end
 end
