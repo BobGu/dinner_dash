@@ -14,6 +14,10 @@ class Order < ActiveRecord::Base
     result
   end
 
+  def self.all_count
+    Order.count
+  end
+
   has_many    :order_items
   has_many    :items, through: :order_items
   #belongs_to  :user

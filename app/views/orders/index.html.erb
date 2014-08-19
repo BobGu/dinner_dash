@@ -4,7 +4,7 @@
     <div id="statuses">
       <ul>
           <li>Order Status: </li>
-          <li><%= link_to 'All', orders_pathg %></li>
+          <li><%= link_to 'All', orders_path %>(<%= @all_count %>)</li>
           <li><%= link_to 'Paid', orders_path(filter: 'paid') %>(<%= @status_counts[Order::Status::PAID] %>)</li>
           <li><%= link_to 'Cancelled', orders_path(filter: 'cancelled') %>(<%= @status_counts[Order::Status::CANCELLED] %>)</li>
           <li><%= link_to 'Completed', orders_path(filter: 'completed') %>(<%= @status_counts[Order::Status::COMPLETED] %>)</li>

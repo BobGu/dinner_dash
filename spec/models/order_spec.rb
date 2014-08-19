@@ -43,7 +43,6 @@ RSpec.describe Order, :type => :model do
   end
 
   it 'displays the counts for each order status type' do
-    # create a few orders...
     Order.create(order_status: Order::Status::PAID, user_id: 1, order_total: 23, order_type: "pick-up")
     Order.create(order_status: Order::Status::PAID, user_id: 2, order_total: 12, order_type: "pick-up")
     Order.create(order_status: Order::Status::CANCELLED, user_id: 3, order_total: 15, order_type: "pick-up")
@@ -52,4 +51,13 @@ RSpec.describe Order, :type => :model do
     expect(Order.status_counts[Order::Status::PAID]).to eq(2)
     expect(Order.status_counts[Order::Status::ORDERED]).to eq(0)
   end
+
+  it 'displays the total count for all orders' do
+    Order.create(order_status: Order::Status::PAID, user_id: 1, order_total: 23, order_type: "pick-up")
+    Order.create(order_status: Order::Status::PAID, user_id: 2, order_total: 12, order_type: "pick-up")
+    Order.create(order_status: Order::Status::CANCELLED, user_id: 3, order_total: 15, order_type: "pick-up")
+
+    expect(Order.all_count).to eq(3)
+  end
+
 end
