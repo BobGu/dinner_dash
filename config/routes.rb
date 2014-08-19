@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   get  '/order_items/new' => 'order_items#new', as: :new_order_item
   post  '/order_items'    => 'order_items#create', as: :order_items
+
+  get '/contact' => 'contact#show'
 end

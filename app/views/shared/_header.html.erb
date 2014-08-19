@@ -10,9 +10,9 @@
         </ul>
       </div>
       <ul id='menu'>
-        <li>Menu</li>
-        <li>Contact</li>
-        <li>Cart(0)</li>
+        <li><%= link_to 'Menu', items_path %></li>
+        <li><%= link_to 'Contact', contact_path%>Contact</li>
+        <li id='menu_cart'><%= link_to 'Cart', cart_path %>(<%= Cart.last.cart_items.count %>)</li>
         <li>Login</li>
       </ul>
     </div>

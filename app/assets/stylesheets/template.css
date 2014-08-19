@@ -23,6 +23,16 @@ li {
   display: inline-block;
 }
 
+header a{
+  text-decoration: none;
+  color: inherit;
+}
+
+header a:hover{
+  color: #60464b;
+  text-decoration: none;
+}
+
 #menu {
   float: right;
   margin-top: 50px;
