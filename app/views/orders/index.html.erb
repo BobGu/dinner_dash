@@ -6,6 +6,9 @@
           <li>Order Status: </li>
           <li><%= link_to 'All', orders_path %></li>
           <li><%= link_to 'Paid', orders_path(filter: 'paid') %></li>
+          <li><%= link_to 'Cancelled', orders_path(filter: 'cancelled') %></li>
+          <li><%= link_to 'Completed', orders_path(filter: 'completed') %></li>
+          <li><%= link_to 'Ordered', orders_path(filter: 'ordered') %></li>
       </ul>
     </div>
 
