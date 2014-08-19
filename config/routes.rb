@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :items
   resources :orders
 
-
+  root "welcome#index"
   get   '/cart'       => 'carts#show',        as: :cart
   get   '/cart/edit'  => 'carts#edit',        as: :edit_cart
   patch '/cart'       => 'carts#update'
