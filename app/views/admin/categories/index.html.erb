@@ -1,0 +1,19 @@
+<h1>Pie Categories</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Category Name:</th>
+			<th>Number of Pies:</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @category.each do |category| %>
+			<tr>
+				<td><%= category.name %></td>
+				<td><%= category.items.count %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

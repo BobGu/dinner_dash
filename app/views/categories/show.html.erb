@@ -1,0 +1,19 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>Category:</th>
+			<th>Pies:</th>
+		</tr>
+
+		<tbody>
+			<tr>
+				<td><%= @category.name %></td>
+				<td>
+					<% @category.items.each do |item| %>| 
+						<%= link_to item.title, item_path(item) %> | 
+					<% end %>
+				</td>
+			</tr>
+		</tbody>
+	</thead>
+</table>
