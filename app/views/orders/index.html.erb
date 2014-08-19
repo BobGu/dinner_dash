@@ -1,6 +1,16 @@
 <h1>Orders Listings:</h1>
-<table>
+<table class='table'>
   <thead>
+    <div id="statuses">
+      <ul>
+          <li>Order Status: </li>
+          <li><%= link_to 'All', orders_path %></li>
+          <li><%= link_to 'Paid', paid_path %></li>
+          <li><%= link_to 'Cancelled', cancelled_path %></li>
+          <li><%= link_to 'Completed', completed_path %></li>
+      </ul>
+    </div>
+
     <tr>
       <th>Order ID:</th>
       <th>User ID:</th>
