@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :users
 
+
   namespace :admin do
     resources :items
     resources :categories
