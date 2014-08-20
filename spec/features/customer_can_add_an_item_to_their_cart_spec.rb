@@ -9,6 +9,7 @@ describe 'a user viewing the items page', type: :feature do
   let!(:category) { Category.create! name: "cool kids"}
 
 
+
   context 'Unauthenticated Customer' do
     it 'adds item' do
       page.visit item_path(keylime)
@@ -115,6 +116,5 @@ describe 'a user viewing the items page', type: :feature do
       page.visit cart_path
       expect(page).not_to have_content(item_name)
     end
-
   end
 end
