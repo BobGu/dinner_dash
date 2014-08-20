@@ -54,19 +54,6 @@ describe 'a user viewing the items page', type: :feature do
       expect(page).to have_content(29)
     end
 
-    it 'cart is empty with new session' do
-      skip
-      # visit the key lime page
-      page.visit item_path(keylime)
-      # add a key lime pie
-      page.click_on('Add To Cart')
-      # quit the session
-      #visit the cart
-      page.visit cart_path
-      # expect the cart to have nothing or be empty
-      expect(page).not_to have_content(item_name)
-    end
-
     it 'can delete items from their cart' do
       #visit items page
       page.visit item_path(keylime)
@@ -79,5 +66,55 @@ describe 'a user viewing the items page', type: :feature do
       #there are no more keylimes in cart
       expect(page).not_to have_content(item_name)
     end
+
+    it 'has the correct count for each item' do
+      page.visit item_path(keylime)
+      page.click_on('Add To Cart')
+      page.visit item_path(apple)
+      page.click_on('Add To Cart')
+      page.visit item_path(apple)
+      page.click_on('Add To Cart')
+      # go to the cart page
+      page.visit cart_path
+      # expect pages css or first pie title to have the text 1
+      expect(page.find(:css, '.pie_quantity:nth-of-type(1)').text).to have_content(1)
+      # Expect pages css the second pie title to have the text 2
+      expect(page.find(:css, '.pie_quantity:nth-of-type(2)').text).to have_content(2)
+    end
+
+    it 'can find the total price of an order' do
+      #assuming items are added to cart
+      page.visit item_path(keylime)
+      page.click_on('Add To Cart')
+      page.visit item_path(apple)
+      page.click_on('Add To Cart')
+      #at cart page
+      visit cart_path
+      #see a correct price for each item
+      expect(page).to have_content(63)
+    end
+
+    # i need to create the authroization and aunthentication that has a user controller
+    # and an admin controller, orrrr a default user controller and an admin controller
+
+    xit 'creates an order once the cart is checked out' do
+      # user visit an item page
+      page.visit item_path(keylime)
+      # they click add to cart
+      page.click_on('Add To Cart')
+      # They visit their cart
+      page.visit cart_path
+      # they click the checkout button
+      page.click_on('Checkout')
+      # they see a confirmation page
+      page.has_content('Thanks for your order')
+      # they can go to their orders page and see and order with one pie
+      page.visit order_page(order)
+      expect(page).to have_content(item_name)
+      # they look at their cart and see that it is empty
+      page.visit cart_path
+      expect(page).not_to have_content(item_name)
+    end
+
   end
 end
