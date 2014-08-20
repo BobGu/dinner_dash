@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
   let(:user) do
-    User.create(:full_name => "john doe",
-    :email => "john_doe@example.com",
-    :display_name => "john_doe_123",
-    :role => "admin",
-    :password => 'password')
+    User.create(:full_name => "George Brett",
+                :email => "brett@example.com",
+                :display_name => "Baseball Badass Brett",
+                :role => "Customer",
+                :password => 'password'
+                )
   end
 
   it 'is valid' do
@@ -23,28 +24,21 @@ RSpec.describe User, :type => :model do
     expect(user).not_to be_valid
   end
 
-  it 'is invalid without a role' do
-    user.role = nil
+  it 'is invalid if email is not formatted correctly' do
+    user.email = "abcgmail.com"
     expect(user).not_to be_valid
   end
 
   it 'is invalid if the email already exists' do
     2.times do
-      User.create(:full_name => "john doe",
-                  :email => "john_doe@example.com",
-                  :display_name => "john_doe_123",
-                  :role => "admin",
-                  :password => 'password')
+      User.create(:full_name => "Babe Ruth",
+                  :email => "bambino@example.com",
+                  :display_name => "The Great Bambino",
+                  :role => "Customer",
+                  :password => 'password'
+                  )
     end
-    result = User.where(email: 'john_doe@example.com')
+    result = User.where(email: 'bambino@example.com')
     assert_equal 1, result.count
-  end
-
-  it "authenticates a user via password" do
-    original_user = user
-    authenticated_user = User.authenticate(:email => "john_doe@example.com",
-                                           :password => "password")
-
-    assert_equal original_user, authenticated_user
   end
 end
