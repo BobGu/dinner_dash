@@ -1,0 +1,20 @@
+<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700' rel='stylesheet' type='text/css'>
+<header class='container-fluid'>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <div id='title'>
+        <ul>
+          <li>Dangerously</li>
+          <li>Delicious</li>
+          <li>Pies</li>
+        </ul>
+      </div>
+      <ul id='menu'>
+        <li><%= link_to 'Menu', items_path %></li>
+        <li><%= link_to 'Contact', contact_path%>Contact</li>
+        <li id='menu_cart'><%= link_to 'Cart', cart_path %>(<%= Cart.last.cart_items.count %>)</li>
+        <li>Login</li>
+      </ul>
+    </div>
+  </div>
+</header>

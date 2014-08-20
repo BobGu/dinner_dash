@@ -5,6 +5,7 @@ Category.create(name: "I Can't Believe It's Good For Me")
 Category.create(name: "You Put That In A Pie?")
 
 Item.create(title: "Awesome Apple", description: "Local, organically grown apples, gluten-free",
+<<<<<<< HEAD
  inventory: 10, price_slice: 2.49, price_pie: 12.99, category_ids: [1, 4])
 Item.create(title: "Key-Lime", description: "Local, organically grown limes, gluten-free",
  inventory:12, price_slice: 3.15, price_pie: 17.99, category_ids:[1, 4])
@@ -12,6 +13,15 @@ Item.create(title: "Peach", description: "Local farm-fresh peaches, homemade whi
  inventory:3, price_slice: 4.25, price_pie: 23.99, category_ids:[1, 3])
 Item.create(title: "Banana", description: "Imported bananas, homemade filling",
  inventory:5, price_slice: 4.25, price_pie: 23.99, category_ids:[1, 3])
+=======
+ inventory: 10, price_slice: 2.49, price_pie: 12.99, category_ids:[1,4])
+Item.create(title: "Key-Lime", description: "Local, organically grown limes, gluten-free",
+ inventory:12, price_slice: 3.15, price_pie: 17.99, category_ids:[1,4])
+Item.create(title: "Peach", description: "Local farm-fresh peaches, homemade whipcream",
+ inventory:3, price_slice: 4.25, price_pie: 23.99, category_ids:[1,3])
+Item.create(title: "Banana", description: "Imported bananas, homemade filling",
+ inventory:5, price_slice: 4.25, price_pie: 23.99, category_ids:[1,3])
+>>>>>>> html-n-css
 Item.create(title: "Berry", description: "Three berry blend, of in-season, local berries",
  inventory: 4, price_slice: 5.15, price_pie: 29.99, category_ids: [1])
 
@@ -24,7 +34,11 @@ Item.create(title: "Steak Chilli", description: "Grass-fed cows, tender steak, k
 Item.create(title: "Sausage Tomato Fennel", description: "Italian sausage, spices, pepper, tomatos",
  inventory: 12, price_slice: 8.10, price_pie: 31.15, category_ids:[2, 3])
 Item.create(title: "Meat Lovers", description: "It's a heart-attack, for the serious meat-lover",
+<<<<<<< HEAD
  inventory: 12, price_slice: 8.49, price_pie: 36.99, category_ids:[2, 5])
+=======
+ inventory: 12, price_slice: 8.49, price_pie: 36.99, category_ids:[2,5])
+>>>>>>> html-n-css
 
 Item.create(title: "Polka Pie", description: "Keilbasa, sauerkraut, cheese, potatoes",
  inventory: 15, price_slice: 6.99, price_pie: 30.99, category_ids: [3])
