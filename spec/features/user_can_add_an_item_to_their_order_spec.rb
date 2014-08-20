@@ -13,7 +13,6 @@ describe 'a user viewing the items page', type: :feature do
     it 'adds item' do
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
-      binding.pry
       visit order_path(order)
       expect(page).to have_content(1)
       expect(page).to have_content(item_name)
