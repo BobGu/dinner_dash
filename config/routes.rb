@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   resources :items
   resources :categories
   resources :orders
-  
+  resources :users
+
   namespace :admin do
     resources :items
     resources :categories
   end
-
 
   get   '/cart'       => 'carts#show',        as: :cart
   get   '/cart/edit'  => 'carts#edit',        as: :edit_cart

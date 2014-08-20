@@ -73,4 +73,4 @@ Order.create(user_id: 3, order_total: 12, order_type: "pick-up", delivery_addres
 # User.create(full_name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", role: :user, display_name: nil)
 # User.create(full_name: "Jeff", email: "demo+jeff@jumpstartlab.com", role: :user, display_name: "j3")
 # User.create(full_name: "Jorge Tellez", email: "demo+jorge@jumpstartlab.com", role: :user, display_name: "novohispano")
-# User.create(full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", role: :admin, display_name: "josh")
+# User.create(full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", display_name: "josh", role: :admin)
