@@ -5,7 +5,8 @@ class User < ActiveRecord::Migration
       t.string :email
       t.string :display_name
       t.string :role
-      t.string :digest
+      t.string :encrypted_password
+      t.string :password_digest
       t.string :salt
       t.timestamps
     end
