@@ -21,10 +21,5 @@ describe 'the order view', type: :feature do
 			visit order_path(order)
 		end
 
-		it 'shows the items' do
-			order.items.each do |item|
-				expect(page).to have_content(item.title)
-			end
-		end
 	end
 end

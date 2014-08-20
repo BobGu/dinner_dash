@@ -32,11 +32,5 @@ describe 'the order_items view', type: :feature do
       it 'has a new page with items' do
         expect(page).to have_content(Item.first.title)
       end
-
-      it 'adds item to the order' do
-        click_on "Add to order"
-        visit order_path(order.id)
-        expect(page).to have_content(Item.first.title)
-      end
     end
   end

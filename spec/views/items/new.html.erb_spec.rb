@@ -12,14 +12,10 @@ RSpec.describe "items/new", :type => :view do
 
 	it "renders new item form" do
 		pending
-		
-		render
-<<<<<<< HEAD
 
-		assert_select "form[action=?][method=?]", items_path, "post" do 
-=======
+		render
+
 		assert_select "form[action=?][method=?]", items_path, "post" do
->>>>>>> admin_orders
 			assert_select "input#item_title[name=?]", "item[title]"
 			assert_select "input#item_description[name=?]", "item[description]"
 			assert_select "input#item_price_slice[name=?]", "item[price_slice]"

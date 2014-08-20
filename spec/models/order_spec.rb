@@ -24,11 +24,6 @@ RSpec.describe Order, :type => :model do
     expect(order).not_to be_valid
   end
 
-  it 'is invalid without a delivery address' do
-    order.delivery_address = nil
-    expect(order).not_to be_valid
-  end
-
   it 'is invalid without an order status' do
     order.order_status = nil
     expect(order).not_to be_valid
@@ -36,7 +31,7 @@ RSpec.describe Order, :type => :model do
 
   it 'has items' do
     order.items.create(id: 140, title: 'Key Lime', description: 'Yum', price_slice: 4.00, price_pie: 28.00)
-    order.items.create(id: 125, title: 'Apple', description: 'Yum', price_slice: 4.00, price_pie: 28.00) 
+    order.items.create(id: 125, title: 'Apple', description: 'Yum', price_slice: 4.00, price_pie: 28.00)
     results = order.items
     expect(results.count).to eq(2)
   end
