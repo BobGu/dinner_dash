@@ -27,4 +27,12 @@ describe 'the order view', type: :feature do
 			end
 		end
 	end
+
+	context 'of user updating statuses' do
+		it "changes 'ordered' status to cancelled" do
+			# go to the orders page
+			# click on some random order with an 'ordered' status
+			#
+	  end
+	end
 end
