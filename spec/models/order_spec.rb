@@ -24,15 +24,6 @@ RSpec.describe Order, :type => :model do
     expect(order).not_to be_valid
   end
 
-<<<<<<< HEAD
-=======
-  it 'is invalid without a delivery address' do
-    order.order_type = "delivery"
-    order.delivery_address = nil
-    expect(order).not_to be_valid
-  end
-
->>>>>>> order-dashboard
   it 'is invalid without an order status' do
     order.order_status = nil
     expect(order).not_to be_valid

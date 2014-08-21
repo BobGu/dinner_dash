@@ -18,8 +18,6 @@ describe 'the order view', type: :feature do
 			end
 		end
 
-<<<<<<< HEAD
-=======
 		Order::Status::ALL.each do |status|
 			it "views orders by #{status} status" do
 				visit orders_path
@@ -28,7 +26,6 @@ describe 'the order view', type: :feature do
 				expect(page).not_to have_content(Order::Status::ALL.reject {|s| s == status })
 			end
 		end
->>>>>>> order-dashboard
 	end
 
 	context 'of user updating statuses' do
