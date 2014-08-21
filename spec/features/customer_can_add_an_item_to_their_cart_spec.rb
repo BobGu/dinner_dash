@@ -122,5 +122,18 @@ describe 'a user viewing the items page', type: :feature do
       page.visit orders_path
       expect(page).to have_content(1)
     end
+
+    it 'the cart is empty after checkout' do
+      # user visit an item page
+      page.visit item_path(keylime)
+      # they click add to cart
+      page.click_on('Add To Cart')
+      # They visit their cart
+      page.visit cart_path
+      # they click the checkout button
+      page.click_on('Checkout')
+      page.visit cart_path
+      expect(page).not_to have_content(item_name)
+    end
   end
 end

@@ -5,9 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_action :user_has_a_cart
   before_action :cart_count
-  
+
   def cart
     @cart ||= Cart.find session[:cart_id]
+  end
+
+  def cart_destroy
+    cart.cart_items.destroy_all
   end
 
 
