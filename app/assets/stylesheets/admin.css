@@ -1,0 +1,11 @@
+label {
+  display: block;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.edit_item {
+  width: 500px;
+}
