@@ -45,3 +45,7 @@ header a:hover{
   margin-left: 20px;
   font-size: 16px;
 }
+
+.content {
+  padding: 30px;
+}
