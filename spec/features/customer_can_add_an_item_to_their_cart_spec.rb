@@ -10,6 +10,18 @@ describe 'a user viewing the items page', type: :feature do
 
 
 
+  context "non-logged in user functionality" do
+    it "adds an item to their cart" do
+      # visit the items page
+      page.visit items_path
+      expect(page).to have_content("Cart")
+      # click on "add to cart" button
+      page.find("#add_item_1").click
+      # still see the same page but cart count is now +1
+      expect(page).to have_content("Cart(1)")
+    end
+  end
+
   context 'Unauthenticated Customer' do
     it 'adds item' do
       page.visit item_path(keylime)
@@ -41,7 +53,6 @@ describe 'a user viewing the items page', type: :feature do
     end
 
     it 'displays correct price for many items' do
-      #assuming items are added to cart
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
       page.visit item_path(apple)

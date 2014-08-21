@@ -4,10 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :user_has_a_cart
-
+  before_action :cart_count
+  
   def cart
     @cart ||= Cart.find session[:cart_id]
   end
+
 
   private
 
@@ -18,6 +20,7 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = cart.id
   end
 
-
-
+  def cart_count
+    @cart_count = cart.items.count
+  end
 end

@@ -12,4 +12,11 @@ class CartsController < ApplicationController
   end
 
 
+	def add_to_cart_view
+		item = Item.find(params[:add_item])
+		cart.items << item
+		redirect_to items_path
+	end
+
+
 end

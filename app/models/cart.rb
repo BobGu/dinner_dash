@@ -8,9 +8,4 @@ class Cart < ActiveRecord::Base
 	has_many :cart_items
 	has_many :items, through: :cart_items
 
-	def add_cart_item(data)
-		Cart.cart_items.create(data.id)
-	end
-
-	
 end

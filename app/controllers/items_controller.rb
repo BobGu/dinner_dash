@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
 	def index
 		@items = Item.all
+		@cart_count = cart.items.count
 	end
 
 	def show
