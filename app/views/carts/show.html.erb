@@ -9,10 +9,14 @@
     <% item_id = cart_item.item_id %>
     <%= link_to 'Delete from Cart', cart_items_destroy_path(item_id: item_id), method: :delete %>
     <div class='pie_quantity'>
-      <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count %>
+      <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count%>
+      <%= form_tag cart_items_path, method: :post do %>
+        <%= hidden_field_tag 'item_id', item_id %>
+        <%= submit_tag "Add One" %>
+      <% end %>
     </div>
     <div class='line_item_total'>
-      <%=  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id}.count * cart_item.item.price_pie %>
+      <%=  quantity * cart_item.item.price_pie %>
     </div>
   <% end %>
   <div id="total_price">
