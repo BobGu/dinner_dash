@@ -14,6 +14,8 @@ end
 gem 'rails', '4.1.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem 'bootstrap-sass'
+gem 'sprockets'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -41,4 +43,3 @@ gem 'pg'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

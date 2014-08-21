@@ -13,7 +13,15 @@
         <li><%= link_to 'Menu', items_path %></li>
         <li><%= link_to 'Contact', contact_path %></li>
         <li id='menu_cart'><%= link_to 'Cart', cart_path %><%= @cart_count > 0 ? "(#{@cart_count})" : "" %></li>
-        <li>Login</li>
+        <% if signed_in? %>
+          <li>
+            <%= link_to 'Sign Out', signout_path, method: 'delete' %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to 'Sign in', signin_path %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
