@@ -1,11 +1,9 @@
+<%= render :partial => "shared/header" %>
+
 <h1 class='pie_title'><%= @item.title %></h1>
 
 
-
-<%= form_tag cart_items_path, method: :post do %>
-  <%= hidden_field_tag 'item_id', @item.id %>
-  <%= submit_tag "Add To Cart" %>
-<% end %>
+<a class="button" href="<%= add_to_cart_path(item_id: @item.id) %>"%>Add to cart</a>
 <table class="table">
 	<thead>
 		<tr>

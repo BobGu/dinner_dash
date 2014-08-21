@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
 
 	def index
 		@items = Item.all
-		@cart_count = cart.items.count
 	end
 
 	def show
@@ -52,7 +51,7 @@ class ItemsController < ApplicationController
 	end
 
 	def item_params
-		params.require(:item).permit(:title, :description, :price_slice, :price_pie,)
+		params.require(:item).permit(:title, :description, :price_slice, :price_pie)
 	end
 
 end

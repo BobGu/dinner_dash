@@ -13,7 +13,7 @@ class CartsController < ApplicationController
 
 
 	def add_to_cart_view
-		item = Item.find(params[:add_item])
+		item = Item.find(params[:item_id])
 		cart.items << item
 		redirect_to items_path
 	end
