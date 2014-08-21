@@ -2,13 +2,20 @@ Rails.application.routes.draw do
   resources :items
   resources :categories
   resources :orders
+<<<<<<< HEAD
   resources :users
+=======
+>>>>>>> order-dashboard
 
   namespace :admin do
     resources :items
     resources :categories
   end
 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> order-dashboard
   get   '/cart'       => 'carts#show',        as: :cart
   get   '/cart/edit'  => 'carts#edit',        as: :edit_cart
   patch '/cart'       => 'carts#update'

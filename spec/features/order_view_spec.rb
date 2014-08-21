@@ -4,22 +4,38 @@ require 'capybara/rspec'
 
 describe 'the order view', type: :feature do
 
-		let(:order) do
-			Order.create(
-				user_id: 1156,
-				order_total: 135.00,
-				order_type: "Pickup",
-				delivery_address: "1510 Blake",
-				order_status: "Unpaid"
-				)
-		end
-
-	describe 'items' do
+	context 'with orders of different statuses' do
 		before(:each) do
-			order.items.create(title: "Baltimore Bomb")
-			order.items.create(title: "Key Lime")
-			visit order_path(order)
+
+			Order::Status::ALL.each do |status|
+				Order.create(
+					user_id: 1156,
+					order_total: 135.00,
+					order_type: "Pickup",
+					delivery_address: "1510 Blake",
+					order_status: status
+				)
+			end
 		end
 
+<<<<<<< HEAD
+=======
+		Order::Status::ALL.each do |status|
+			it "views orders by #{status} status" do
+				visit orders_path
+				click_on(status.capitalize)
+				expect(page).to have_content(status.downcase)
+				expect(page).not_to have_content(Order::Status::ALL.reject {|s| s == status })
+			end
+		end
+>>>>>>> order-dashboard
+	end
+
+	context 'of user updating statuses' do
+		it "changes 'ordered' status to cancelled" do
+			# go to the orders page
+			# click on some random order with an 'ordered' status
+			#
+	  end
 	end
 end

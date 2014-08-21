@@ -6,7 +6,13 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @status_counts = Order.status_counts
+    @all_count = Order.all.count
+    if params[:filter]
+    @orders = Order.where(order_status: params[:filter])
+    else
     @orders = Order.all
+    end
   end
 
   def show
