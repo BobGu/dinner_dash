@@ -1,3 +1,5 @@
+<%= render :partial => "shared/header" %>
+
 <div id='wrapper'>
   <% unique_cart_items = @cart.cart_items.to_a.uniq { |cart_item| cart_item.item_id } %>
   <% unique_cart_items.each do |cart_item| %>
