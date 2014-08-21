@@ -14,7 +14,7 @@
 	<tbody>
 		<% @items.each do |item| %>
 			<tr>
-				<td class='pie_title'><%= link_to item.title, item %></td>
+				<td class='pie_title'><%= link_to item.title, item %> <a href="<%= add_to_cart_path(add_item: item.id) %>" id="add_item_<%= item.id %>">ADD TO CART</a></td>
 				<td class='pie_description'><%= item.description %></td>
 				<td class='pie_price'><%= item.price_slice %></td>
 				<td class='pie_price'><%= item.price_pie %></td>

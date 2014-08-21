@@ -9,9 +9,11 @@ Rails.application.routes.draw do
     resources :items
     resources :categories
   end
-  
+
   root "welcome#index"
   get   '/cart'       => 'carts#show',        as: :cart
+  get   '/add_to_cart' => 'carts#add_to_cart_view',  as: :add_to_cart
+
   get   '/cart/edit'  => 'carts#edit',        as: :edit_cart
   patch '/cart'       => 'carts#update'
   put   '/cart'       => 'carts#update'
