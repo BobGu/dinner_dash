@@ -18,6 +18,7 @@
     <div class='line_item_total'>
       <%=  quantity * cart_item.item.price_pie %>
     </div>
+
   <% end %>
   <div id="total_price">
     <%= @total_price = @cart.cart_items.reduce(0) { |total, cart_item| total += cart_item.item.price_pie } %>

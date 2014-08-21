@@ -4,19 +4,21 @@ require 'capybara/rspec'
 
 describe 'the order view', type: :feature do
 
-	context 'with orders of different statuses' do
-		before(:each) do
+	before(:each) do
 
-			Order::Status::ALL.each do |status|
-				Order.create(
-					user_id: 1156,
-					order_total: 135.00,
-					order_type: "Pickup",
-					delivery_address: "1510 Blake",
-					order_status: status
-				)
-			end
+		Order::Status::ALL.each do |status|
+			Order.create(
+				user_id: 1156,
+				order_total: 135.00,
+				order_type: "Pickup",
+				delivery_address: "1510 Blake",
+				order_status: status
+			)
 		end
+	end
+
+	context 'with orders of different statuses' do
+
 
 		Order::Status::ALL.each do |status|
 			it "views orders by #{status} status" do
@@ -30,9 +32,22 @@ describe 'the order view', type: :feature do
 
 	context 'of user updating statuses' do
 		it "changes 'ordered' status to cancelled" do
-			# go to the orders page
+			order = Order.create!(
+								user_id: 1156,
+								order_total: 135.00,
+								order_type: "Pickup",
+								delivery_address: "1510 Blake Street",
+								order_status: "ordered"
+							)
+			# go to the orders index page
+			visit orders_path
 			# click on some random order with an 'ordered' status
-			#
+			click_link(order.id)
+			# In the show page, click on cancel for that specific order
+			click_on("Cancel")
+			# Expect the order's status to now be 'cancelled'
+			expect(page).to have_text("cancelled")
+			expect(page).not_to have_text("ordered")
 	  end
 	end
 end

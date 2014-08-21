@@ -40,5 +40,9 @@
 </p>
 
 <!-- <%= link_to 'Add item', items_path(:order_id => @order.id) %> | -->
+<%= form_for @order, method: :put do |f| %>
+  <%= f.hidden_field :order_status, value: 'cancelled' %>
+  <%= f.submit 'Cancel' %>
+<% end %>|
 <%= link_to 'Edit Order', edit_order_path(@order) %> |
 <%= link_to 'Back To All Orders', orders_path %>
