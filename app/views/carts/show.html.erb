@@ -17,11 +17,12 @@
     <%= @total_price = @cart.cart_items.reduce(0) { |total, cart_item| total += cart_item.item.price_pie } %>
   </div>
   <%= form_tag orders_path, method: :post do %>
-    <%= hidden_field_tag 'order_total', @total_price %>
-    <%= hidden_field_tag 'user_id', 1 %>
-    <%= hidden_field_tag 'order_type', 'pickup' %>
-    <%= hidden_field_tag 'delivery_address', 'none' %>
-    <%= hidden_field_tag 'order_status', 'pending' %>
+    <% order = Order.new %>
+    <%= hidden_field_tag 'order[user_id]', 1 %>
+    <%= hidden_field_tag 'order[order_total]', @total_price %>
+    <%= hidden_field_tag 'order[order_type]', 'pickup' %>
+    <%= hidden_field_tag 'order[delivery_address]', 'none' %>
+    <%= hidden_field_tag 'order[order_status]', 'ordered' %>
     <%= submit_tag 'Checkout' %>
   <% end %>
   <!-- count is not appearing for each item -->
