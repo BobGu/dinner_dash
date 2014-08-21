@@ -7,8 +7,9 @@ describe 'a user viewing the items page', type: :feature do
   let!(:keylime)  { Item.create! title: item_name, description: "yum", price_slice: 5, price_pie: 34 }
   let!(:apple)    { Item.create! title: 'Apple', description: "delicious", price_slice: 4, price_pie: 29 }
   let!(:category) { Category.create! name: "cool kids"}
-
-
+  let!(:logged_in){ User.create! full_name:"Captian Picard", email: "sample@example.com",
+                    role: "customer", password: "password"}
+  end
 
   context 'Unauthenticated Customer' do
     it 'adds item' do
@@ -41,14 +42,11 @@ describe 'a user viewing the items page', type: :feature do
     end
 
     it 'displays correct price for many items' do
-      #assuming items are added to cart
       page.visit item_path(keylime)
       page.click_on('Add To Cart')
       page.visit item_path(apple)
       page.click_on('Add To Cart')
-      #at cart page
       visit cart_path
-      #see a correct price for each item
       expect(page).to have_content(item_name)
       expect(page).to have_content(34)
       expect(page).to have_content("Apple")
@@ -97,24 +95,4 @@ describe 'a user viewing the items page', type: :feature do
 
     # i need to create the authroization and aunthentication that has a user controller
     # and an admin controller, orrrr a default user controller and an admin controller
-
-    xit 'creates an order once the cart is checked out' do
-      # user visit an item page
-      page.visit item_path(keylime)
-      # they click add to cart
-      page.click_on('Add To Cart')
-      # They visit their cart
-      page.visit cart_path
-      # they click the checkout button
-      page.click_on('Checkout')
-      # they see a confirmation page
-      page.has_content('Thanks for your order')
-      # they can go to their orders page and see and order with one pie
-      page.visit order_page(order)
-      expect(page).to have_content(item_name)
-      # they look at their cart and see that it is empty
-      page.visit cart_path
-      expect(page).not_to have_content(item_name)
-    end
-  end
 end
