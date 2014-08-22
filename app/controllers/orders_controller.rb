@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :cancel]
   # before_action :default_params
   def new
     @order = Order.new
@@ -46,6 +46,12 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
     end
+  end
+
+  def cancel
+    @order.order_status = "cancelled"
+    @order.save
+    redirect_to @order
   end
 
   private

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :items
   resources :categories
   resources :orders
+  patch '/order/:id/cancel' => 'orders#cancel', as: :cancel_order
   resources :users
 
 

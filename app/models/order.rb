@@ -1,9 +1,9 @@
 class Order < ActiveRecord::Base
   class Status
-    PAID = "paid"
+    PAID      = "paid"
     CANCELLED = "cancelled"
     COMPLETED = "completed"
-    ORDERED = "ordered"
+    ORDERED   = "ordered"
 
     ALL = [PAID, CANCELLED, COMPLETED, ORDERED]
   end
@@ -32,4 +32,10 @@ class Order < ActiveRecord::Base
   def delivery?
     order_type == "delivery"
   end
+
+  def cancelled?
+    order_status == "cancelled"
+  end
+
+  
 end

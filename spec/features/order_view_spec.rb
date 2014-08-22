@@ -44,7 +44,7 @@ describe 'the order view', type: :feature do
 			# click on some random order with an 'ordered' status
 			click_link(order.id)
 			# In the show page, click on cancel for that specific order
-			click_on("Cancel")
+			click_on("Cancel Order")
 			# Expect the order's status to now be 'cancelled'
 			expect(page).to have_text("cancelled")
 			expect(page).not_to have_text("ordered")
