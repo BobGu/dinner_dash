@@ -57,6 +57,10 @@ header a:hover{
   width:auto;
 }
 
+#about_us h2 {
+  color:black;
+}
+
 .item {
   background-image: url('about_us_bg_image.jpg');
 }
@@ -72,7 +76,7 @@ header a:hover{
   font-size: 3.5em;
   margin-top: 0px;
   margin-bottom: 5%;
-  margin-left: 25%;
+  margin-left: 12%;
 }
 
 
