@@ -51,7 +51,6 @@ class ItemsController < ApplicationController
 		def item_params
 			params.require(:item).permit(:title,
 																	 :description,
-																	 :price_slice,
 																	 :price_pie
 																	 )
 		end

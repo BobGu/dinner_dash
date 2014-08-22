@@ -10,7 +10,7 @@
     <%= link_to 'Delete from Cart', cart_items_destroy_path(item_id: item_id), method: :delete %>
     <div class='pie_quantity'>
       <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count%>
-      <a class="btn btn-primary" href="<%= add_to_cart_path(item_id: cart_item.id) %>"%>Add to cart</a>
+      <a class="btn btn-primary" href="<%= add_to_cart_path(item_id: cart_item.id) %>"%>ADD TO CART</a>
     </div>
     <div class='line_item_total'>
       <%=  quantity * cart_item.item.price_pie %>

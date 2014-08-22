@@ -23,7 +23,6 @@ describe 'the order_items view', type: :feature do
         Item.create(
           title: 'Key Lime',
           description: 'yummy',
-          price_slice: 6.50,
           price_pie: 30.00
         )
         visit items_path(order_id: order.id)

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Categorization, :type => :model do
-	let(:item) 						{ Item.create(title: 'Key Lime', description: 'yum', price_slice: 4.00, price_pie: 25.00)}
+	let(:item) 						{ Item.create(title: 'Key Lime', description: 'yum',  price_pie: 25.00)}
 	let(:category) 				{ Category.create(name: 'Sweet')}
   let(:categorization) 	{ Categorization.create(item_id: item.id, category_id: category.id)}
 

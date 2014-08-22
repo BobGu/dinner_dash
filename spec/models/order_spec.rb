@@ -30,8 +30,8 @@ RSpec.describe Order, :type => :model do
   end
 
   it 'has items' do
-    order.items.create(id: 140, title: 'Key Lime', description: 'Yum', price_slice: 4.00, price_pie: 28.00)
-    order.items.create(id: 125, title: 'Apple', description: 'Yum', price_slice: 4.00, price_pie: 28.00)
+    order.items.create(id: 140, title: 'Key Lime', description: 'Yum',  price_pie: 28.00)
+    order.items.create(id: 125, title: 'Apple', description: 'Yum',  price_pie: 28.00)
     results = order.items
     expect(results.count).to eq(2)
   end

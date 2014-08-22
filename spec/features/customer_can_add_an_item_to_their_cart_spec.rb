@@ -4,8 +4,8 @@ require 'capybara/rspec'
 
 describe 'a user viewing the items page', type: :feature do
   let(:item_name) { 'Key Lime' }
-  let!(:keylime)  { Item.create! title: item_name, description: "yum", price_slice: 5, price_pie: 34 }
-  let!(:apple)    { Item.create! title: 'Apple', description: "delicious", price_slice: 4, price_pie: 29 }
+  let!(:keylime)  { Item.create! title: item_name, description: "yum", price_pie: 34 }
+  let!(:apple)    { Item.create! title: 'Apple', description: "delicious",  price_pie: 29 }
   let!(:category) { Category.create! name: "cool kids"}
 
 
@@ -15,7 +15,7 @@ describe 'a user viewing the items page', type: :feature do
       # visit the items page
       page.visit items_path
       expect(page).to have_content("Cart")
-      # click on "add to cart" button
+      # click on "ADD TO CART" button
       page.find("#add_item_1").click
       # still see the same page but cart count is now +1
       expect(page).to have_content("Cart(1)")
@@ -25,7 +25,7 @@ describe 'a user viewing the items page', type: :feature do
   context 'Unauthenticated Customer' do
     it 'adds item' do
       page.visit item_path(keylime)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       visit cart_path
       expect(page).to have_content(1)
       expect(page).to have_content(item_name)
@@ -34,9 +34,9 @@ describe 'a user viewing the items page', type: :feature do
 
     it 'adds two of the same item' do
       page.visit item_path(keylime)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       page.visit item_path(keylime)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       visit cart_path
       expect(page).to have_content(item_name)
       expect(page).to have_content(68)
@@ -45,18 +45,18 @@ describe 'a user viewing the items page', type: :feature do
 
     it 'has two of the same item and item name only appears once' do
       page.visit item_path(keylime)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       page.visit item_path(keylime)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       page.visit cart_path
       expect(page).to_not have_css('.pie_title:nth-of-type(2)')
     end
 
     it 'displays correct price for many items' do
       page.visit item_path(keylime)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       page.visit item_path(apple)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       #at cart page
       visit cart_path
       #see a correct price for each item
@@ -70,7 +70,7 @@ describe 'a user viewing the items page', type: :feature do
       #visit items page
       page.visit item_path(keylime)
       #add keylime to cart
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       #then go to cart page
       page.visit cart_path
       #delete keylime
@@ -81,11 +81,11 @@ describe 'a user viewing the items page', type: :feature do
 
     it 'has the correct count for each item' do
       page.visit item_path(keylime)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       page.visit item_path(apple)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       page.visit item_path(apple)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       # go to the cart page
       page.visit cart_path
       # expect pages css or first pie title to have the text 1
@@ -97,9 +97,9 @@ describe 'a user viewing the items page', type: :feature do
     it 'can find the total price of an order' do
       #assuming items are added to cart
       page.visit item_path(keylime)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       page.visit item_path(apple)
-      page.click_on('Add To Cart')
+      page.click_on('ADD TO CART')
       #at cart page
       visit cart_path
       #see a correct price for each item
@@ -112,8 +112,8 @@ describe 'a user viewing the items page', type: :feature do
     it 'creates an order once the cart is checked out' do
       # user visit an item page
       page.visit item_path(keylime)
-      # they click add to cart
-      page.click_on('Add To Cart')
+      # they click ADD TO CART
+      page.click_on('ADD TO CART')
       # They visit their cart
       page.visit cart_path
       # they click the checkout button
@@ -122,12 +122,11 @@ describe 'a user viewing the items page', type: :feature do
       page.visit orders_path
       expect(page).to have_content(1)
     end
-
     it 'the cart is empty after checkout' do
       # user visit an item page
       page.visit item_path(keylime)
-      # they click add to cart
-      page.click_on('Add To Cart')
+      # they click ADD TO CART
+      page.click_on('ADD TO CART')
       # They visit their cart
       page.visit cart_path
       # they click the checkout button

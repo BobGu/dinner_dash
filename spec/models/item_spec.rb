@@ -7,7 +7,6 @@ RSpec.describe Item, :type => :model do
     id:           167,
     title:       'Baltimore Bomb',
     description: 'Delicious pie.',
-    price_slice:  6.50,
     price_pie:    30.00
     )
   end
@@ -28,11 +27,6 @@ RSpec.describe Item, :type => :model do
     expect(item).not_to be_valid
   end
 
-  it 'is invalid without a slice price' do
-    item.price_slice = nil
-
-    expect(item).not_to be_valid
-  end
 
   it 'is invalid without a pie price' do
     item.price_pie = nil
@@ -45,7 +39,6 @@ RSpec.describe Item, :type => :model do
       Item.create(
       title: 'Baltimore Bomb',
       description: 'Delicious pie.',
-      price_slice: 6.50,
       price_pie: 30.00
       )
     end
@@ -61,7 +54,7 @@ RSpec.describe Item, :type => :model do
     )
     item.categories.create(
       id: 12,
-      name: "Gluten-free" 
+      name: "Gluten-free"
       )
 
     results = item.categories

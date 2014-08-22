@@ -8,7 +8,7 @@ class CartsController < ApplicationController
 
   def edit
   	@item = item
-  	Cart.create(@item.id, @item.title, @item.description, @item.price_slice, @item.price_pie)
+  	Cart.create(@item.id, @item.title, @item.description,  @item.price_pie)
   end
 
 	def add_to_cart_view

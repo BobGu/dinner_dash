@@ -6,13 +6,11 @@ RSpec.describe 'items/index', :type => :view do
       Item.create!(
       :title => "Baltimore Bomb",
       :description => "Yay",
-      :price_slice => 6.50,
       :price_pie => 30.00
       ),
       Item.create!(
       :title => "Key Lime",
       :description => "Yum",
-      :price_slice => 7.00,
       :price_pie => 25.00
       )
     ])

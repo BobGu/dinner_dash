@@ -5,7 +5,6 @@ RSpec.describe 'items/show', :type => :view do
 		@item = assign(:item, Item.create!(
 			:title => "Baltimore Bomb",
       :description => "Yay",
-      :price_slice => 6.50,
       :price_pie => 30.00
 			))
 	end

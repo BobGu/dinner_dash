@@ -3,7 +3,6 @@
 		<tr>
 			<th>Pie Name:</th>
 			<th>Description:</th>
-			<th>Price/Slice:</th>
 			<th>Price/Pie:</th>
 			<th>Category:</th>
 			<th colspan="3"></th>
@@ -14,7 +13,6 @@
 		<tr>
 			<td class='pie_title'><%= @item.title %></td>
 			<td class='pie_description'><%= @item.description %></td>
-			<td class='pie_price'><%= @item.price_slice %></td>
 			<td class='pie_price'><%= @item.price_pie %></td>
 			<td class='pie_category'>|
 				<% @item.categories.each do |category| %>
