@@ -3,28 +3,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User ID:</strong>
-  <%= @order.user_id %>
+  <strong>Customer Name:</strong>
+  <%= @order.user.full_name %>
 </p>
 
 <p>
   <strong>Order Total:</strong>
-  <%= @order.order_total %>
+  $<%= @order.order_total %>
 </p>
 
 <p>
   <strong>Order Type:</strong>
-  <%= @order.order_type %>
+  <%= @order.order_type.upcase %>
 </p>
 
-<p>
-  <strong>Delivery Address:</strong>
-  <%= @order.delivery_address %>
-</p>
+<% if @order.order_type == 'delivery' %>
+  <p>
+    <strong>Delivery Address:</strong>
+    <%= @order.delivery_address %>
+  </p>
+<% else %>
+<% end %>
 
 <p>
   <strong>Order Status:</strong>
-  <%= @order.order_status %>
+  <%= @order.order_status.upcase %>
 </p>
 <p>
 
@@ -32,10 +35,11 @@
   <strong>Items:</strong>
   <ul>
     <% @order.items.each do |item| %>
-    <li><%= item.title %>
-      <%= link_to('edit', edit_item_path(item)) %>
-      <%= link_to('delete', item, method: :delete, data: {confirm: 'Are you sure?' }) %></li>
-      <% end %>
+      <li><%= item.title %>
+        <%= link_to('edit', edit_item_path(item)) %>
+        <%= link_to('delete', item, method: :delete, data: {confirm: 'Are you sure?' }) %>
+      </li>
+    <% end %>
   </ul>
 </p>
 

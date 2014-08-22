@@ -1,28 +1,31 @@
-<h2>Create an Account</h2>
+<% provide(:title, 'Create An Account') %>
 
-<%= form_for(@user) do |f| %>
+<h2>1. Create an account  2. Buy some pies.</h2>
 
-  <div class="field">
-    <%= f.label :full_name %><br />
-    <%= f.text_field :full_name %>
+<%= form_for @user do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <div class="form-group">
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :display_name %><br />
-    <%= f.text_field :display_name %>
+  <div class="form-group">
+    <%= f.label :display_name %>
+    <%= f.text_field :display_name, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmation" %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>0
+  <div class="form-group">
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
   <div class="actions">
-    <%= f.submit "Create Account" %>
+    <%= f.submit value="Create Account", class: "btn btn-primary" %>
   </div>
 <% end %>

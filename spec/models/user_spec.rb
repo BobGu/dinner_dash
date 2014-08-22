@@ -41,4 +41,5 @@ RSpec.describe User, :type => :model do
     result = User.where(email: 'bambino@example.com')
     assert_equal 1, result.count
   end
+
 end
