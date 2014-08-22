@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
             presence: true,
             length:   { maximum: 50 }
 
-  # validates :role,
-  #           presence: true
+  validates :role,
+            presence: true
 
   validates :email,
             presence:   true,
