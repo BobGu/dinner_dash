@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :orders
   patch '/order/:id/cancel' => 'orders#cancel', as: :cancel_order
+  patch '/pay/:id/pay'      => 'orders#pay',    as: :pay_order
   resources :users
 
 

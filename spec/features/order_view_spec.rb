@@ -30,7 +30,7 @@ describe 'the order view', type: :feature do
 		end
 	end
 
-	context 'of user updating statuses' do
+	context 'of admin updating statuses' do
 		it "changes 'ordered' status to cancelled" do
 			order = Order.create!(
 								user_id: 1156,
@@ -49,5 +49,35 @@ describe 'the order view', type: :feature do
 			expect(page).to have_text("cancelled")
 			expect(page).not_to have_text("ordered")
 	  end
+
+		it "changes 'paid' status to 'cancelled'" do
+			order = Order.create!(
+								user_id: 1156,
+								order_total: 135.00,
+								order_type: "Pickup",
+								delivery_address: "1510 Blake Street",
+								order_status: "paid"
+							)
+			visit orders_path
+			click_link(order.id)
+			click_on("Cancel Order")
+			expect(page).to have_text("cancelled")
+			expect(page).not_to have_text("paid")
+		end
+
+		it "changes 'ordered' status to 'mark as paid'" do
+			order = Order.create!(
+								user_id: 1156,
+								order_total: 135.00,
+								order_type: "Pickup",
+								delivery_address: "1510 Blake Street",
+								order_status: "ordered"
+							)
+			visit orders_path
+			click_link(order.id)
+			click_on("Mark As Paid")
+			expect(page).to have_text("paid")
+			expect(page).not_to have_text("ordered")
+		end
 	end
 end

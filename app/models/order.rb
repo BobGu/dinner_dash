@@ -37,5 +37,11 @@ class Order < ActiveRecord::Base
     order_status == "cancelled"
   end
 
-  
+  def ordered?
+    order_status == "ordered"
+  end
+
+  def paid?
+    order_status == "paid"
+  end
 end
