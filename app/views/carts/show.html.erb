@@ -1,32 +1,56 @@
 <%= render :partial => "shared/header" %>
+<h1>Order Details:</h1>
+<table class='table'>
+  <thead>
+    <tr>
+      <td>Pie:</td>
+      <td>Price:</td>
+      <td>Quantity:</td>
+      <td>Item Total:</td>
+    </tr>
+  </thead>
 
-<div id='wrapper'>
-  <% unique_cart_items = @cart.cart_items.to_a.uniq { |cart_item| cart_item.item_id } %>
-  <% unique_cart_items.each do |cart_item| %>
-    <div class='pie_title'>
-      <%= cart_item.item.title %>
-    </div>
-    <% item_id = cart_item.item_id %>
-    <%= link_to 'Delete from Cart', cart_items_destroy_path(item_id: item_id), method: :delete %>
-    <div class='pie_quantity'>
-      <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count%>
-      <a class="btn btn-primary" href="<%= add_to_cart_path(item_id: cart_item.id) %>"%>ADD TO CART</a>
-    </div>
-    <div class='line_item_total'>
-      <%=  quantity * cart_item.item.price_pie %>
-    </div>
-  <% end %>
-  <div id="total_price">
-    <%= @total_price = @cart.cart_items.reduce(0) { |total, cart_item| total += cart_item.item.price_pie } %>
-  </div>
+  <tbody>
+    <% unique_cart_items = @cart.cart_items.to_a.uniq { |cart_item| cart_item.item_id } %>
+    <% unique_cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.item.title %></td>
+        <td><%= cart_item.item.price_pie %></td>
+        <% item_id = cart_item.item_id %>
+        <td>
+          <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count%><br/>
+          <%= link_to 'Delete from Cart', cart_items_destroy_path(item_id: item_id), method: :delete %>
+        </td>
+        <td>
+          <%= quantity * cart_item.item.price_pie %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
   <%= form_tag orders_path, method: :post do %>
     <% order = Order.new %>
-    <%= hidden_field_tag 'order[user_id]', 1 %>
-    <%= hidden_field_tag 'order[order_total]', @total_price %>
-    <%= hidden_field_tag 'order[order_type]', 'pickup' %>
-    <%= hidden_field_tag 'order[delivery_address]', 'none' %>
-    <%= hidden_field_tag 'order[order_status]', 'ordered' %>
-    <%= submit_tag 'Checkout' %>
+    <%= hidden_field_tag 'order[user_id]', current_user.id %>
+
+    <div class='form-group'>
+      <%= label_tag 'Order Total:' %>
+      <%= @total_price = @cart.cart_items.reduce(0) { |total, cart_item| total += cart_item.item.price_pie } %>
+      <%= hidden_field_tag 'order[order_total]', @total_price %>
+    </div>
+
+    <div class='form-group'>
+      <%= label_tag 'Order Type:' %>
+      <%= select_tag 'order[order_type]', '<option>Pickup</option><option>Delivery</option>'.html_safe %><br/>
+      <%= label_tag 'Delivery Address:' %>
+      <%= text_field_tag 'order[delivery_address]' order.delivery_address %>
+      <%= hidden_field_tag 'order[order_status]', 'ordered' %>
+    </div>
+
+    <div class='actions'>
+      <%= submit_tag 'Checkout', class: "btn btn-default" %>
+    </div>
   <% end %>
-  <!-- count is not appearing for each item -->
 </div>
+  <!-- count is not appearing for each item -->
