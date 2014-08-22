@@ -1,3 +1,5 @@
+<%= render :partial => "shared/header" %>
+
 <h1><%= @user.full_name %></h1>
 
 <table class="table" >
@@ -10,8 +12,15 @@
   </thead>
 
   <tbody>
-    <td><%= @user.email %></td><br/>
-    <td><%= @user.display_name %></td><br/>
+    <td><%= @user.email %></td>
+    <td><%= @user.display_name %></td>
+    <td>
+      <ul>
+        <% @user.orders.each do |order| %>
+          <li><%= link_to order.created_at, order_path(order) %></li>
+        <% end %>
+      </ul>
+    </td>
   </tbody>
 </table>
 
