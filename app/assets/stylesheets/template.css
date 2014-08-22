@@ -49,3 +49,50 @@ header a:hover{
 .content {
   padding: 30px;
 }
+
+#about_us {
+  background-image: url('about_us_bg_image.jpg');
+  background-size: cover;
+  height: 450px;
+  width:auto;
+}
+
+.item {
+  background-image: url('about_us_bg_image.jpg');
+}
+
+#about_us_text {
+  font-size: 1.2em;
+  color:black;
+  padding: 12%;
+  font-weight: 600;
+}
+
+#about_us_text h2{
+  font-size: 3.5em;
+  margin-top: 0px;
+  margin-bottom: 5%;
+  margin-left: 25%;
+}
+
+
+footer{
+  background-color: #60464b;
+  height: 129px;
+  font-family: 'Georgia';
+}
+
+#footer_content{
+  margin-top: 10px;
+}
+
+#carousel img {
+  width: 100%;
+  background-size: cover;
+  overflow: hidden;
+  height: 450px;
+}
+
+.carousel-caption {
+  font-size: 40px;
+}
