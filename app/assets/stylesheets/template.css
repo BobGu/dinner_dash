@@ -57,6 +57,10 @@ header a:hover{
   width:auto;
 }
 
+.item {
+  background-image: url('about_us_bg_image.jpg');
+}
+
 #about_us_text {
   font-size: 1.2em;
   color:black;
@@ -80,4 +84,15 @@ footer{
 
 #footer_content{
   margin-top: 10px;
+}
+
+#carousel img {
+  width: 100%;
+  background-size: cover;
+  overflow: hidden;
+  height: 450px;
+}
+
+.carousel-caption {
+  font-size: 40px;
 }
