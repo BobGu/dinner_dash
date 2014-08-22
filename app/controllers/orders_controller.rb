@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  # before_action :default_params
+
   def new
     @order = Order.new
   end
@@ -9,9 +9,9 @@ class OrdersController < ApplicationController
     @status_counts = Order.status_counts
     @all_count = Order.all.count
     if params[:filter]
-    @orders = Order.where(order_status: params[:filter])
+      @orders = Order.where(order_status: params[:filter])
     else
-    @orders = Order.all
+      @orders = Order.all
     end
   end
 
@@ -49,18 +49,17 @@ class OrdersController < ApplicationController
   end
 
   private
+  
     def set_order
       @order = Order.find(params[:id])
     end
 
-    # def default_params
-    #   params[:user_id] ||= 1
-    #   params[:order_type] ||= 'pickup'
-    #   params[:delivery_address] ||= 'false'
-    #   params[:order_status] ||= 'pending'
-    # end
-
     def order_params
-      params.require(:order).permit(:user_id, :order_total, :order_type, :delivery_address, :order_status)
+      params.require(:order).permit(:user_id,
+                                    :order_total,
+                                    :order_type,
+                                    :delivery_address,
+                                    :order_status
+                                    )
     end
 end

@@ -1,12 +1,11 @@
 class OrderItemsController < ApplicationController
   def new
-    @order = Order.find(params[:order_id])
+    @order      = Order.find(params[:order_id])
     @order_item = OrderItem.new
   end
 
   def create
-    binding.pry
-    item = Item.find(params[:item_id])
+    item   = Item.find(params[:item_id])
     @order = Order.find(params[:order_id])
     @order.order_items.create(item)
     redirect_to items_path

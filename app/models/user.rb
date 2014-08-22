@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
             confirmation: true
 
   has_secure_password
+  has_many :orders
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

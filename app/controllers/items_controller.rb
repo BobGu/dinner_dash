@@ -44,15 +44,17 @@ class ItemsController < ApplicationController
 		redirect_to items_path
 	end
 
-
 	private
 
-	def set_item
-		@item = Item.find(params[:id])
-	end
+		def set_item
+			@item = Item.find(params[:id])
+		end
 
-	def item_params
-		params.require(:item).permit(:title, :description, :price_slice, :price_pie,)
-	end
-
+		def item_params
+			params.require(:item).permit(:title,
+																	 :description,
+																	 :price_slice,
+																	 :price_pie
+																	 )
+		end
 end
