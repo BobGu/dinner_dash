@@ -1,4 +1,4 @@
-ategory.create(name: "Classics")
+Category.create(name: "Classics")
 Category.create(name: "Savory")
 Category.create(name: "So Good and So Unhealthy")
 Category.create(name: "I Can't Believe It's Good For Me")
