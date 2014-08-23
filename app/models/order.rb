@@ -32,4 +32,20 @@ class Order < ActiveRecord::Base
   def delivery?
     order_type == "delivery"
   end
+
+  def cancelled?
+    order_status == "cancelled"
+  end
+
+  def ordered?
+    order_status == "ordered"
+  end
+
+  def paid?
+    order_status == "paid"
+  end
+
+  def complete?
+    order_status == 'completed'
+  end
 end

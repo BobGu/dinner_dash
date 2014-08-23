@@ -7,6 +7,7 @@ group :development, :test do
 	gem 'spring'
 	gem 'pry'
   gem 'launchy'
+	gem 'aasm', '~> 3.3.3'
 end
 
 

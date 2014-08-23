@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :items
   resources :categories
   resources :orders
+  patch '/order/:id/cancel' => 'orders#cancel',   as: :cancel_order
+  patch '/pay/:id/pay'      => 'orders#pay',      as: :pay_order
+  patch '/pay/:id/complete' => 'orders#complete',  as: :complete_order
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 

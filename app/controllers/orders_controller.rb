@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :cancel, :pay, :complete]
+  # before_action :default_params
   def new
     @order = Order.new
   end
@@ -48,18 +48,43 @@ class OrdersController < ApplicationController
     end
   end
 
+  def cancel
+    @order.order_status = "cancelled"
+    @order.save
+    redirect_to @order
+  end
+
+  def pay
+    @order.order_status = "paid"
+    @order.save
+    redirect_to @order
+  end
+
+  def complete
+    @order.order_status = 'completed'
+    @order.save
+    redirect_to @order
+  end
+
   private
 
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    def order_params
-      params.require(:order).permit(:user_id,
-                                    :order_total,
-                                    :order_type,
-                                    :delivery_address,
-                                    :order_status
-                                    )
-    end
+  def order_params
+    params.require(:order).permit(:user_id,
+                                  :order_total,
+                                  :order_type,
+                                  :delivery_address,
+                                  :order_status
+                                  )
+  end
+
+  # def default_params
+  #   params[:user_id] ||= 1
+  #   params[:order_type] ||= 'pickup'
+  #   params[:delivery_address] ||= 'false'
+  #   params[:order_status] ||= 'pending'
+  # end
 end

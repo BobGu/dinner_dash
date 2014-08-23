@@ -28,8 +28,7 @@
     <% end %>
   </tbody>
 </table>
-
-<div>
+;<div>
   <%= form_tag orders_path, method: :post do %>
     <% order = Order.new %>
     <%= hidden_field_tag 'order[user_id]', current_user.id %>
@@ -44,13 +43,14 @@
       <%= label_tag 'Order Type:' %>
       <%= select_tag 'order[order_type]', '<option>Pickup</option><option>Delivery</option>'.html_safe %><br/>
       <%= label_tag 'Delivery Address:' %>
-      <%= text_field_tag 'order[delivery_address]' order.delivery_address %>
+      <%= text_field_tag 'order[delivery_address]', order.delivery_address %>
       <%= hidden_field_tag 'order[order_status]', 'ordered' %>
     </div>
 
     <div class='actions'>
       <%= submit_tag 'Checkout', class: "btn btn-default" %>
     </div>
+
   <% end %>
 </div>
   <!-- count is not appearing for each item -->
