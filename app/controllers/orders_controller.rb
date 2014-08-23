@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :cancel, :pay]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :cancel, :pay, :complete]
   # before_action :default_params
   def new
     @order = Order.new
@@ -56,6 +56,12 @@ class OrdersController < ApplicationController
 
   def pay
     @order.order_status = "paid"
+    @order.save
+    redirect_to @order
+  end
+
+  def complete
+    @order.order_status = 'completed'
     @order.save
     redirect_to @order
   end

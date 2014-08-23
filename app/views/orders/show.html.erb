@@ -39,11 +39,17 @@
   </ul>
 </p>
 <div>
-<% if @order.ordered? || @order.paid? %>
+<% if @order.ordered? %>
   <%= link_to 'Cancel Order', cancel_order_path(@order), method: :patch %> |
 <% end %>
-<% if @order.ordered?%>
+<% if @order.ordered? %>
   <%= link_to 'Mark As Paid', pay_order_path(@order), method: :patch %> |
+<% end %>
+<% if @order.paid? %>
+  <%= link_to 'Cancel Order', cancel_order_path(@order), method: :patch %> |
+<% end %>
+<% if @order.paid? %>
+  <%= link_to 'Mark As Completed', complete_order_path(@order), method: :patch %> |
 <% end %>
 <%= link_to 'Edit Order', edit_order_path(@order) %> |
 <%= link_to 'Back To All Orders', orders_path %>

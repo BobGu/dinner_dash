@@ -44,4 +44,8 @@ class Order < ActiveRecord::Base
   def paid?
     order_status == "paid"
   end
+
+  def complete?
+    order_status == 'completed'
+  end
 end
