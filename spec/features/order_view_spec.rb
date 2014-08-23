@@ -90,7 +90,6 @@ describe 'the order view', type: :feature do
 							)
 			visit orders_path
 			click_link(order.id)
-			save_and_open_page
 			click_on("Mark As Completed")
 			expect(page).to have_text("completed")
 			expect(page).not_to have_text("paid")
