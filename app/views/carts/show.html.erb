@@ -52,7 +52,11 @@
     </div>
 
     <div class='actions'>
-      <%= submit_tag 'Checkout', class: "btn btn-default" %>
+      <% if current_user != nil %>
+        <%= submit_tag 'Checkout', class: "btn btn-default" %>
+      <% else %>
+        <%= link_to 'Sign In', signin_path, class: "btn btn-default" %>
+      <% end %>
     </div>
   <% end %>
 </div>
