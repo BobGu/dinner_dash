@@ -18,8 +18,10 @@ RSpec.describe 'items/index', :type => :view do
 
   it "renders a list of items" do
     render
-    assert_select ".pie_title", :text => "Baltimore Bomb"
-    assert_select ".pie_title", :text => "Key Lime"
+    expect(rendered).to match(/Baltimore Bomb/)
+    expect(rendered).to match(/Yay/)
+    expect(rendered).to match(/Key Lime/)
+    expect(rendered).to match(/Yum/)
   end
 
 end

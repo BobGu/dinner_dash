@@ -11,7 +11,14 @@
       <ul id='menu'>
         <li><%= link_to 'Menu', items_path %></li>
         <li><%= link_to 'Contact', contact_path %></li>
-        <li id='menu_cart'><%= link_to 'Cart', cart_path %><%= @cart_count.to_i > 0 ? "(#{@cart_count})" : "" %></li>
+        <li id='menu_cart'>
+          <%= link_to 'Cart', cart_path %>
+          <% if @cart_count != 0 %>
+            <%= "(#{@cart_count})" %>
+          <% else %>
+            <%= "" %>
+          <% end %>
+        </li>
         <% if signed_in? %>
           <li><%= link_to 'Account Info', current_user %></li>
           <li>
