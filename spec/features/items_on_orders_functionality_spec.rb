@@ -17,7 +17,7 @@ describe "user functionality related to items on order view", type: :feature do
 
     #click on any order_id
     click_on(order_item.id)
-    save_and_open_page
+
     #item has a name, quantity, price, and line-item subtotal
     expect(page).to have_content("Key Lime")
     expect(page).to have_content("Quantity: 1")

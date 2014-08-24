@@ -30,14 +30,6 @@
 
 <p>
   <strong>Items:</strong>
-  <ul>
-    <% @order.items.each do |item| %>
-      <li><%= item.title %>
-        <%= link_to('edit', edit_item_path(item)) %>
-        <%= link_to('delete', item, method: :delete, data: {confirm: 'Are you sure?' }) %>
-      </li>
-    <% end %>
-  </ul>
 </p>
 <div>
 <% if @order.ordered? %>
@@ -69,8 +61,6 @@
   </div>
 <% end %>
 
-<!-- <%= link_to 'Add item', items_path(:order_id => @order.id) %> | -->
->>>>>>> user_can_see_items_on_orders
 <%= link_to 'Edit Order', edit_order_path(@order) %> |
 <%= link_to 'Back To All Orders', orders_path %>
 </div>
