@@ -52,6 +52,25 @@
 <% if @order.paid? %>
   <%= link_to 'Mark As Completed', complete_order_path(@order), method: :patch %> |
 <% end %>
+    <% unique_order_items = @order.order_items.to_a.uniq { |order_item| order_item.item_id } %>
+    <% unique_order_items.each do |order_item| %>
+  <div class='pie_title'>
+    <%= order_item.item.title %>
+  </div>
+    <% item_id = order_item.item_id %>
+  <div class='pie_quantity'>
+    Quantity: <%= quantity =  @order.order_items.select { |order_item| order_item.item_id == item_id }.count%>
+  </div>
+  <div class='pie_price'>
+    Pie Price: <%= order_item.item.price_pie %>
+  </div>
+  <div class='line_item_total'>
+    Subtotal: <%=  quantity * order_item.item.price_pie %>
+  </div>
+<% end %>
+
+<!-- <%= link_to 'Add item', items_path(:order_id => @order.id) %> | -->
+>>>>>>> user_can_see_items_on_orders
 <%= link_to 'Edit Order', edit_order_path(@order) %> |
 <%= link_to 'Back To All Orders', orders_path %>
 </div>
