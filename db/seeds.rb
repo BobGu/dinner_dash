@@ -5,7 +5,6 @@ Category.create(name: "I Can't Believe It's Good For Me")
 Category.create(name: "You Put That In A Pie?")
 
 Item.create(title: "Awesome Apple", description: "Local, organically grown apples, gluten-free",
-
  inventory: 10, price_pie: 12.99, category_ids: [1, 4])
 Item.create(title: "Key-Lime", description: "Local, organically grown limes, gluten-free",
  inventory:12, price_pie: 17.99, category_ids:[1, 4])
@@ -66,6 +65,17 @@ Order.create(user_id: 3, order_total: 78, order_type: "pick-up", delivery_addres
 Order.create(user_id: 2, order_total: 88, order_type: "pick-up", delivery_address: nil, order_status: "completed")
 Order.create(user_id: 4, order_total: 34, order_type: "pick-up", delivery_address: nil, order_status: "completed")
 Order.create(user_id: 3, order_total: 12, order_type: "pick-up", delivery_address: nil, order_status: "completed")
+
+OrderItem.create(order_id: 1, item_id: 2)
+OrderItem.create(order_id: 2, item_id: 4)
+OrderItem.create(order_id: 3, item_id: 5)
+OrderItem.create(order_id: 4, item_id: 6)
+OrderItem.create(order_id: 5, item_id: 7)
+OrderItem.create(order_id: 6, item_id: 8)
+OrderItem.create(order_id: 7, item_id: 9)
+OrderItem.create(order_id: 8, item_id: 10)
+OrderItem.create(order_id: 9, item_id: 11)
+OrderItem.create(order_id: 10, item_id: 12)
 
 User.create(full_name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password", role: :user, display_name: nil)
 User.create(full_name: "Jeff", email: "demo+jeff@jumpstartlab.com", password: "password", role: :user, display_name: "j3")

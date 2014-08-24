@@ -9,7 +9,7 @@ describe "user functionality related to items on order view", type: :feature do
   let(:order_item) {OrderItem.create!(order_id: order.id, item_id: keylime.id)}
   let(:user) {User.create!(full_name: "Data", email: "sample@example.com", password: "password")}
 
-  it "sees items with item name, quantity, price, and line-item subtotal" do
+  it "sees item with item name, quantity, price, and line-item subtotal" do
     order_item
     user
     #on orders index page
