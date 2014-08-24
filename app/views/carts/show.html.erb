@@ -28,7 +28,7 @@
     <% end %>
   </tbody>
 </table>
-;<div>
+<div>
   <%= form_tag orders_path, method: :post do %>
     <% order = Order.new %>
     <% if current_user == nil %>
