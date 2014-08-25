@@ -52,6 +52,8 @@
     <% item_id = order_item.item_id %>
   <div class='pie_quantity'>
     Quantity: <%= quantity =  @order.order_items.select { |order_item| order_item.item_id == item_id }.count%>
+    <%= link_to "+", increment_order_order_item_path(@order, order_item) %>
+    <%= link_to "-", decrement_order_order_item_path(@order, order_item) %>
   </div>
   <div class='pie_price'>
     Pie Price: <%= order_item.item.price_pie %>

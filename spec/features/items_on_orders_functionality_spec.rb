@@ -12,17 +12,30 @@ describe "user functionality related to items on order view", type: :feature do
   it "sees item with item name, quantity, price, and line-item subtotal" do
     order_item
     user
-    #on orders index page
     page.visit orders_path
 
-    #click on any order_id
     click_on(order_item.id)
 
-    #item has a name, quantity, price, and line-item subtotal
     expect(page).to have_content("Key Lime")
     expect(page).to have_content("Quantity: 1")
     expect(page).to have_content("Pie Price: ")
     expect(page).to have_content("Subtotal: ")
-    #expect to see item attributes for an item in an order
+  end
+
+  it "sees a '+' and '-' button next to quantity" do
+    # viewing orders show page, see Item quantity
+    order_item
+    user
+    page.visit orders_path
+
+    click_on(order_item.id)
+
+    # see and click a "+" or "-" button
+    click_on("+")
+    # expect that the "+" will increment the quantity by one
+    expect(page).to have_content("Quantity: 2")
+    # expect that the "-" will decrement the quantity by one
+    click_on("-")
+    expect(page).to have_content("Quantity: 1")
   end
 end

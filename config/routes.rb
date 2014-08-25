@@ -3,7 +3,12 @@ Rails.application.routes.draw do
 
   resources :items
   resources :categories
-  resources :orders
+  resources :orders do
+    resources :order_items do
+      get :increment, on: :member
+      get :decrement, on: :member
+    end
+  end
   patch '/order/:id/cancel' => 'orders#cancel',   as: :cancel_order
   patch '/pay/:id/pay'      => 'orders#pay',      as: :pay_order
   patch '/pay/:id/complete' => 'orders#complete',  as: :complete_order
