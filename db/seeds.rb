@@ -5,7 +5,6 @@ Category.create(name: "I Can't Believe It's Good For Me")
 Category.create(name: "You Put That In A Pie?")
 
 Item.create(title: "Awesome Apple", description: "Local, organically grown apples, gluten-free",
-
  inventory: 10, price_pie: 12.99, category_ids: [1, 4])
 Item.create(title: "Key-Lime", description: "Local, organically grown limes, gluten-free",
  inventory:12, price_pie: 17.99, category_ids:[1, 4])
