@@ -1,32 +1,21 @@
 <%= render :partial => "shared/header" %>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th></th>
-			<th>Pie Name:</th>
-			<th>Description:</th>
-			<th>Price/Pie:</th>
-			<th colspan="3"></th>
-		</tr>
-	</thead>
+  <div class='container-fluid'>
+	  <div class='row'>
+			<div class='menu_spacing'>
+				<% @items.each do |item| %>
+			  	<div class='pie_picture'><%= image_tag("#{item.title}.png") %>
+						<div class='pie_title'>
+							<a data-toggle="modal" data-target=<%= "##{item.id}" %>>
+                <div class= 'titlePriceStyle'><%= item.title %>  |  <%= item.price_pie %></div>
+              </button>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 
-	<tbody>
-		<% @items.each do |item| %>
-			<tr>
-        <td class='pie_picture'><%= image_tag("#{item.title}.png") %></td>
-				<td class='pie_title'>
-					<button class="btn btn-primary btn" data-toggle="modal" data-target=<%= "##{item.id}" %>>
-						<%= item.title %>
-					</button>
-
-					<a class="btn btn-default btn" href="<%= add_to_cart_path(item_id: item.id) %>" id="add_item_<%= item.id %>">ADD TO CART</a>
-				</td>
-				<td class='pie_description'><%= item.description %></td>
-				<td class='pie_price'><%= item.price_pie %></td>
-      </tr>
-    <% end %>
-  </tbody>
 
 	<% @items.each do |item| %>
 		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%= "#{item.id}" %>>
@@ -35,6 +24,7 @@
 					<div class="modal-header">
 						<button type="button"  data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 						<h4 class="modal-title"><%= item.title %></h4>
+						<h5>$<%= item.price_pie %></h5>
 					</div>
 					<div class="modal-body">
 						<p>
@@ -57,7 +47,3 @@
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 	<% end %>
-
-
-
-</table>
