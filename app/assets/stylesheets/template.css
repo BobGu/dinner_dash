@@ -47,8 +47,8 @@ header a:hover{
 }
 
 .pie_picture img{
-  width:270px;
-  height:200px;
+  width:310px;
+  height:240px;
 }
 
 .content {
@@ -132,4 +132,24 @@ color: #60464b;
 
 .align_menu {
   margin-top: 6px;
+}
+
+.pie_picture {
+  display: inline-block;
+}
+
+.pie_picture {
+  padding: 15px;
+  text-align: center;
+}
+
+.modal-header button{
+  display: none;
+}
+
+
+.titlePriceStyle {
+  background-color:white;
+  color: #0075a1;
+  border:none;
 }
