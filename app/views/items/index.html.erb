@@ -8,7 +8,7 @@
 						<div class='pie_title'>
 							<a data-toggle="modal" data-target=<%= "##{item.id}" %>>
                 <div class= 'titlePriceStyle'><%= item.title %>  |  <%= item.price_pie %></div>
-              </button>
+              </a>
 						</div>
 					</div>
 				<% end %>
@@ -41,7 +41,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<a href="<%= add_to_cart_path(item_id: item.id) %>"%>ADD TO CART</a>
+						<a href="<%= add_to_cart_path(item_id: item.id) %>">ADD TO CART</a>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
