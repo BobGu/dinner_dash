@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
 	before_action	:set_item, only: [:show, :edit, :update, :destroy]
-	before_action :authorize?, only: [:create, :edit, :update, :destroy]
+	before_action :authorize?, only: [:show, :create, :edit, :update, :destroy]
 
 	def new
 		@item = Item.new
