@@ -9,7 +9,16 @@
         </ul>
       </div>
       <ul id='menu'>
-        <li><%= link_to 'Menu', items_path %></li>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Menu
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">All Items</a></li>
+            
+          </ul>
+        </div>
         <li><%= link_to 'Contact', contact_path %></li>
         <li id='menu_cart'>
           <%= link_to 'Cart', cart_path %>
