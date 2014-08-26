@@ -18,7 +18,10 @@
         <td><%= cart_item.item.price_pie %></td>
         <% item_id = cart_item.item_id %>
         <td>
-          <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count%><br/>
+          <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count%>
+          <%= link_to "+", cart_cart_items_increment_path(@cart, cart_item) %>
+          <%= link_to "-", cart_cart_items_decrement_path(@cart, cart_item) %>
+          <br/>
           <%= link_to 'Delete from Cart', cart_items_destroy_path(item_id: item_id), method: :delete %>
         </td>
         <td>
