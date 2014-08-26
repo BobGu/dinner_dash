@@ -16,7 +16,10 @@
           </button>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">All Items</a></li>
-            
+            <% @categories.each do |c| %>
+              <li role='presentation'><a role='menuitem'><%= link_to c.name, categories_path(c) %>
+              </li>
+            <% end %>
           </ul>
         </div>
         <li><%= link_to 'Contact', contact_path %></li>
