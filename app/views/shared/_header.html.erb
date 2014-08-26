@@ -9,21 +9,23 @@
         </ul>
       </div>
       <ul id='menu'>
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-            Menu
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem"><%= link_to 'All Items', items_path %>
-            <% Category.all.each do |c| %>
-              <li role='presentation'><a role='menuitem'><%= link_to c.name, category_path(c) %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-        <li><%= link_to 'Contact', contact_path %></li>
-        <li id='menu_cart'>
+        <li>
+          <div class="dropdown">
+            <button id= 'buttonStyling' class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              Menu
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem"><%= link_to 'All Items', items_path %>
+              <% Category.all.each do |c| %>
+                <li role='presentation'><a role='menuitem'><%= link_to c.name, category_path(c) %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </li>
+        <li class='align_menu'><%= link_to 'Contact', contact_path %></li>
+        <li id='menu_cart' class='align_menu'>
           <%= link_to 'Cart', cart_path %>
           <% if @cart_count != 0 %>
             <%= "(#{@cart_count})" %>
@@ -32,12 +34,12 @@
           <% end %>
         </li>
         <% if signed_in? %>
-          <li><%= link_to 'Account Info', current_user %></li>
-          <li>
+          <li class='align_menu'><%= link_to 'Account Info', current_user %></li>
+          <li class= 'align_menu'>
             <%= link_to 'Sign Out', signout_path, method: 'delete' %>
           </li>
         <% else %>
-          <li>
+          <li class= 'align_menu'>
             <%= link_to 'Sign in', signin_path %>
           </li>
         <% end %>
