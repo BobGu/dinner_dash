@@ -37,7 +37,10 @@ Rails.application.routes.draw do
   get     '/contact'          => 'contact#show',            as: :contact
 
   namespace :admin do
+    resources :admin
     resources :items
     resources :categories
   end
+
+  match '/admin_dashboard',  to: 'admin/admin#show',  via: 'get'
 end

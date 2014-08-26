@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
 
 		respond_to do |format|
 			if @item.save
-				format.html { redirect_to @item, notice: 'Item was successfully created.' }
+				format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully created.' }
 			else
 				format.html { render :new }
 			end
@@ -28,19 +28,17 @@ class ItemsController < ApplicationController
 	end
 
 	def update
-		respond_to do |format|
-			if @item.update(item_params)
-				format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully updated.'}
-			else
-				format.html {render :edit}
-			end
+		if @item.update(item_params)
+			redirect_to admin_item_path(@item), notice: 'Item was successfully updated.'
+		else
+			render :edit
 		end
 	end
 
 	def destroy
-		@item.destroy
-
-		redirect_to items_path
+		if @item.destroy
+			redirect_to admin_items_path, notice: 'Item was successfully deleted.'
+		end
 	end
 
 	private
