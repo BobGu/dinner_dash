@@ -12,8 +12,8 @@ class OrderItemsController < ApplicationController
   end
 
   def increment
-    order_item   = OrderItem.find(params[:id])
-    @order = Order.find(params[:order_id])
+    order_item = OrderItem.find(params[:id])
+    @order     = Order.find(params[:order_id])
     @order.items << order_item.item
     redirect_to order_path(@order)
   end
@@ -24,6 +24,4 @@ class OrderItemsController < ApplicationController
     order_item.delete if order_item
     redirect_to order_path(@order)
   end
-
-
 end

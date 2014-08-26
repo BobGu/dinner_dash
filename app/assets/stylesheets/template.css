@@ -105,3 +105,8 @@ footer{
 .carousel-caption {
   font-size: 40px;
 }
+
+.item_quantity_changer {
+  padding-left: 20px;
+  font-size: 16px;
+}
