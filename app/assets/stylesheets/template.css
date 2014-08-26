@@ -46,6 +46,11 @@ header a:hover{
   font-size: 16px;
 }
 
+.pie_picture img{
+  width:270px;
+  height:200px;
+}
+
 .content {
   padding: 30px;
 }

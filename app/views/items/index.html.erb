@@ -3,6 +3,7 @@
 <table class="table">
 	<thead>
 		<tr>
+			<th></th>
 			<th>Pie Name:</th>
 			<th>Description:</th>
 			<th>Price/Pie:</th>
@@ -13,6 +14,7 @@
 	<tbody>
 		<% @items.each do |item| %>
 			<tr>
+        <td class='pie_picture'><%= image_tag("#{item.title}.png") %></td>
 				<td class='pie_title'>
 					<%= link_to item.title, item %><br/>
 					<a class="btn btn-default btn-xs" href="<%= add_to_cart_path(item_id: item.id) %>" id="add_item_<%= item.id %>">ADD TO CART</a>
