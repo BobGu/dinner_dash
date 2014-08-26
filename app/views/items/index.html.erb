@@ -16,12 +16,39 @@
 			<tr>
         <td class='pie_picture'><%= image_tag("#{item.title}.png") %></td>
 				<td class='pie_title'>
-					<%= link_to item.title, item %><br/>
-					<a class="btn btn-default btn-xs" href="<%= add_to_cart_path(item_id: item.id) %>" id="add_item_<%= item.id %>">ADD TO CART</a>
+					<button class="btn btn-primary btn" data-toggle="modal" data-target=<%= "##{item.id}" %>>
+						<%= item.title %>
+					</button>
+
+					<a class="btn btn-default btn" href="<%= add_to_cart_path(item_id: item.id) %>" id="add_item_<%= item.id %>">ADD TO CART</a>
 				</td>
 				<td class='pie_description'><%= item.description %></td>
 				<td class='pie_price'><%= item.price_pie %></td>
       </tr>
     <% end %>
   </tbody>
+
+	<% @items.each do |item| %>
+		<div class="modal fade" id=<%= "#{item.id}"%> tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button"  data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title"><%= item.title %></h4>
+					</div>
+					<div class="modal-body">
+						<p><%= item.description %>&hellip;</p>
+						<p><%= image_tag("#{item.title}.png") %></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<a href="<%= add_to_cart_path(item_id: item.id) %>"%>ADD TO CART</a>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	<% end %>
+
+
+
 </table>
