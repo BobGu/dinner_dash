@@ -3,10 +3,17 @@ Rails.application.routes.draw do
 
   resources :items
   resources :categories
-  resources :orders
+  resources :orders do
+    resources :order_items do
+      get :increment, on: :member
+      get :decrement, on: :member
+    end
+  end
+
   patch '/order/:id/cancel' => 'orders#cancel',   as: :cancel_order
   patch '/pay/:id/pay'      => 'orders#pay',      as: :pay_order
   patch '/pay/:id/complete' => 'orders#complete',  as: :complete_order
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -23,10 +30,11 @@ Rails.application.routes.draw do
   post    '/cart/items'       => 'cart_items#create',       as: :cart_items
   delete  '/cart/items'       => 'cart_items#destroy',      as: :cart_items_destroy
 
+
   get     '/order_items/new'  => 'order_items#new',         as: :new_order_item
   post    '/order_items'      => 'order_items#create',      as: :order_items
 
-  get     '/contact'          => 'contact#show'
+  get     '/contact'          => 'contact#show',            as: :contact
 
   namespace :admin do
     resources :items

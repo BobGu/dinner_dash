@@ -46,6 +46,11 @@ header a:hover{
   font-size: 16px;
 }
 
+.pie_picture img{
+  width:270px;
+  height:200px;
+}
+
 .content {
   padding: 30px;
 }
@@ -99,4 +104,14 @@ footer{
 
 .carousel-caption {
   font-size: 40px;
+}
+
+.item_quantity_changer {
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.modal-title {
+  font-size: 36px;
+  color: #60464b;
 }

@@ -4,7 +4,7 @@ class CartItemsController < ApplicationController
     # BUT! ultimately pull this logic out into an object
     item = Item.find(params[:item_id])
     cart.cart_items.create item: item
-    render nothing: true
+    redirect_to cart_path
   end
 
   def destroy
