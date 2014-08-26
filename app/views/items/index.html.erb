@@ -37,7 +37,16 @@
 						<h4 class="modal-title"><%= item.title %></h4>
 					</div>
 					<div class="modal-body">
-						<p><%= item.description %>&hellip;</p>
+						<p>
+							Description:
+							<%= item.description %>&hellip;
+						</p>
+						<p>
+							Categories:
+							<% item.categories.each do |c| %>
+							  <%= c.name %> |
+							<% end %>
+						</p>
 						<p><%= image_tag("#{item.title}.png") %></p>
 					</div>
 					<div class="modal-footer">
