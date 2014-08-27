@@ -13,7 +13,7 @@
     <% unique_cart_items = @cart.cart_items.to_a.uniq { |cart_item| cart_item.item_id } %>
     <% unique_cart_items.each do |cart_item| %>
       <tr>
-        <td><%= cart_item.item.title %></td>
+        <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
         <td><%= cart_item.item.price_pie %></td>
         <% item_id = cart_item.item_id %>
         <td>
