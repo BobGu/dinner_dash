@@ -8,6 +8,7 @@ group :development, :test do
 	gem 'pry'
   gem 'launchy'
 	gem 'aasm', '~> 3.3.3'
+	gem "paperclip", "~> 4.1"
 end
 
 
@@ -39,6 +40,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use unicorn as the app server
 gem 'unicorn'
 gem 'pg'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

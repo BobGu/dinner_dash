@@ -15,8 +15,7 @@ class ItemsController < ApplicationController
 
 	def create
 		@item = Item.new(item_params)
-
-		if @item.save
+		if @item.save!
 			@item.categories_list(params['item']['categories'])
 			flash.notice = 'Item was successfully created.'
 			redirect_to admin_item_path(@item)
@@ -53,7 +52,8 @@ class ItemsController < ApplicationController
 			params.require(:item).permit(:title,
 																	 :description,
 																	 :price_pie,
-																	 :categories_list
+																	 :categories_list,
+																	 :picture
 																	 )
 		end
 end

@@ -2,7 +2,11 @@
 	  <div class='row'>
 			<div class='menu_spacing'>
 				<% @items.each do |item| %>
-			  	<div class='pie_picture'><%= image_tag("#{item.title}.png") %>
+			  	<div class='pie_picture'>
+            <%= image_tag("#{item.title}.png") %>
+            <% if item.picture_file_name != nil %>
+              <%= image_tag item.picture.url %>
+            <% end %>
 						<div class='pie_title'>
 							<a data-toggle="modal" data-target=<%= "##{item.id}" %>>
                 <div class= 'titlePriceStyle'><%= item.title %>  |  <%= item.price_pie %></div>
@@ -34,6 +38,11 @@
               <%= item.categories.map(&:name).join(" | ") %>
 						</p>
 						<p><%= image_tag("#{item.title}.png") %></p>
+            <p>
+              <% if item.picture_file_name != nil %>
+                <%= image_tag item.picture.url %>
+              <% end %>
+            </p>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
