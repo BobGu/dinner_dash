@@ -33,6 +33,11 @@
 				{}, {multiple: true, size: Category.all.count}) %>
 	</div>
 
+	<div class="form-group">
+		<%= f.label :picture %>
+		<%= f.file_field :picture %>
+	</div>
+
 	<div class="actions">
 		<%= f.submit value="Save Changes", class: "btn btn-primary" %>
 	</div>

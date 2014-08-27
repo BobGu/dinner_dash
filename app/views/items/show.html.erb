@@ -5,6 +5,11 @@
   <p><%= @item.price_pie %></p>
   <p><%= @item.description %>&hellip;</p>
   <p><%= image_tag("#{@item.title}.png") %></p>
+  <p>
+    <% if @item.picture_file_name != nil %>
+      <%= image_tag @item.picture.url %>
+    <% end %>
+  </p>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
