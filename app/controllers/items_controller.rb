@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 	end
 
 	def index
+		@categories = Category.all
 		@items = Item.all
 	end
 
@@ -15,12 +16,12 @@ class ItemsController < ApplicationController
 	def create
 		@item = Item.new(item_params)
 
-		respond_to do |format|
-			if @item.save
-				format.html { redirect_to @item, notice: 'Item was successfully created.' }
-			else
-				format.html { render :new }
-			end
+		if @item.save
+			@item.categories_list(params['item']['categories'])
+			flash.notice = 'Item was successfully created.'
+			redirect_to admin_item_path(@item)
+		else
+			render :new
 		end
 	end
 
@@ -28,19 +29,19 @@ class ItemsController < ApplicationController
 	end
 
 	def update
-		respond_to do |format|
-			if @item.update(item_params)
-				format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully updated.'}
-			else
-				format.html {render :edit}
-			end
+		if @item.update(item_params)
+			@item.categories_list(params['item']['categories'])
+			flash.notice = 'Item was successfully updated.'
+			redirect_to admin_item_path(@item)
+		else
+			render :edit
 		end
 	end
 
 	def destroy
-		@item.destroy
-
-		redirect_to items_path
+		if @item.destroy
+			redirect_to admin_items_path, notice: 'Item was successfully deleted.'
+		end
 	end
 
 	private
@@ -51,7 +52,8 @@ class ItemsController < ApplicationController
 		def item_params
 			params.require(:item).permit(:title,
 																	 :description,
-																	 :price_pie
+																	 :price_pie,
+																	 :categories_list
 																	 )
 		end
 end

@@ -30,6 +30,9 @@
 
 <p>
   <strong>Items:</strong>
+  <% @order.items.uniq.each do |item| %>
+    |   <%= "#{item.title}  :  #{@order.subtotal(item.id)}" %>   
+  <% end %>
 </p>
 <div>
 <% if @order.ordered? %>
@@ -64,5 +67,4 @@
 <% end %>
 
 <%= link_to 'Edit Order', edit_order_path(@order) %> |
-<%= link_to 'Back To All Orders', orders_path %>
 </div>

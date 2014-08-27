@@ -1,21 +1,48 @@
-<%= render :partial => "shared/header" %>
+<h1><%= @category.name %></h1>
+<div class='container-fluid'>
+	<div class='row'>
+		<div class='menu_spacing'>
+			<% @category.items.each do |item| %>
+				<div class='pie_picture'><%= image_tag("#{item.title}.png") %>
+					<div class='pie_title'>
+						<a data-toggle="modal" data-target=<%= "##{item.id}" %>>
+							<div class= 'titlePriceStyle'><%= item.title %>  |  <%= item.price_pie %></div>
+						</button>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Category:</th>
-			<th>Pies:</th>
-		</tr>
 
-		<tbody>
-			<tr>
-				<td><%= @category.name %></td>
-				<td>
-					<% @category.items.each do |item| %>|
-						<%= link_to item.title, item_path(item) %> |
-					<% end %>
-				</td>
-			</tr>
-		</tbody>
-	</thead>
-</table>
+<% @category.items.each do |item| %>
+	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%= "#{item.id}" %>>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button"  data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title"><%= item.title %></h4>
+					<h5>$<%= item.price_pie %></h5>
+				</div>
+				<div class="modal-body">
+					<p>
+						Description:
+						<%= item.description %>&hellip;
+					</p>
+					<p>
+						Categories:
+						<% item.categories.each do |c| %>
+							<%= c.name %> |
+						<% end %>
+					</p>
+					<p><%= image_tag("#{item.title}.png") %></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<a href="<%= add_to_cart_path(item_id: item.id) %>"%>ADD TO CART</a>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<% end %>

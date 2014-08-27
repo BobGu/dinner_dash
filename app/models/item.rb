@@ -2,8 +2,6 @@ class Item < ActiveRecord::Base
   validates :title,       presence: true, uniqueness: true
   validates :description, presence: true
 
-
-
   has_many  :categorizations
   has_many  :categories, through: :categorizations
 
@@ -16,13 +14,28 @@ class Item < ActiveRecord::Base
     categories.join(", ")
   end
 
-  def category_names=(categories_string)
-    category_names          = categories_string.split(",").collect{ |s| s.strip}.uniq
-    new_or_found_categories = category_names.collect {|name| Category.find_or_create_by(name: name) }
-    self.categories         = new_or_found_categories
+  def categories_list(category_list)
+    if category_list
+      valid_categories = category_list.reject do |cat|
+        cat.empty?
+      end
+
+      new_or_found_categories = valid_categories.map do |name|
+        Category.find_or_create_by(name: name)
+      end
+
+      self.categories = new_or_found_categories
+    end
   end
+  # def category_names=(categories_string)
+  #   category_names          = categories_string.split(",").collect{ |s| s.strip}.uniq
+  #   new_or_found_categories = category_names.collect {|name| Category.find_or_create_by(name: name) }
+  #   self.categories         = new_or_found_categories
+  # end
 
   def to_s
     title
   end
+
+  
 end

@@ -1,6 +1,6 @@
 header {
   background-color: #0075a1;
-  /*font-family: 'Georgia';*/
+  font-family: 'Georgia';
   height: 125px;
   color:white;
 }
@@ -14,7 +14,6 @@ li {
   font-weight: 400;
   letter-spacing: 1.2px;
   font-size: 24px;
-
   display: inline-block;
   }
 
@@ -44,11 +43,12 @@ header a:hover{
   display: inline;
   margin-left: 20px;
   font-size: 16px;
+  float:left;
 }
 
 .pie_picture img{
-  width:270px;
-  height:200px;
+  width:310px;
+  height:240px;
 }
 
 .content {
@@ -114,4 +114,42 @@ footer{
 .modal-title {
   font-size: 36px;
   color: #60464b;
+}
+
+#buttonStyling{
+  font-family: 'Georgia';
+  color: white;
+  background-color:  #0075a1;
+  border: none;
+  font-size: 16px;
+  float: left;
+  margin-bottom: 100px;
+}
+
+#buttonStyling:hover {
+color: #60464b;
+}
+
+.align_menu {
+  margin-top: 6px;
+}
+
+.pie_picture {
+  display: inline-block;
+}
+
+.pie_picture {
+  padding: 15px;
+  text-align: center;
+}
+
+.modal-header button{
+  display: none;
+}
+
+
+.titlePriceStyle {
+  background-color:white;
+  color: #0075a1;
+  border:none;
 }

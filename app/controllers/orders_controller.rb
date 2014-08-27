@@ -1,18 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy, :cancel, :pay, :complete]
-  # before_action :default_params
+
   def new
     @order = Order.new
-  end
-
-  def index
-    @status_counts = Order.status_counts
-    @all_count = Order.all.count
-    if params[:filter]
-      @orders = Order.where(order_status: params[:filter])
-    else
-      @orders = Order.all
-    end
   end
 
   def show
@@ -21,14 +11,16 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    cart_destroy
     respond_to do |format|
       if @order.save!
+        @cart.items.each do |item|
+          @order.order_items.create!(item_id: item.id, order_id: @order.id)
+        end
+        cart_destroy
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
       else
-        format.html { render :new }
+        render :new
       end
-    end
   end
 
   def update
@@ -68,23 +60,16 @@ class OrdersController < ApplicationController
 
   private
 
-  def set_order
-    @order = Order.find(params[:id])
-  end
+    def set_order
+      @order = Order.find(params[:id])
+    end
 
-  def order_params
-    params.require(:order).permit(:user_id,
-                                  :order_total,
-                                  :order_type,
-                                  :delivery_address,
-                                  :order_status
-                                  )
-  end
-
-  # def default_params
-  #   params[:user_id] ||= 1
-  #   params[:order_type] ||= 'pickup'
-  #   params[:delivery_address] ||= 'false'
-  #   params[:order_status] ||= 'pending'
-  # end
+    def order_params
+      params.require(:order).permit(:user_id,
+                                    :order_total,
+                                    :order_type,
+                                    :delivery_address,
+                                    :order_status
+                                    )
+    end
 end

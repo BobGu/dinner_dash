@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
-	before_action	:set_category, only: [:show, :edit, :update, :destroy]
+	before_action	:set_category, 	only: [:show, :edit, :update, :destroy]
+	before_action :authorize?, 		only: [:show, :create, :edit, :update, :destroy]
 
 	def new
 		@category = Category.new
@@ -45,11 +46,15 @@ class Admin::CategoriesController < ApplicationController
 
 	private
 
-	def set_category
-		@category = Category.find(params[:id])
-	end
+		def set_category
+			@category = Category.find(params[:id])
+		end
 
-	def category_params
-		params.require(:category).permit(:name)
-	end
+		def category_params
+			params.require(:category).permit(:name)
+		end
+
+		def authorize?
+			redirect_to "https://www.youtube.com/watch?v=Jvk7faxsxkQ" unless current_user.role == "admin"
+		end
 end
