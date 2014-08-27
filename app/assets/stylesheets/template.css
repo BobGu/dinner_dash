@@ -51,10 +51,6 @@ header a:hover{
   height:240px;
 }
 
-.content {
-  padding: 30px;
-}
-
 #about_us {
   background-image: url('about_us_bg_image.jpg');
   background-size: cover;
