@@ -28,8 +28,9 @@
 	</div>
 
 	<div class="form-group">
-		<%= f.label :category_names %>
-		<%= f.text_field :category_names, class: "form-control" %>
+		<%= f.label :categories %>
+		<%= f.select(:categories, options_from_collection_for_select(Category.all, "name", "name", @item.categories.pluck(:name)),
+				{}, {multiple: true, size: Category.all.count}) %>
 	</div>
 
 	<div class="actions">

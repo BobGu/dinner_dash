@@ -16,12 +16,12 @@ class ItemsController < ApplicationController
 	def create
 		@item = Item.new(item_params)
 
-		respond_to do |format|
-			if @item.save
-				format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully created.' }
-			else
-				format.html { render :new }
-			end
+		if @item.save
+			@item.categories_list(params['item']['categories'])
+			flash.notice = 'Item was successfully created.'
+			redirect_to admin_item_path(@item)
+		else
+			render :new
 		end
 	end
 
@@ -30,7 +30,9 @@ class ItemsController < ApplicationController
 
 	def update
 		if @item.update(item_params)
-			redirect_to admin_item_path(@item), notice: 'Item was successfully updated.'
+			@item.categories_list(params['item']['categories'])
+			flash.notice = 'Item was successfully updated.'
+			redirect_to admin_item_path(@item)
 		else
 			render :edit
 		end
@@ -50,7 +52,8 @@ class ItemsController < ApplicationController
 		def item_params
 			params.require(:item).permit(:title,
 																	 :description,
-																	 :price_pie
+																	 :price_pie,
+																	 :categories_list
 																	 )
 		end
 end
