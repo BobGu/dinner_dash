@@ -31,9 +31,7 @@
 						</p>
 						<p>
 							Categories:
-							<% item.categories.each do |c| %>
-							  <%= c.name %> |
-							<% end %>
+              <%= item.categories.map(&:name).join(" | ") %>
 						</p>
 						<p><%= image_tag("#{item.title}.png") %></p>
 					</div>

@@ -12,11 +12,11 @@
   </thead>
 
   <tbody>
-    <td><%= link_to 'See All Orders', orders_path %>(<%= @all_count %>)</td>
-    <td><%= link_to 'See Paid Orders', orders_path(filter: 'paid') %>(<%= @status_counts[Order::Status::PAID] %>)</td>
-    <td><%= link_to 'See Cancelled Orders', orders_path(filter: 'cancelled') %>(<%= @status_counts[Order::Status::CANCELLED] %>)</td>
-    <td><%= link_to 'See Completed Orders', orders_path(filter: 'completed') %>(<%= @status_counts[Order::Status::COMPLETED] %>)</td>
-    <td><%= link_to 'See Ordered/Pending Orders', orders_path(filter: 'ordered') %>(<%= @status_counts[Order::Status::ORDERED] %>)</td>
+    <td><%= link_to 'See All Orders', admin_orders_path %>(<%= @all_count %>)</td>
+    <td><%= link_to 'See Paid Orders', admin_orders_path(filter: 'paid') %>(<%= @status_counts[Order::Status::PAID] %>)</td>
+    <td><%= link_to 'See Cancelled Orders', admin_orders_path(filter: 'cancelled') %>(<%= @status_counts[Order::Status::CANCELLED] %>)</td>
+    <td><%= link_to 'See Completed Orders', admin_orders_path(filter: 'completed') %>(<%= @status_counts[Order::Status::COMPLETED] %>)</td>
+    <td><%= link_to 'See Ordered/Pending Orders', admin_orders_path(filter: 'ordered') %>(<%= @status_counts[Order::Status::ORDERED] %>)</td>
   </tbody>
 </table>
 
@@ -43,13 +43,9 @@
       <td><%= order.delivery_address %></td>
       <td><%= order.order_status.upcase %></td>
       <td>
-        | <%= link_to "Show", order %> |
-        <%= link_to "Edit", edit_order_path(order) %> |
-        <%= link_to "Delete", order, method: :delete, data: { confirm: 'Are you sure?'} %> |
+        <%= link_to "Delete", order, method: :delete, data: { confirm: 'Are you sure?'} %>
       </td>
     </tr>
     <% end %>
   </tbody><br>
 </table><br />
-
-<%= link_to 'New Order', new_order_path %>
