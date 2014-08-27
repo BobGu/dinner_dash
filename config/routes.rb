@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :admin
     resources :items
     resources :categories
+    resources :orders
   end
 
   match '/admin_dashboard',  to: 'admin/admin#show',  via: 'get'
