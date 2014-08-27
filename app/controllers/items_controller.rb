@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
 
 	def create
 		@item = Item.new(item_params)
-
 		respond_to do |format|
 			if @item.save
 				format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully created.' }

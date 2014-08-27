@@ -48,4 +48,13 @@ class Order < ActiveRecord::Base
   def complete?
     order_status == 'completed'
   end
+
+  def item_quantity(item_id)
+    self.items.select { |i| i.id == item_id }.count
+  end
+
+  def subtotal(item_id)
+    self.item_quantity(item_id) * self.items.find(item_id).price_pie
+  end
+
 end

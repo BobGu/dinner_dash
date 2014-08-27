@@ -30,6 +30,9 @@
 
 <p>
   <strong>Items:</strong>
+  <% @order.items.uniq.each do |item| %>
+    |   <%= "#{item.title}  :  #{@order.subtotal(item.id)}" %>   
+  <% end %>
 </p>
 <div>
 <% if @order.ordered? %>
