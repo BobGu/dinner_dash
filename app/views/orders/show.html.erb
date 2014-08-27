@@ -19,7 +19,10 @@
         <%= @order.order_type.upcase %><br/>
         <%= @order.delivery_address %>
       </td>
-      <td><%= @order.order_status.upcase %></td>
+      <td>
+        <%= @order.order_status.upcase %><br/>
+        Last updated at: <%= @order.updated_at.to_formatted_s(:long)%>
+      </td>
     </tr>
   </tbody>
 </table>
