@@ -11,10 +11,13 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    cart_destroy
-
+    respond_to do |format|
       if @order.save!
-        redirect_to @order, notice: 'Order was successfully created.'
+        @cart.items.each do |item|
+          @order.order_items.create!(item_id: item.id, order_id: @order.id)
+        end
+        cart_destroy
+        format.html { redirect_to @order, notice: 'Order was successfully created.' }
       else
         render :new
       end
