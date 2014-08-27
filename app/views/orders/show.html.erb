@@ -42,7 +42,7 @@
     <% unique_order_items = @order.order_items.to_a.uniq { |order_item| order_item.item_id } %>
     <% unique_order_items.each do |order_item| %>
       <tr>
-        <td><strong><%= order_item.item.title %></strong></td>
+        <td><strong><%= link_to "#{order_item.item.title}", item_path(order_item.item) %></strong></td>
         <td><%= order_item.item.price_pie %></td>
         <% item_id = order_item.item_id %>
         <td>
