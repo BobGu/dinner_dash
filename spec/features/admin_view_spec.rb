@@ -20,7 +20,19 @@ describe 'a admin viewing the items page', type: :feature do
       expect(page.current_url).to eq(admin_dashboard_url)
     end
 
-    it 'can see a view that allows me to see item attributes on an order'
+    it 'can retire and item' do
+      page.visit signin_path
+      page.fill_in('session[email]',    with: user.email)
+      page.fill_in('session[password]', with: 'password')
+      page.click_button('Sign in')
+      save_and_open_page
+      page.click_button('Menu Item Management')
+      page.visit admin_items_path
+      # admin retires an item
+      # that item is no longer viewed on menu
+      # that item can not be ordered by users
+    end
+
   end
 
 
