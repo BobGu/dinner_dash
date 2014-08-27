@@ -34,11 +34,7 @@
 <div>
   <%= form_tag orders_path, method: :post do %>
     <% order = Order.new %>
-    <% if current_user == nil %>
-      <%= hidden_field_tag 'order[user_id]', 1 %>
-    <% else %>
-      <%= hidden_field_tag 'order[user_id]', current_user.id %>
-    <% end %>
+    <%= hidden_field_tag 'order[user_id]', current_user.try(:id) || 1 %>
 
     <div class='form-group'>
       <%= label_tag 'Order Total:' %>
@@ -50,6 +46,7 @@
       <%= label_tag 'Order Type:' %>
       <%= select_tag 'order[order_type]', '<option>Pickup</option><option>Delivery</option>'.html_safe %><br/>
       <%= label_tag 'Delivery Address:' %>
+      <%= text_field_tag 'order[delivery_address]' %>
       <%= hidden_field_tag 'order[order_status]', 'ordered' %>
     </div>
 
@@ -63,4 +60,3 @@
 
   <% end %>
 </div>
-  <!-- count is not appearing for each item -->
