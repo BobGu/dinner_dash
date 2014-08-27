@@ -29,7 +29,9 @@ describe 'a admin viewing the items page', type: :feature do
       page.fill_in('session[password]', with: 'password')
       page.click_button('Sign in')
       page.click_link('Menu Item Management')
-      page.click_link()
+      expect(page).to have_content("yummy")
+      page.click_link('Retire')
+      expect(page).to_not have_content("yummy")
       # admin retires an item
       # that item is no longer viewed on menu
       # that item can not be ordered by users

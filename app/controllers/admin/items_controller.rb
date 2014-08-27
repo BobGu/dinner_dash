@@ -13,6 +13,12 @@ class Admin::ItemsController < ApplicationController
 	def show
 	end
 
+	def destroy
+		if @item.destroy
+			redirect_to admin_items_path, notice: 'Item was successfully deleted.'
+		end
+	end
+
 	private
 
 		def set_item
