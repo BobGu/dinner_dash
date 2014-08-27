@@ -13,7 +13,7 @@
     <% unique_cart_items = @cart.cart_items.to_a.uniq { |cart_item| cart_item.item_id } %>
     <% unique_cart_items.each do |cart_item| %>
       <tr>
-        <td><%= cart_item.item.title %></td>
+        <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
         <td><%= cart_item.item.price_pie %></td>
         <% item_id = cart_item.item_id %>
         <td>
@@ -43,7 +43,7 @@
     <div class='form-group'>
       <%= label_tag 'Order Total:' %>
       <%= @total_price = @cart.cart_items.reduce(0) { |total, cart_item| total += cart_item.item.price_pie } %>
-      <%= hidden_field_tag 'order[order_total]', @total_price %>
+      <%= hidden_field_tag 'order[order_total]', (sprintf '%0.2f', @total_price) %>
     </div>
 
     <div class='form-group'>

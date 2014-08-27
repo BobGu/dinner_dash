@@ -27,9 +27,9 @@ Item.create(title: "Meat Lovers", description: "It's a heart-attack, for the ser
 Item.create(title: "Polka Pie", description: "Keilbasa, sauerkraut, cheese, potatoes",
  inventory: 15, price_pie: 30.99, category_ids: [3])
 Item.create(title: "Five Cheese", description: "Sharp-Cheddar, pepper-jack, blue-cheese, gruyere, gouda",
- inventory: 15, category_ids:[3, 5])
+ inventory: 15, price_pie: 30.99, category_ids:[3, 5])
 Item.create(title: "Double Chocolate", description: "Cream filled goo with chocolate chips, chocalate mousse",
- inventory: 5, category_ids:[3, 5])
+ inventory: 5, price_pie: 30.99, category_ids:[3, 5])
 Item.create(title: "Coconut Cream", description: "Rich coconut cream filling, gluten-free cookie crust",
  inventory: 12, price_pie: 30.99, category_ids:[3, 1])
 Item.create(title: "Turtle Pie", description: "Dark chocolate cream filling, pecans, carmel drizzle",
@@ -37,9 +37,9 @@ Item.create(title: "Turtle Pie", description: "Dark chocolate cream filling, pec
 Item.create(title: "Vegan Chili", description: "Brown rice, vegies, rich tomato sauce",
  inventory: 15, price_pie: 30.99, category_ids: [4])
 Item.create(title: "Ratatouille", description: "Winter vegetables, stewed in zesty tomato sauce, vegan",
- inventory: 15, category_ids:[4])
+ inventory: 15, price_pie: 30.99, category_ids:[4])
 Item.create(title: "Roasted Veggie", description: "Mushrooms, onions, peppers, broccoli, potatoes",
- inventory: 12, category_ids:[4])
+ inventory: 12, price_pie: 30.99, category_ids:[4])
 Item.create(title: "No Sugar Added Peach Pie", description: "Tons of peaches without added sugar",
  inventory: 12, price_pie: 30.99, category_ids:[4, 1])
 Item.create(title: "No Sugar Added Lemon Pie", description: "Face wrinkling lemons, for the serious lemon lover",
@@ -47,9 +47,9 @@ Item.create(title: "No Sugar Added Lemon Pie", description: "Face wrinkling lemo
 Item.create(title: "Breakfast Pie", description: "6 eggs, hashbrowns, pancakes, and bacon",
  inventory: 15, price_pie: 30.99, category_ids: [5])
 Item.create(title: "Lemon Chess", description: "Lemon zest, lemon juice, eggs, cornmeal, sugar crust",
- inventory: 15, category_ids:[5])
+ inventory: 15, price_pie: 30.99, category_ids:[5])
 Item.create(title: "Lunch Pie", description: "Free-range chicken, tomatoes, pickles, cheese",
- inventory: 12, category_ids:[5])
+ inventory: 12, price_pie: 30.99, category_ids:[5])
 Item.create(title: "Baltimore Bomb", description: "Berger Cookies, vanilla chess filling",
  inventory: 12, price_pie: 30.99, category_ids:[5])
 Item.create(title: "Elvis Pie", description: "Peanut butter, bacon, bananas, and chocolate",

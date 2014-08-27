@@ -36,7 +36,7 @@
   <tbody>
     <% @orders.each do |order| %>
     <tr>
-      <td><%= link_to order.id, order_path(order) %></td>
+      <td><%= link_to order.id, admin_order_path(order) %></td>
       <td><%= order.user_id %></td>
       <td><%= order.order_total %></td>
       <td><%= order.order_type.upcase %></td>

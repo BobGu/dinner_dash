@@ -1,26 +1,15 @@
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "##{@item.id}" %>>
-  Launch demo modal
-</button>
-
-<div class="modal fade" id=<%= "#{@item.id}"%> tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"><%= @item.title %></h4>
-      </div>
-      <div class="modal-body">
-        <p><%= @item.pie_price %></p>
-        <p><%= @item.description %>&hellip;</p>
-        <p><%= image_tag("#{@item.title}.png") %></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <a href="<%= add_to_cart_path(item_id: @item.id) %>"%>ADD TO CART</a>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+<div class="modal-header">
+  <h4 class="modal-title"><%= @item.title %></h4>
+</div>
+<div class="modal-body">
+  <p><%= @item.price_pie %></p>
+  <p><%= @item.description %>&hellip;</p>
+  <p><%= image_tag("#{@item.title}.png") %></p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  <a href="<%= add_to_cart_path(item_id: @item.id) %>"%>ADD TO CART</a>
+</div>
 
 <!-- <%= render :partial => "shared/header" %>
 

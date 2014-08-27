@@ -14,14 +14,6 @@ RSpec.describe OrdersController, :type => :controller do
 
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all orders as @orders" do
-      order = Order.create! valid_attributes
-      get :index
-      expect(assigns(:orders)).to eq([order])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested order as @order" do
       order = Order.create! valid_attributes
