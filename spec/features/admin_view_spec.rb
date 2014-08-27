@@ -21,13 +21,15 @@ describe 'a admin viewing the items page', type: :feature do
     end
 
     it 'can retire and item' do
+      item = Item.create!(title: "Cami's", inventory: 12, price_pie: 30.99,
+                          description: "yummy")
+
       page.visit signin_path
       page.fill_in('session[email]',    with: user.email)
       page.fill_in('session[password]', with: 'password')
       page.click_button('Sign in')
-      save_and_open_page
-      page.click_button('Menu Item Management')
-      page.visit admin_items_path
+      page.click_link('Menu Item Management')
+      page.click_link()
       # admin retires an item
       # that item is no longer viewed on menu
       # that item can not be ordered by users
