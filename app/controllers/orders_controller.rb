@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :cancel, :pay, :complete]
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def new
     @order = Order.new
@@ -36,27 +36,10 @@ class OrdersController < ApplicationController
 
   def destroy
     @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-    end
-  end
 
-  def cancel
-    @order.order_status = "cancelled"
-    @order.save
-    redirect_to @order
-  end
+    flash.notice= 'Order was successfully destroyed.'
 
-  def pay
-    @order.order_status = "paid"
-    @order.save
-    redirect_to @order
-  end
-
-  def complete
-    @order.order_status = 'completed'
-    @order.save
-    redirect_to @order
+    redirect_to admin_orders_url
   end
 
   private

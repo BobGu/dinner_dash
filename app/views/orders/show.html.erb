@@ -13,7 +13,7 @@
 
   <tbody>
     <tr>
-      <td><%= @order.created_at %></td>
+      <td><%= @order.created_at.to_formatted_s(:long) %></td>
       <td>$<%= @order.order_total %></td>
       <td>
         <%= @order.order_type.upcase %><br/>
@@ -53,4 +53,4 @@
 </table>
 
 <%= link_to 'Back to Order History', user_path(current_user.id) %> |
-<%= link_to 'Back to Menu', '#' %>
+<%= link_to 'Back to Menu', items_path %>

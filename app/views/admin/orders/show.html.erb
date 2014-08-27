@@ -32,10 +32,13 @@
 
   <tbody>
     <tr>
-      <td><%= @order.created_at %></td>
+      <td><%= @order.created_at.to_formatted_s(:long) %></td>
       <td>$<%= @order.order_total %></td>
       <td><%= @order.order_type.upcase %></td>
-      <td><%= @order.order_status.upcase %></td>
+      <td>
+        <%= @order.order_status.upcase %><br/>
+        Last updated at: <%= @order.updated_at.to_formatted_s(:long)%>
+      </td>
     </tr>
   </tbody>
 </table>

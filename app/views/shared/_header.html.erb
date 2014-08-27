@@ -34,7 +34,7 @@
           <% end %>
         </li>
         <% if signed_in? %>
-          <li class='align_menu'><%= link_to 'Account Info', current_user %></li>
+          <li class='align_menu'><%= link_to 'Your Order History', current_user %></li>
           <li class= 'align_menu'>
             <%= link_to 'Sign Out', signout_path, method: 'delete' %>
           </li>

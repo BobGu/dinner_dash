@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
-  patch '/order/:id/cancel' => 'orders#cancel',   as: :cancel_order
-  patch '/pay/:id/pay'      => 'orders#pay',      as: :pay_order
-  patch '/pay/:id/complete' => 'orders#complete',  as: :complete_order
+  patch 'admin/order/:id/cancel' => 'admin/orders#cancel',   as: :cancel_order
+  patch 'admin/pay/:id/pay'      => 'admin/orders#pay',      as: :pay_order
+  patch 'admin/pay/:id/complete' => 'admin/orders#complete', as: :complete_order
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
