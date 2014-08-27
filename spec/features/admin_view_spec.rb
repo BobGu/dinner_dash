@@ -32,12 +32,6 @@ describe 'a admin viewing the items page', type: :feature do
       expect(page).to have_content("yummy")
       page.click_link('Retire')
       expect(page).to_not have_content("yummy")
-      # admin retires an item
-      # that item is no longer viewed on menu
-      # that item can not be ordered by users
     end
-
   end
-
-
 end
