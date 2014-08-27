@@ -21,9 +21,13 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    cart_destroy
     respond_to do |format|
       if @order.save!
+        @cart.items.each do |item|
+          @order.items.create(id: item.id, title: item.title, description: item.description, price_pie: item.price_pie)
+        end
+        cart_destroy
+        binding.pry
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
       else
         format.html { render :new }
