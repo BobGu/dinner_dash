@@ -48,7 +48,8 @@ class Admin::ItemsController < ApplicationController
 			params.require(:item).permit(:title,
 																	:description,
 																	:price_pie,
-																	:picture
+																	:picture,
+																	:retire
 																	)
 		end
 
