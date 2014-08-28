@@ -1103,10 +1103,10 @@ p {
   margin: 0 0 10px;
 }
 .lead {
-  margin-bottom: 20px;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.4;
+  margin-bottom: 30px
 }
 @media (min-width: 768px) {
   .lead {
