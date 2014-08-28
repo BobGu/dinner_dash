@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "orders/show", :type => :view do
+RSpec.describe "admin/orders/show", :type => :view do
   before(:each) do
 
     @order = assign(:order, Order.create!(

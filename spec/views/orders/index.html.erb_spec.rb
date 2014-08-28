@@ -28,12 +28,4 @@ RSpec.describe "orders/index", :type => :view do
       )
     ])
   end
-
-  it "renders a list of orders" do
-    render
-    assert_select "tr>th", :text => "Order ID:".to_s, :count => 1
-    assert_select "tr>td", :text => "Edit".to_s, :count => 2
-  end
-
-  it "shows paid link"
 end

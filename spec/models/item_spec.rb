@@ -31,7 +31,7 @@ RSpec.describe Item, :type => :model do
   it 'is invalid without a pie price' do
     item.price_pie = nil
 
-    expect(item).not_to be_valid
+    expect(item).to be_valid
   end
 
   it 'is invalid if title is not unique' do
