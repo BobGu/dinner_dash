@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
-	before_action	:set_item, only: [:show, :edit, :update, :destroy]
-	before_action :authorize?, only: [:show, :create, :edit, :update, :destroy]
+	before_action	:set_item, only: [:show, :edit, :update, :destroy, :retire]
+	before_action :authorize?, only: [:show, :create, :edit, :update, :destroy, :retire]
 
 	def new
 		@item = Item.new
@@ -9,6 +9,12 @@ class Admin::ItemsController < ApplicationController
 	def index
 		@items = Item.all
 	end
+
+ def update
+		@item = Item.find(params[:id])
+ end
+
+
 
 	def create
 		@item = Item.new(item_params)
@@ -24,6 +30,7 @@ class Admin::ItemsController < ApplicationController
 
 	def show
 	end
+
 
 	def destroy
 		if @item.destroy

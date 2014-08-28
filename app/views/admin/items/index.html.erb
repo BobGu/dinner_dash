@@ -21,6 +21,13 @@
 					<%= link_to 'Show', admin_item_path(item) %>
 					<%= link_to 'Edit', edit_admin_item_path(item) %>
       		<%= link_to 'Destroy', admin_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+					<%= link_to 'Retire', admin_retire_item_path(item), method: :put, data: { confirm: 'Are you sure?' } %>
+					<!-- What do we want retire to do? Create an algoritihim -->
+					<!-- click on retire
+					     this create an HTTP request to put (what route is this?????)
+							 what controller action does this go
+							 in our controller action we change the attribute value of retire from false to true
+					 -->
 				</td>
       </tr>
     <% end %>

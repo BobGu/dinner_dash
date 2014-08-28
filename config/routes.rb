@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post    '/cart/items'       => 'cart_items#create',       as: :cart_items
   delete  '/cart/items'       => 'cart_items#destroy',      as: :cart_items_destroy
 
+  put     '/admin/retire/item'      => 'admin/retire_item#update'
 
   get     '/order_items/new'  => 'order_items#new',         as: :new_order_item
   post    '/order_items'      => 'order_items#create',      as: :order_items
