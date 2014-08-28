@@ -1,3 +1,11 @@
+body {
+  background: url('wedding-pie-buffet.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .site-wrapper {
   background:  url('about_us_bg_image.jpg'), no-repeat center center fixed;
   -webkit-background-size: cover;
