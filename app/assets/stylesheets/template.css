@@ -15,13 +15,10 @@ body {
   height: 950px;
 }
 
-.content-wrapper {
-  padding: 35px;
-}
-
 .pie_picture img{
-  width:320px;
-  height:255px;
+  width:275px;
+  height:275px;
+  margin-left: 25px;
 }
 
 #about_us {
@@ -108,7 +105,7 @@ color: #60464b;
 }
 
 .pie_picture {
-  padding: 15px;
+  padding: 70px;
   text-align: center;
 }
 
@@ -121,7 +118,7 @@ color: #60464b;
   background-color:white;
   color: #0075a1;
   border:none;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .cover-heading {
@@ -140,7 +137,7 @@ color: #60464b;
 
 
 .menu_spacing {
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .picture1 {
@@ -182,9 +179,4 @@ color: #60464b;
 
 .gus {
   margin-top: 20px;
-}
-
-.formStyle {
-  opacity:0.8;
-  background-color: white;
 }
