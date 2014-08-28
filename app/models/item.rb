@@ -3,6 +3,8 @@ class Item < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
   validates :title,       presence: true, uniqueness: true
   validates :description, presence: true
+  validates :retire, inclusion: { in: [true, false] }
+
 
   has_many  :categorizations
   has_many  :categories, through: :categorizations
