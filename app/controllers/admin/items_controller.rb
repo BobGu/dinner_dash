@@ -10,7 +10,25 @@ class Admin::ItemsController < ApplicationController
 		@items = Item.all
 	end
 
+	def create
+		@item = Item.new(item_params)
+
+		if @item.save
+			@item.categories_list(params['item']['categories'])
+			flash.notice = 'Item was successfully created.'
+			redirect_to admin_item_path(@item)
+		else
+			render :new
+		end
+	end
+
 	def show
+	end
+
+	def destroy
+		if @item.destroy
+			redirect_to admin_items_path, notice: 'Item was successfully deleted.'
+		end
 	end
 
 	private
@@ -22,7 +40,8 @@ class Admin::ItemsController < ApplicationController
 		def item_params
 			params.require(:item).permit(:title,
 																	:description,
-																	:price_pie
+																	:price_pie,
+																	:picture
 																	)
 		end
 

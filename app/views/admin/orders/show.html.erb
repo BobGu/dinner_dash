@@ -32,10 +32,13 @@
 
   <tbody>
     <tr>
-      <td><%= @order.created_at %></td>
+      <td><%= @order.created_at.to_formatted_s(:long) %></td>
       <td>$<%= @order.order_total %></td>
       <td><%= @order.order_type.upcase %></td>
-      <td><%= @order.order_status.upcase %></td>
+      <td>
+        <%= @order.order_status.upcase %><br/>
+        Last updated at: <%= @order.updated_at.to_formatted_s(:long)%>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -55,7 +58,7 @@
     <% unique_order_items = @order.order_items.to_a.uniq { |order_item| order_item.item_id } %>
     <% unique_order_items.each do |order_item| %>
       <tr>
-        <td><strong><%= order_item.item.title %></strong></td>
+        <td><strong><%= link_to "#{order_item.item.title}", item_path(order_item.item) %></strong></td>
         <td><%= order_item.item.price_pie %></td>
         <% item_id = order_item.item_id %>
         <td>
@@ -84,5 +87,5 @@
   <%= link_to 'Mark As Completed', complete_order_path(@order), method: :patch %> |
 <% end %>
 
-<%= link_to 'Edit Order', edit_admin_order_path(@order) %>
+<%= link_to 'Back to Orders Index', admin_orders_path %>
 </div>

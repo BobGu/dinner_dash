@@ -20,8 +20,18 @@ describe 'a admin viewing the items page', type: :feature do
       expect(page.current_url).to eq(admin_dashboard_url)
     end
 
-    it 'can see a view that allows me to see item attributes on an order'
+    it 'can destroy and item' do
+      item = Item.create!(title: "Cami's", inventory: 12, price_pie: 30.99,
+                          description: "yummy")
+
+      page.visit signin_path
+      page.fill_in('session[email]',    with: user.email)
+      page.fill_in('session[password]', with: 'password')
+      page.click_button('Sign in')
+      page.click_link('Menu Item Management')
+      expect(page).to have_content("yummy")
+      page.click_link('Destroy')
+      expect(page).to_not have_content("yummy")
+    end
   end
-
-
 end

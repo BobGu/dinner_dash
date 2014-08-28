@@ -1,70 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Customer Name:</strong>
-  <%= @order.user.full_name %>
-</p>
+<h3>Order Overview:</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Order Date and Time:</th>
+      <th>Order Total:</th>
+      <th>Order Type:</th>
+      <th>Order Status:</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Order Total:</strong>
-  $<%= @order.order_total %>
-</p>
+  <tbody>
+    <tr>
+      <td><%= @order.created_at.to_formatted_s(:long) %></td>
+      <td>$<%= @order.order_total %></td>
+      <td>
+        <%= @order.order_type.upcase %><br/>
+        <%= @order.delivery_address %>
+      </td>
+      <td>
+        <%= @order.order_status.upcase %><br/>
+        Last updated at: <%= @order.updated_at.to_formatted_s(:long)%>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Order Type:</strong>
-  <%= @order.order_type.upcase %>
-</p>
+<h3>Order Items:</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Item:</th>
+      <th>Price:</th>
+      <th>Quantity:</th>
+      <th>Subtotal:</th>
+    </tr>
+  </thead>
 
-<% if @order.order_type == 'delivery' %>
-  <p>
-    <strong>Delivery Address:</strong>
-    <%= @order.delivery_address %>
-  </p>
-<% else %>
-<% end %>
-
-<p>
-  <strong>Order Status:</strong>
-  <%= @order.order_status.upcase %>
-</p>
-
-<p>
-  <strong>Items:</strong>
-  <% @order.items.uniq.each do |item| %>
-    |   <%= "#{item.title}  :  #{@order.subtotal(item.id)}" %>   
-  <% end %>
-</p>
-<div>
-<% if @order.ordered? %>
-  <%= link_to 'Cancel Order', cancel_order_path(@order), method: :patch %> |
-<% end %>
-<% if @order.ordered? %>
-  <%= link_to 'Mark As Paid', pay_order_path(@order), method: :patch %> |
-<% end %>
-<% if @order.paid? %>
-  <%= link_to 'Cancel Order', cancel_order_path(@order), method: :patch %> |
-<% end %>
-<% if @order.paid? %>
-  <%= link_to 'Mark As Completed', complete_order_path(@order), method: :patch %> |
-<% end %>
+  <tbody>
     <% unique_order_items = @order.order_items.to_a.uniq { |order_item| order_item.item_id } %>
     <% unique_order_items.each do |order_item| %>
-  <div class='pie_title'>
-    <%= order_item.item.title %>
-  </div>
-    <% item_id = order_item.item_id %>
-  <div class='pie_quantity'>
-    Quantity: <%= quantity =  @order.order_items.select { |order_item| order_item.item_id == item_id }.count%>
-    <%= link_to "+", increment_order_order_item_path(@order, order_item) %>
-    <%= link_to "-", decrement_order_order_item_path(@order, order_item) %>
-  </div>
-  <div class='pie_price'>
-    Pie Price: <%= order_item.item.price_pie %>
-  </div>
-  <div class='line_item_total'>
-    Subtotal: <%=  quantity * order_item.item.price_pie %>
-  </div>
-<% end %>
+      <tr>
+        <td><strong><%= link_to "#{order_item.item.title}", item_path(order_item.item) %></strong></td>
+        <td><%= order_item.item.price_pie %></td>
+        <% item_id = order_item.item_id %>
+        <td>
+          <%= quantity = @order.order_items.select { |order_item| order_item.item_id == item_id }.count%>
+        </td>
+        <td><%= quantity * order_item.item.price_pie %></td>
+      </tr>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
 
-<%= link_to 'Edit Order', edit_order_path(@order) %> |
-</div>
+<%= link_to 'Back to Order History', user_path(current_user.id) %> |
+<%= link_to 'Back to Menu', items_path %>

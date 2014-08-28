@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
-  before_action	:set_order,   only: [:show, :edit, :update, :destroy]
-  before_action :authorize?,  only: [:index, :edit, :update, :destroy]
+  before_action	:set_order,   only: [:show, :edit, :update, :destroy, :cancel, :pay, :complete]
+  before_action :authorize?,  only: [:index, :edit, :update, :destroy, :cancel, :pay, :complete]
 
   def index
     @status_counts = Order.status_counts
@@ -13,6 +13,24 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
+  end
+
+  def cancel
+    @order.order_status = "cancelled"
+    @order.save
+    redirect_to admin_order_path(@order)
+  end
+
+  def pay
+    @order.order_status = "paid"
+    @order.save
+    redirect_to admin_order_path(@order)
+  end
+
+  def complete
+    @order.order_status = 'completed'
+    @order.save
+    redirect_to admin_order_path(@order)
   end
 
   private
