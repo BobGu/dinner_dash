@@ -24,7 +24,12 @@
         <div class="form-group">
           <div class="col-sm-offset-1 col-sm-10">
             <%= f.submit "Sign in", class: "btn btn-large btn-default" %>
-            <p>New customer? <%= link_to "Create account!", signup_path %></p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-10">
+            <%= link_to "New Customer? Create account!", signup_path, class: "btn btn-large btn-default" %>
           </div>
         </div>
       <% end %>

@@ -183,3 +183,8 @@ color: #60464b;
 .gus {
   margin-top: 20px;
 }
+
+.formStyle {
+  opacity:0.8;
+  background-color: white;
+}
