@@ -20,7 +20,7 @@ describe 'a admin viewing the items page', type: :feature do
       expect(page.current_url).to eq(admin_dashboard_url)
     end
 
-    it 'can retire and item' do
+    it 'can destroy and item' do
       item = Item.create!(title: "Cami's", inventory: 12, price_pie: 30.99,
                           description: "yummy")
 
@@ -30,7 +30,7 @@ describe 'a admin viewing the items page', type: :feature do
       page.click_button('Sign in')
       page.click_link('Menu Item Management')
       expect(page).to have_content("yummy")
-      page.click_link('Retire')
+      page.click_link('Destroy')
       expect(page).to_not have_content("yummy")
     end
   end
