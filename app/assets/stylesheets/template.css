@@ -47,8 +47,8 @@ header a:hover{
 }
 
 .pie_picture img{
-  width:310px;
-  height:240px;
+  width:400px;
+  height:330px;
 }
 
 #about_us {
@@ -148,4 +148,5 @@ color: #60464b;
   background-color:white;
   color: #0075a1;
   border:none;
+  font-size: 24px;
 }
