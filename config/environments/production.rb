@@ -86,8 +86,8 @@ Rails.application.configure do
   :storage => :s3,
   :s3_credentials => {
     :bucket => ENV['dinner-dash-assets'],
-    :access_key_id => ENV['AKIAIHO4BFRAYXPT6NFA'],
-    :secret_access_key => ENV['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']
+    :access_key_id => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
     }
   }
 end
