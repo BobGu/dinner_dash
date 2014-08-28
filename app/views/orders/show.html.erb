@@ -1,60 +1,62 @@
 <%= render :partial => "shared/header" %>
 <p id="notice"><%= notice %></p>
 
-<h3>Order Overview:</h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Order Date and Time:</th>
-      <th>Order Total:</th>
-      <th>Order Type:</th>
-      <th>Order Status:</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td><%= @order.created_at.to_formatted_s(:long) %></td>
-      <td>$<%= @order.order_total %></td>
-      <td>
-        <%= @order.order_type.upcase %><br/>
-        <%= @order.delivery_address %>
-      </td>
-      <td>
-        <%= @order.order_status.upcase %><br/>
-        Last updated at: <%= @order.updated_at.to_formatted_s(:long)%>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>Order Items:</h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Item:</th>
-      <th>Price:</th>
-      <th>Quantity:</th>
-      <th>Subtotal:</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% unique_order_items = @order.order_items.to_a.uniq { |order_item| order_item.item_id } %>
-    <% unique_order_items.each do |order_item| %>
+<div class="content-wrapper formStyle">
+  <h3>Order Overview:</h3>
+  <table class="table">
+    <thead>
       <tr>
-        <td><strong><%= link_to "#{order_item.item.title}", item_path(order_item.item) %></strong></td>
-        <td><%= order_item.item.price_pie %></td>
-        <% item_id = order_item.item_id %>
-        <td>
-          <%= quantity = @order.order_items.select { |order_item| order_item.item_id == item_id }.count%>
-        </td>
-        <td><%= quantity * order_item.item.price_pie %></td>
+        <th>Order Date and Time:</th>
+        <th>Order Total:</th>
+        <th>Order Type:</th>
+        <th>Order Status:</th>
       </tr>
-    <% end %>
-    </tr>
-  </tbody>
-</table>
+    </thead>
 
-<%= link_to 'Back to Order History', user_path(current_user.id) %> |
-<%= link_to 'Back to Menu', items_path %>
+    <tbody>
+      <tr>
+        <td><%= @order.created_at.to_formatted_s(:long) %></td>
+        <td>$<%= @order.order_total %></td>
+        <td>
+          <%= @order.order_type.upcase %><br/>
+          <%= @order.delivery_address %>
+        </td>
+        <td>
+          <%= @order.order_status.upcase %><br/>
+          Last updated at: <%= @order.updated_at.to_formatted_s(:long)%>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Order Items:</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Item:</th>
+        <th>Price:</th>
+        <th>Quantity:</th>
+        <th>Subtotal:</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% unique_order_items = @order.order_items.to_a.uniq { |order_item| order_item.item_id } %>
+      <% unique_order_items.each do |order_item| %>
+        <tr>
+          <td><strong><%= link_to "#{order_item.item.title}", item_path(order_item.item) %></strong></td>
+          <td><%= order_item.item.price_pie %></td>
+          <% item_id = order_item.item_id %>
+          <td>
+            <%= quantity = @order.order_items.select { |order_item| order_item.item_id == item_id }.count%>
+          </td>
+          <td><%= quantity * order_item.item.price_pie %></td>
+        </tr>
+      <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to 'Back to Order History', user_path(current_user.id) %> |
+  <%= link_to 'Back to Menu', items_path %>
+</div>

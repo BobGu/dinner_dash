@@ -1,27 +1,29 @@
 <%= render :partial => "shared/header" %>
 <h1>Pie Categories</h1>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Category Name:</th>
-			<th>Number of Pies:</th>
-			<th>Options:</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @category.each do |category| %>
+<div class="content-wrapper formStyle">
+	<table class="table">
+		<thead>
 			<tr>
-				<td><%= link_to category.name, category %></td>
-				<td><%= category.items.count %></td>
-				<td>
-					<%= link_to 'Edit', edit_admin_category_path(category) %><br/>
-					<%= link_to 'Destroy', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
-				</td>
+				<th>Category Name:</th>
+				<th>Number of Pies:</th>
+				<th>Options:</th>
 			</tr>
-		<% end %>
-	</tbody>
-</table>
+		</thead>
 
-<%= link_to 'Create a New Category', new_admin_category_path %>
+		<tbody>
+			<% @category.each do |category| %>
+				<tr>
+					<td><%= link_to category.name, category %></td>
+					<td><%= category.items.count %></td>
+					<td>
+						<%= link_to 'Edit', edit_admin_category_path(category) %><br/>
+						<%= link_to 'Destroy', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<%= link_to 'Create a New Category', new_admin_category_path %>
+</div>
