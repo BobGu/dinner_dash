@@ -1,38 +1,33 @@
 <%= render :partial => "shared/header" %>
 <h1>Our Dangerously Delicious Pies</h1>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>Pie Name:</th>
-			<th>Description:</th>
-			<th>Price/Pie:</th>
-			<th>Options:</th>
-			<th colspan="3"></th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @items.each do |item| %>
+<div class="content-wrapper">
+	<table class="table">
+		<thead>
 			<tr>
-				<td class='pie_title'><%= item.title %></td>
-				<td class='pie_description'><%= item.description %></td>
-				<td class='pie_price'><%= item.price_pie %></td>
-				<td>
-					<%= link_to 'Show', admin_item_path(item) %>
-					<%= link_to 'Edit', edit_admin_item_path(item) %>
-      		<%= link_to 'Destroy', admin_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
-					<%= link_to 'Retire', admin_retire_item_path(item), method: :put, data: { confirm: 'Are you sure?' } %>
-					<!-- What do we want retire to do? Create an algoritihim -->
-					<!-- click on retire
-					     this create an HTTP request to put (what route is this?????)
-							 what controller action does this go
-							 in our controller action we change the attribute value of retire from false to true
-					 -->
-				</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+				<th>Pie Name:</th>
+				<th>Description:</th>
+				<th>Price/Pie:</th>
+				<th>Options:</th>
+			</tr>
+		</thead>
 
-<%= link_to 'Create a New Item', new_admin_item_path %>
+		<tbody>
+			<% @items.each do |item| %>
+				<tr>
+					<td class='pie_title'><%= item.title %></td>
+					<td class='pie_description'><%= item.description %></td>
+					<td class='pie_price'><%= item.price_pie %></td>
+					<td>
+						<%= link_to 'Show', admin_item_path(item) %> |
+						<%= link_to 'Edit', edit_admin_item_path(item) %> |
+	      		<%= link_to 'Destroy', admin_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %> |
+						<%= link_to 'Retire', admin_retire_item_path(item), method: :put, data: { confirm: 'Are you sure?' } %>
+					</td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+	<%= link_to 'Create a New Item', new_admin_item_path %>
+</div>

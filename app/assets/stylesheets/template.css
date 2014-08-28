@@ -7,6 +7,10 @@
   height: 950px;
 }
 
+.content-wrapper {
+  padding: 35px;
+}
+
 .pie_picture img{
   width:320px;
   height:255px;

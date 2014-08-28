@@ -1,63 +1,66 @@
 <%= render :partial => "shared/header" %>
 <h1>Order Details:</h1>
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Pie:</th>
-      <th>Price:</th>
-      <th>Quantity:</th>
-      <th>Item Total:</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% unique_cart_items = @cart.cart_items.to_a.uniq { |cart_item| cart_item.item_id } %>
-    <% unique_cart_items.each do |cart_item| %>
+<div class="content-wrapper">
+  <table class='table'>
+    <thead>
       <tr>
-        <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
-        <td><%= cart_item.item.price_pie %></td>
-        <% item_id = cart_item.item_id %>
-        <td>
-          <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count%>
-          <span class='item_quantity_changer'><%= link_to '+', cart_items_path(item_id: item_id), method: :post %></span>
-          <span class='item_quantity_changer'><%= link_to '-', cart_items_path(item_id: item_id), method: :delete %></span>
-          <br/>
-
-        </td>
-        <td>
-          <%= quantity * cart_item.item.price_pie %>
-        </td>
+        <th>Pie:</th>
+        <th>Price:</th>
+        <th>Quantity:</th>
+        <th>Item Total:</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<div>
-  <%= form_tag orders_path, method: :post do %>
-    <% order = Order.new %>
-    <%= hidden_field_tag 'order[user_id]', current_user.try(:id) || 1 %>
+    <tbody>
+      <% unique_cart_items = @cart.cart_items.to_a.uniq { |cart_item| cart_item.item_id } %>
+      <% unique_cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= link_to cart_item.item.title, item_path(cart_item.item) %></td>
+          <td><%= cart_item.item.price_pie %></td>
+          <% item_id = cart_item.item_id %>
+          <td>
+            <%= quantity =  @cart.cart_items.select { |cart_item| cart_item.item_id == item_id }.count%>
+            <span class='item_quantity_changer'><%= link_to '+', cart_items_path(item_id: item_id), method: :post %></span>
+            <span class='item_quantity_changer'><%= link_to '-', cart_items_path(item_id: item_id), method: :delete %></span>
+            <br/>
 
-    <div class='form-group'>
-      <%= label_tag 'Order Total:' %>
-      <%= @total_price = @cart.cart_items.reduce(0) { |total, cart_item| total += cart_item.item.price_pie } %>
-      <%= hidden_field_tag 'order[order_total]', (sprintf '%0.2f', @total_price) %>
-    </div>
-
-    <div class='form-group'>
-      <%= label_tag 'Order Type:' %>
-      <%= select_tag 'order[order_type]', '<option>Pickup</option><option>Delivery</option>'.html_safe %><br/>
-      <%= label_tag 'Delivery Address:' %>
-      <%= text_field_tag 'order[delivery_address]' %>
-      <%= hidden_field_tag 'order[order_status]', 'ordered' %>
-    </div>
-
-    <div class='actions'>
-      <% if current_user != nil %>
-        <%= submit_tag 'Checkout', class: "btn btn-default" %>
-      <% else %>
-        <%= link_to 'Sign In', signin_path, class: "btn btn-default" %>
+          </td>
+          <td>
+            <%= quantity * cart_item.item.price_pie %>
+          </td>
+        </tr>
       <% end %>
-    </div>
+    </tbody>
+  </table>
 
-  <% end %>
+  <div>
+    <%= form_tag orders_path, method: :post do %>
+      <% order = Order.new %>
+      <%= hidden_field_tag 'order[user_id]', current_user.try(:id) || 1 %>
+
+      <div class='form-group'>
+        <%= label_tag 'Order Total:' %>
+        <%= @total_price = @cart.cart_items.reduce(0) { |total, cart_item| total += cart_item.item.price_pie } %>
+        <%= hidden_field_tag 'order[order_total]', (sprintf '%0.2f', @total_price) %>
+      </div>
+
+      <div class='form-group'>
+        <%= label_tag 'Order Type:' %>
+        <%= select_tag 'order[order_type]', '<option>Pickup</option><option>Delivery</option>'.html_safe %><br/>
+        <%= label_tag 'Delivery Address:' %>
+        <%= text_field_tag 'order[delivery_address]' %>
+        <%= hidden_field_tag 'order[order_status]', 'ordered' %>
+      </div>
+
+      <div class='actions'>
+        <% if current_user != nil && @total_price != 0%>
+          <%= submit_tag 'Checkout', class: "btn btn-default" %>
+        <% elsif @total_price == 0 %>
+          <%= link_to 'Keep Shopping', items_path, class: "btn btn-default" %>
+        <% elsif %>
+          <%= link_to 'Sign In', signin_path, class: "btn btn-default" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

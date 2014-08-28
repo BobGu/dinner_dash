@@ -1,22 +1,24 @@
 <%= render :partial => "shared/header" %>
 <h1>Welcome to the Adminstrative Dashboard</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Menu Management</th>
-      <th>Order/Customer Management</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to 'Menu Item Management', admin_items_path %><br/>
-        <%= link_to 'Menu Category Managment', admin_categories_path %>
-      </td>
-      <td>
-        <%= link_to 'Order Management', admin_orders_path %><br/>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="content-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><h3><center>Menu Management</center></h3></th>
+        <th><h3><center>Order/Customer Management</center></h3></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <h4><center><%= link_to 'Menu Item Management', admin_items_path %></center></h4><br/>
+          <h4><center><%= link_to 'Menu Category Managment', admin_categories_path %></center></h4>
+        </td>
+        <td>
+          <h4><center><%= link_to 'Order Management', admin_orders_path %></center></h4><br/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

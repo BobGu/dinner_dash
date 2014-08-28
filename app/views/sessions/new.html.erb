@@ -1,19 +1,34 @@
+<%= render :partial => "shared/header" %>
 <% provide(:title, "Sign In") %>
 <h1>Sign In:</h1>
 
-<div class="form-group">
-  <div class="span6 offset3">
-    <%= form_for(:session, url: sessions_path) do |f| %>
+<div class="content-wrapper">
+  <div class="form-group">
+    <div class="span6 offset3">
 
-      <%= f.label :email %>
-      <%= f.text_field :email, class: "form-control" %>
+      <%= form_for(:session, url: sessions_path, :html => { :class => "form-horizontal"}) do |f|  %>
+        <div class="form-group">
+          <%= f.label :email, :class => "col-sm-1 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
+        </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control" %><br/>
+        <div class="form-group">
+          <%= f.label :password, :class => "col-sm-1 control-label" %>
+          <div class="col-sm-10">
+            <%= f.password_field :password, class: "form-control" %><br/>
+          </div>
+        </div>
 
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-    <% end %>
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-10">
+            <%= f.submit "Sign in", class: "btn btn-large btn-default" %>
+            <p>New customer? <%= link_to "Create account!", signup_path %></p>
+          </div>
+        </div>
+      <% end %>
 
-    <p>New customer? <%= link_to "Create account!", signup_path %></p>
+    </div>
   </div>
 </div>

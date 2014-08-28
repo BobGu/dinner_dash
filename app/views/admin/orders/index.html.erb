@@ -1,52 +1,54 @@
 <%= render :partial => "shared/header" %>
-<h1>Order Management</h1>
-<h3>Order Status Counts:</h3>
-<table class='table'>
-  <thead>
-    <tr>
-      <th>All Orders:</th>
-      <th>Paid:</th>
-      <th>Cancelled:</th>
-      <th>Completed:</th>
-      <th>Ordered:</th>
-    </tr>
-  </thead>
+<div class="content-wrapper">
+  <h1>Order Management</h1>
+  <h3>Order Status Counts:</h3>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>All Orders:</th>
+        <th>Paid:</th>
+        <th>Cancelled:</th>
+        <th>Completed:</th>
+        <th>Ordered:</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <td><%= link_to 'See All Orders', admin_orders_path %>(<%= @all_count %>)</td>
-    <td><%= link_to 'See Paid Orders', admin_orders_path(filter: 'paid') %>(<%= @status_counts[Order::Status::PAID] %>)</td>
-    <td><%= link_to 'See Cancelled Orders', admin_orders_path(filter: 'cancelled') %>(<%= @status_counts[Order::Status::CANCELLED] %>)</td>
-    <td><%= link_to 'See Completed Orders', admin_orders_path(filter: 'completed') %>(<%= @status_counts[Order::Status::COMPLETED] %>)</td>
-    <td><%= link_to 'See Ordered/Pending Orders', admin_orders_path(filter: 'ordered') %>(<%= @status_counts[Order::Status::ORDERED] %>)</td>
-  </tbody>
-</table>
+    <tbody>
+      <td><%= link_to 'See All Orders', admin_orders_path %>(<%= @all_count %>)</td>
+      <td><%= link_to 'See Paid Orders', admin_orders_path(filter: 'paid') %>(<%= @status_counts[Order::Status::PAID] %>)</td>
+      <td><%= link_to 'See Cancelled Orders', admin_orders_path(filter: 'cancelled') %>(<%= @status_counts[Order::Status::CANCELLED] %>)</td>
+      <td><%= link_to 'See Completed Orders', admin_orders_path(filter: 'completed') %>(<%= @status_counts[Order::Status::COMPLETED] %>)</td>
+      <td><%= link_to 'See Ordered/Pending Orders', admin_orders_path(filter: 'ordered') %>(<%= @status_counts[Order::Status::ORDERED] %>)</td>
+    </tbody>
+  </table>
 
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Order ID:</th>
-      <th>User ID:</th>
-      <th>Order Total:</th>
-      <th>Order Type:</th>
-      <th>Delivery Address:</th>
-      <th>Order Status:</th>
-      <th>Options</th>
-    </tr>
-  </thead>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Order ID:</th>
+        <th>User ID:</th>
+        <th>Order Total:</th>
+        <th>Order Type:</th>
+        <th>Delivery Address:</th>
+        <th>Order Status:</th>
+        <th>Options:</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @orders.each do |order| %>
-    <tr>
-      <td><%= link_to order.id, admin_order_path(order) %></td>
-      <td><%= order.user_id %></td>
-      <td><%= order.order_total %></td>
-      <td><%= order.order_type.upcase %></td>
-      <td><%= order.delivery_address %></td>
-      <td><%= order.order_status.upcase %></td>
-      <td>
-        <%= link_to "Delete", order, method: :delete, data: { confirm: 'Are you sure?'} %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody><br>
-</table><br />
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.id, admin_order_path(order) %></td>
+        <td><%= order.user_id %></td>
+        <td><%= order.order_total %></td>
+        <td><%= order.order_type.upcase %></td>
+        <td><%= order.delivery_address %></td>
+        <td><%= order.order_status.upcase %></td>
+        <td>
+          <%= link_to "Delete", order, method: :delete, data: { confirm: 'Are you sure?'} %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,27 +1,29 @@
 <%= render :partial => "shared/header" %>
 <h1><%= @user.full_name %></h1>
 
-<table class="table" >
-  <thead>
-    <tr>
-      <th>Email:</th>
-      <th>Display Name:</th>
-      <th>Previous Orders:</th>
-    </tr>
-  </thead>
+<div class="content-wrapper">
+  <table class="table" >
+    <thead>
+      <tr>
+        <th>Email:</th>
+        <th>Display Name:</th>
+        <th>Previous Orders:</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <td><%= @user.email %></td>
-    <td><%= @user.display_name %></td>
-    <td>
-      <ul>
-        <% @user.orders.each do |order| %>
-          <li><%= link_to order.created_at.to_formatted_s(:long), order_path(order) %></li>
-        <% end %>
-      </ul>
-    </td>
-  </tbody>
-</table>
+    <tbody>
+      <td><%= @user.email %></td>
+      <td><%= @user.display_name %></td>
+      <td>
+        <ul>
+          <% @user.orders.each do |order| %>
+            <li><%= link_to order.created_at.to_formatted_s(:long), order_path(order) %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tbody>
+  </table>
 
-<%= link_to 'Back to Cart', cart_path %> |
-<%= link_to 'Back to Menu', items_path %>
+  <%= link_to 'Back to Cart', cart_path %> |
+  <%= link_to 'Back to Menu', items_path %>
+</div>
