@@ -8,8 +8,8 @@
 }
 
 .pie_picture img{
-  width:400px;
-  height:330px;
+  width:320px;
+  height:255px;
 }
 
 #about_us {
@@ -109,5 +109,19 @@ color: #60464b;
   background-color:white;
   color: #0075a1;
   border:none;
+  font-size: 24px;
+}
+
+.cover-heading {
+  margin-top: 145px;
+  font-size: 60px;
+}
+
+.lead {
+  margin-top: 55px;
+  padding: 0 100px 0 100px;
+}
+
+.lead strong {
   font-size: 24px;
 }
