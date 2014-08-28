@@ -26,7 +26,7 @@ RSpec.describe Order, :type => :model do
 
   it 'is invalid without an order status' do
     order.order_status = nil
-    expect(order).not_to be_valid
+    expect(order).to be_valid
   end
 
   it 'has items' do
