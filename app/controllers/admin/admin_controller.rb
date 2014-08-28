@@ -7,6 +7,6 @@ class Admin::AdminController < ApplicationController
   private
 
     def authorize?
-      redirect_to "https://www.youtube.com/watch?v=RfiQYRn7fBg" unless current_user.role == "admin"
+      redirect_to "https://www.youtube.com/watch?v=Jvk7faxsxkQ" unless current_user.role == "admin"
     end
 end

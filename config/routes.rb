@@ -41,7 +41,12 @@ Rails.application.routes.draw do
     resources :admin
     resources :items
     resources :categories
-    resources :orders
+    resources :orders do
+      resources :order_items do
+        get :increment, on: :member
+        get :decrement, on: :member
+      end
+    end 
   end
 
   match '/admin_dashboard',  to: 'admin/admin#show',  via: 'get'

@@ -12,7 +12,7 @@
     <% end %>
   </p>
 </div>
-<% if @item.retire == 'false'  %>
+<% if @item.retire == false || @item.retire == 'f'  %>
   <div class="modal-footer">
     <a href="<%= add_to_cart_path(item_id: @item.id) %>"%>ADD TO CART</a>
   </div>

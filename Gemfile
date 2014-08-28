@@ -8,10 +8,10 @@ group :development, :test do
 	gem 'pry'
   gem 'launchy'
 	gem 'aasm', '~> 3.3.3'
-	gem "paperclip", "~> 4.1"
 end
 
-
+gem "paperclip", "~> 4.1"
+gem "aws-sdk"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use SCSS for stylesheets

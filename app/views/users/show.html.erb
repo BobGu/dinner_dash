@@ -16,7 +16,7 @@
     <td>
       <ul>
         <% @user.orders.each do |order| %>
-          <li><%= link_to order.created_at, order_path(order) %></li>
+          <li><%= link_to order.created_at.to_formatted_s(:long), order_path(order) %></li>
         <% end %>
       </ul>
     </td>

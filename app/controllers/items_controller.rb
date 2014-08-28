@@ -7,11 +7,11 @@ class ItemsController < ApplicationController
 
 	def index
 		@categories = Category.all
-		@items = Item.not_retired
+		@items = (Item.not_retired_too + Item.not_retired)
 	end
 
 	def show
-		
+
 	end
 
 	def create

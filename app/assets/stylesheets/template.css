@@ -4,7 +4,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 1000px;
+  height: 950px;
 }
 
 .pie_picture img{
@@ -42,7 +42,7 @@
 }
 
 
-footer{
+/*footer{
   background-color: #60464b;
   height: 129px;
   font-family: 'Georgia';
@@ -50,7 +50,7 @@ footer{
 
 #footer_content{
   margin-top: 10px;
-}
+}*/
 
 #carousel img {
   width: 100%;
@@ -113,7 +113,7 @@ color: #60464b;
 }
 
 .cover-heading {
-  margin-top: 145px;
+  margin-top: 45px;
   font-size: 60px;
 }
 
