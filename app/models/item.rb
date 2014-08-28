@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
   validates :title,       presence: true, uniqueness: true
   validates :description, presence: true
-  validates :retire, inclusion: { in: [true, false] }
+  validates :retire, inclusion: { in: ['true', 'false'] }
 
 
   has_many  :categorizations
@@ -13,6 +13,9 @@ class Item < ActiveRecord::Base
   has_many  :orders, through: :order_items
   has_many  :cart_items
   has_many  :carts, through: :cart_items
+
+  scope :not_retired, -> { where(retire: 'f') }
+  scope :retired, -> { where(retire: 't') }
 
   def category_names
     categories.join(", ")

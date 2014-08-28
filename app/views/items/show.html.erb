@@ -12,10 +12,15 @@
     <% end %>
   </p>
 </div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-  <a href="<%= add_to_cart_path(item_id: @item.id) %>"%>ADD TO CART</a>
-</div>
+<% if @item.retire == 'false'  %>
+  <div class="modal-footer">
+    <a href="<%= add_to_cart_path(item_id: @item.id) %>"%>ADD TO CART</a>
+  </div>
+<% else %>
+  <div class="modal-footer">
+    <h4>SORRY This item is really old and has retired!</h4>
+  <div>
+<% end %>
 
 <!-- <%= render :partial => "shared/header" %>
 
