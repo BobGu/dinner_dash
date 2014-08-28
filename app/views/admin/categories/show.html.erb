@@ -1,22 +1,25 @@
 <%= render :partial => "shared/header" %>
-<table class="table">
-	<thead>
-		<tr>
-			<th>Category:</th>
-			<th>Pies:</th>
-		</tr>
 
-		<tbody>
+<div class="content-wrapper formStyle">
+	<table class="table">
+		<thead>
 			<tr>
-				<td><%= @category.name %></td>
-				<td>
-					<% @category.items.each do |item| %>|
-						<%= link_to item.title, item_path(item) %> |
-					<% end %>
-				</td>
+				<th>Category:</th>
+				<th>Pies:</th>
 			</tr>
-		</tbody>
-	</thead>
-</table>
 
-<%= link_to 'All Categories', admin_categories_path %>
+			<tbody>
+				<tr>
+					<td><%= @category.name %></td>
+					<td>
+						<% @category.items.each do |item| %>|
+							<%= link_to item.title, admin_item_path(item) %> |
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+		</thead>
+	</table>
+
+	<%= link_to 'All Categories', admin_categories_path %>
+</div>
