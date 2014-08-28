@@ -7,10 +7,11 @@ class ItemsController < ApplicationController
 
 	def index
 		@categories = Category.all
-		@items = Item.all
+		@items = Item.not_retired
 	end
 
 	def show
+		
 	end
 
 	def create
@@ -42,6 +43,7 @@ class ItemsController < ApplicationController
 			redirect_to admin_items_path, notice: 'Item was successfully deleted.'
 		end
 	end
+
 
 	private
 		def set_item
