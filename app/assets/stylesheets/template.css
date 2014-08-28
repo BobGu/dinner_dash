@@ -180,3 +180,8 @@ color: #60464b;
 .gus {
   margin-top: 20px;
 }
+
+.formStyle {
+  background-color: white;
+  opacity: 0.8;
+}
