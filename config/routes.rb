@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get     '/order_items/new'  => 'order_items#new',         as: :new_order_item
   post    '/order_items'      => 'order_items#create',      as: :order_items
 
-  get     '/contact'          => 'contact#show',            as: :contact
+  get     '/about_us'          => 'about_us#index' 
 
   namespace :admin do
     resources :admin
@@ -46,7 +46,7 @@ Rails.application.routes.draw do
         get :increment, on: :member
         get :decrement, on: :member
       end
-    end 
+    end
   end
 
   match '/admin_dashboard',  to: 'admin/admin#show',  via: 'get'

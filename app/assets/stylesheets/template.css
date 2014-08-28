@@ -130,3 +130,44 @@ color: #60464b;
 .menu_spacing {
   margin-left: 20px;
 }
+
+.picture1 {
+  background: url('gu.jpg');
+  background-size: cover;
+  height: 240px;
+  width:auto;
+  margin-top:30px;
+}
+
+.description{
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.picture2 {
+  background: url('tim_proc.jpg');
+  background-size: cover;
+  height: 270px;
+  width:auto;
+  margin-top:30px;
+}
+
+.picture3 {
+  background: url('emily.jpg');
+  background-size: cover;
+  height: 280px;
+  margin-top:20px;
+  width:auto;
+}
+
+.picture4 {
+  background: url('gus.jpg');
+  background-size: cover;
+  height: 240px;
+  width:auto;
+  margin-top:40px;
+}
+
+.gus {
+  margin-top: 20px;
+}
