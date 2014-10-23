@@ -4,7 +4,7 @@ See the site live at [DinnerDash](http://vast-atoll-3743.herokuapp.com)
 
 Dinner Dash is a online restaurant ordering site. The purpose of the project was to experiment with authorization/authentication and the idea of a __cart.
 
-The site is broken into two experiences: the __unauthenticated and __authenticated.
+The site is broken into two experiences: the unauthenticated and authenticated.
 
 Unauthenticated customers can add pies to their cart and checkout. Authenticated users can create, read, updated, and delete pies.
 
