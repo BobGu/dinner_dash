@@ -1,28 +1,11 @@
-== README
+==
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+See the site live at [DinnerDash](vast-atoll-3743.herokuapp.com)
 
-Things you may want to cover:
+Dinner Dash is a online restaurant ordering site. The purpose of the project was to experiment with authorization/authentication and the idea of a cart.
 
-* Ruby version
+The site is broken into two experiences the unauthenticated and authenticated.
 
-* System dependencies
+Unauthenticated customers can add pies to their cart and checkout. Authenticated users can create, read, updated, and delete pies.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Enjoy our Deliciously Dangerous Pies!!!!
