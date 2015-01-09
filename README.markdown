@@ -1,6 +1,6 @@
 ==
 
-See the site live at [DinnerDash](http://vast-atoll-3743.herokuapp.com)
+See the site live at [DinnerDash](http://dangerously-delicious.herokuapp.com/)
 
 Dinner Dash is a online restaurant ordering site. The purpose of the project was to experiment with authorization/authentication and the idea of a cart.
 
